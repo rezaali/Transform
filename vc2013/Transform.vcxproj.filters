@@ -1,0 +1,298 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Blocks">
+      <UniqueIdentifier>{8B6D7E9B-B2C1-4B8D-BB62-36767DF8A294}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\GlslParams">
+      <UniqueIdentifier>{06A9E20C-09B5-4FD9-89A4-3D6A72C9C8D9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\GlslParams\src">
+      <UniqueIdentifier>{2923DABE-07BF-4465-B7FC-621790C52832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OSC">
+      <UniqueIdentifier>{12D25DA4-F88D-4010-9D0C-4EDC120DB0E7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OSC\src">
+      <UniqueIdentifier>{66E354C4-FE37-45E1-8D86-38F64126B8F6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OSC\src\cinder">
+      <UniqueIdentifier>{DC6A818C-9B16-4E43-A4C6-203F84CC6998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OSC\src\cinder\osc">
+      <UniqueIdentifier>{6C10A360-9036-4A83-9AE8-84E867E35473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\UI">
+      <UniqueIdentifier>{9BF71781-A05C-477E-8542-1BFA938FCB85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\UI\src">
+      <UniqueIdentifier>{AF6FC34C-902B-45CF-9346-F6F1E63FA89B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Watchdog">
+      <UniqueIdentifier>{F40D9111-439A-45E7-B6E3-EBECD45CD76C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Watchdog\include">
+      <UniqueIdentifier>{986D3EA8-79E5-4059-B9DE-B09B32CD88CD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\TransformApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TransformApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\GlslParams\src\GlslParams.h">
+      <Filter>Blocks\GlslParams\src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\blocks\GlslParams\src\GlslParams.cpp">
+      <Filter>Blocks\GlslParams\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\OSC\src\cinder\osc\Osc.cpp">
+      <Filter>Blocks\OSC\src\cinder\osc</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\blocks\OSC\src\cinder\osc\Osc.h">
+      <Filter>Blocks\OSC\src\cinder\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Alignments.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\BSplineEditor.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Button.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Canvas.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\CocoaWindowCanvas.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\ColorPicker.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Colors.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Control.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Controls.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\ControlWithLabel.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Dialer.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Directions.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Envelope.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\FontSizes.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Fps.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Globals.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Graph.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Helpers.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Label.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\MultiSlider.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Padding.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Plotter.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\QuaternionOrderer.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Radio.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Range.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\RenderData.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Responder.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Slider.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Spacer.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Spectrum.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\States.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\SuperCanvas.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\TextInput.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\TextureView.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Toggle.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Triggers.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\UI.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\View.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\Waveform.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\WindowCanvas.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\UI\src\XYPad.h">
+      <Filter>Blocks\UI\src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\BSplineEditor.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Button.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Canvas.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\ColorPicker.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Colors.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Control.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\ControlWithLabel.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Dialer.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Envelope.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Fps.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Globals.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Graph.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Label.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\MultiSlider.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Plotter.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\QuaternionOrderer.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Radio.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Range.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Responder.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Slider.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Spacer.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Spectrum.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\SuperCanvas.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\TextInput.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\TextureView.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Toggle.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\View.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\Waveform.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\WindowCanvas.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\UI\src\XYPad.cpp">
+      <Filter>Blocks\UI\src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\blocks\Watchdog\include\Watchdog.h">
+      <Filter>Blocks\Watchdog\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
