@@ -1,0 +1,16 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "camera",
+   "SUBVIEWS" : [
+      {
+         "ID" : 4,
+         "NAME" : "FOV",
+         "TYPE" : "Slider",
+         "VALUE" : 60
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 74
+}

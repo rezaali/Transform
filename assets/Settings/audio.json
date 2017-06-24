@@ -1,0 +1,30 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "audio",
+   "SUBVIEWS" : [
+      {
+         "ACTIVE" : "Microphone (Realtek High Definition",
+         "ID" : 3,
+         "NAME" : "INPUT",
+         "SUBVIEWS" : [
+            {
+               "ID" : 1,
+               "NAME" : "Microphone (Realtek High Definition",
+               "TYPE" : "Toggle",
+               "VALUE" : true
+            },
+            {
+               "ID" : 2,
+               "NAME" : "CABLE Output (VB-Audio Virtual Cabl",
+               "TYPE" : "Toggle",
+               "VALUE" : false
+            }
+         ],
+         "TYPE" : "Radio"
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 6
+}

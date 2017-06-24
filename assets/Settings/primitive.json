@@ -1,0 +1,60 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "primitive",
+   "SUBVIEWS" : [
+      {
+         "ID" : 33,
+         "NAME" : "DRAW",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 34,
+         "NAME" : "ADDITIVE BLENDING",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 35,
+         "NAME" : "DEPTH WRITE",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 36,
+         "NAME" : "DEPTH READ",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 38,
+         "NAME" : "noiseScale",
+         "TYPE" : "Slider",
+         "VALUE" : 0.38053098320960999
+      },
+      {
+         "ID" : 39,
+         "NAME" : "amplitude",
+         "TYPE" : "Slider",
+         "VALUE" : 0.97345131635665894
+      },
+      {
+         "HVALUE" : 1,
+         "ID" : 40,
+         "LVALUE" : 0,
+         "NAME" : "er",
+         "TYPE" : "Range"
+      },
+      {
+         "HVALUE" : 0.89380532503128052,
+         "ID" : 41,
+         "LVALUE" : 0,
+         "NAME" : "cr",
+         "TYPE" : "Range"
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 312
+}

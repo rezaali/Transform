@@ -1,0 +1,55 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "trail points",
+   "SUBVIEWS" : [
+      {
+         "ID" : 20,
+         "NAME" : "DRAW",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 21,
+         "NAME" : "ADDITIVE BLENDING",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 22,
+         "NAME" : "DEPTH WRITE",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 23,
+         "NAME" : "DEPTH READ",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 25,
+         "NAME" : "pointSize",
+         "TYPE" : "Slider",
+         "VALUE" : 3
+      },
+      {
+         "ID" : 26,
+         "NAME" : "trailFade",
+         "TYPE" : "Slider",
+         "VALUE" : 1
+      },
+      {
+         "ALPHA" : 1,
+         "BLUE" : 0.004999995231628418,
+         "GREEN" : 0.66169995069503784,
+         "ID" : 27,
+         "NAME" : "color",
+         "RED" : 1,
+         "TYPE" : "ColorPicker"
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 448
+}

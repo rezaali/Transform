@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -45,14 +46,47 @@
     <Filter Include="Blocks\Watchdog\include">
       <UniqueIdentifier>{986D3EA8-79E5-4059-B9DE-B09B32CD88CD}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Blocks\Tiler">
+      <UniqueIdentifier>{254303e5-4797-4bc3-8500-d93b3264c8d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\SaveLoadCamera">
+      <UniqueIdentifier>{2eab53f9-5bf0-4a54-9e88-e44f5c3022f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\SaveLoadWindow">
+      <UniqueIdentifier>{3e5c035a-6ce3-462a-9540-a359a44c90a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\AppUI">
+      <UniqueIdentifier>{bcd63fcd-654b-400c-8e3e-c393b7e8c1ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\LiveCode">
+      <UniqueIdentifier>{0eb7ca65-8b9e-4c21-ab9a-49076dcb753b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\EasyCamera">
+      <UniqueIdentifier>{c89a5d9b-e901-48b5-8740-276accdd451a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\ParticleSystem">
+      <UniqueIdentifier>{f455e89b-2550-498a-9dcc-16a0a32bfee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\AppPaths">
+      <UniqueIdentifier>{4bb1b941-3654-403d-9966-0deebd4ddcc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\SequenceSaver">
+      <UniqueIdentifier>{6d0b3f88-45de-49bd-8f5d-c95271eb32c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\MovieSaver">
+      <UniqueIdentifier>{6bcf4929-68d0-4968-97a6-30ee400b7c98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\ImageSaver">
+      <UniqueIdentifier>{5dccc650-07d6-4822-957c-c89007773d78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\ParticleSystem\Systems">
+      <UniqueIdentifier>{4fe0dc03-38c8-441b-bc26-6c5593d236c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\ParticleSystem\Renderers">
+      <UniqueIdentifier>{eb3d99f4-8e50-4f37-b77c-95eaf62eb219}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\TransformApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\TransformApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -284,15 +318,152 @@
     <ClInclude Include="..\..\..\..\blocks\Watchdog\include\Watchdog.h">
       <Filter>Blocks\Watchdog\include</Filter>
     </ClInclude>
+    <ClCompile Include="..\src\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\Tiler\src\Tiler.cpp">
+      <Filter>Blocks\Tiler</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\blocks\SaveLoadCamera\src\SaveLoadCamera.h">
+      <Filter>Blocks\SaveLoadCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\SaveLoadWindow\src\SaveLoadWindow.h">
+      <Filter>Blocks\SaveLoadWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\AppUI\include\AppUI.h">
+      <Filter>Blocks\AppUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\EasyCamera\include\EasyCamera.h">
+      <Filter>Blocks\EasyCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\LiveCode\include\LiveCode.h">
+      <Filter>Blocks\LiveCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\AppPaths\include\Paths.h">
+      <Filter>Blocks\AppPaths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\MovieSaver\include\MovieSaver.h">
+      <Filter>Blocks\MovieSaver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\SequenceSaver\include\SequenceSaver.h">
+      <Filter>Blocks\SequenceSaver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ImageSaver\include\ImageSaver.h">
+      <Filter>Blocks\ImageSaver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\ParticleSystem.h">
+      <Filter>Blocks\ParticleSystem\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PlexusSystem.h">
+      <Filter>Blocks\ParticleSystem\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\System.h">
+      <Filter>Blocks\ParticleSystem\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\TrailSystem.h">
+      <Filter>Blocks\ParticleSystem\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PlexusRenderer.h">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PointRenderer.h">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\Renderer.h">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\RibbonRenderer.h">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\SpriteRenderer.h">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\TrailPointRenderer.h">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PrimitiveRenderer.h">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\RectRenderer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\blocks\Tiler\src\Tiler.h">
+      <Filter>Blocks\Tiler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\blocks\SaveLoadCamera\src\SaveLoadCamera.cpp">
+      <Filter>Blocks\SaveLoadCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\SaveLoadWindow\src\SaveLoadWindow.cpp">
+      <Filter>Blocks\SaveLoadWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\AppUI\src\AppUI.cpp">
+      <Filter>Blocks\AppUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\EasyCamera\src\EasyCamera.cpp">
+      <Filter>Blocks\EasyCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\LiveCode\src\LiveCode.cpp">
+      <Filter>Blocks\LiveCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\AppPaths\src\Paths.cpp">
+      <Filter>Blocks\AppPaths</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\MovieSaver\src\MovieSaver.cpp">
+      <Filter>Blocks\MovieSaver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\SequenceSaver\src\SequenceSaver.cpp">
+      <Filter>Blocks\SequenceSaver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ImageSaver\src\ImageSaver.cpp">
+      <Filter>Blocks\ImageSaver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\ParticleSystem.cpp">
+      <Filter>Blocks\ParticleSystem\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PlexusSystem.cpp">
+      <Filter>Blocks\ParticleSystem\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\System.cpp">
+      <Filter>Blocks\ParticleSystem\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\TrailSystem.cpp">
+      <Filter>Blocks\ParticleSystem\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PlexusRenderer.cpp">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PointRenderer.cpp">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\Renderer.cpp">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\RibbonRenderer.cpp">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\SpriteRenderer.cpp">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\TrailPointRenderer.cpp">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PrimitiveRenderer.cpp">
+      <Filter>Blocks\ParticleSystem\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RectRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

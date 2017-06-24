@@ -1,4 +1,5 @@
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -26,27 +27,27 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -86,7 +87,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;"..\..\..\..\include";..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\include;..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include;..\..\..\..\blocks\UI\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -113,7 +114,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;"..\..\..\..\include";..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\include;..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include;..\..\..\..\blocks\UI\src;..\..\..\..\blocks\Tiler\src;..\..\..\..\blocks\SaveLoadCamera\include;..\..\..\..\blocks\GlslParams\src;..\..\..\..\blocks\SaveLoadWindow\include;..\..\..\..\blocks\LiveCode\include;..\..\..\..\blocks\EasyCamera\include;..\..\..\..\blocks\AppPaths\include;..\..\..\..\blocks\AppUI\include;..\..\..\..\blocks\ImageSaver\include;..\..\..\..\blocks\SequenceSaver\include;..\..\..\..\blocks\MovieSaver\include;..\..\..\..\blocks\ParticleSystem\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -127,7 +128,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>"..\..\..\..\lib\msw\$(PlatformTarget)";"..\..\..\..\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)\"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\lib\msw\$(PlatformTarget);..\..\..\..\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)\</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -137,7 +138,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;"..\..\..\..\include";..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\include;..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include;..\..\..\..\blocks\UI\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -166,7 +167,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;"..\..\..\..\include";..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\include;..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include;..\..\..\..\blocks\UI\src;..\..\..\..\blocks\Tiler\src;..\..\..\..\blocks\SaveLoadCamera\include;..\..\..\..\blocks\GlslParams\src;..\..\..\..\blocks\SaveLoadWindow\include;..\..\..\..\blocks\LiveCode\include;..\..\..\..\blocks\EasyCamera\include;..\..\..\..\blocks\AppPaths\include;..\..\..\..\blocks\AppUI\include;..\..\..\..\blocks\ImageSaver\include;..\..\..\..\blocks\SequenceSaver\include;..\..\..\..\blocks\MovieSaver\include;..\..\..\..\blocks\ParticleSystem\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -198,7 +199,29 @@
   <ItemGroup />
   <ItemGroup />
   <ItemGroup>
-    <ClCompile Include="..\src\TransformApp.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\AppPaths\src\Paths.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\AppUI\src\AppUI.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\EasyCamera\src\EasyCamera.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ImageSaver\src\ImageSaver.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\LiveCode\src\LiveCode.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\MovieSaver\src\MovieSaver.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\ParticleSystem.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PlexusRenderer.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PlexusSystem.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PointRenderer.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PrimitiveRenderer.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\Renderer.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\RibbonRenderer.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\SpriteRenderer.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\System.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\TrailPointRenderer.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\TrailSystem.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\SaveLoadCamera\src\SaveLoadCamera.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\SaveLoadWindow\src\SaveLoadWindow.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\SequenceSaver\src\SequenceSaver.cpp" />
+    <ClCompile Include="..\..\..\..\blocks\Tiler\src\Tiler.cpp" />
+    <ClCompile Include="..\src\RectRenderer.cpp" />
+    <ClCompile Include="..\src\Transform.cpp" />
     <ClCompile Include="..\..\..\..\blocks\GlslParams\src\GlslParams.cpp" />
     <ClCompile Include="..\..\..\..\blocks\OSC\src\cinder\osc\Osc.cpp" />
     <ClCompile Include="..\..\..\..\blocks\UI\src\BSplineEditor.cpp" />
@@ -233,6 +256,28 @@
     <ClCompile Include="..\..\..\..\blocks\UI\src\XYPad.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\blocks\AppPaths\include\Paths.h" />
+    <ClInclude Include="..\..\..\..\blocks\AppUI\include\AppUI.h" />
+    <ClInclude Include="..\..\..\..\blocks\EasyCamera\include\EasyCamera.h" />
+    <ClInclude Include="..\..\..\..\blocks\ImageSaver\include\ImageSaver.h" />
+    <ClInclude Include="..\..\..\..\blocks\LiveCode\include\LiveCode.h" />
+    <ClInclude Include="..\..\..\..\blocks\MovieSaver\include\MovieSaver.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\ParticleSystem.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PlexusRenderer.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PlexusSystem.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PointRenderer.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PrimitiveRenderer.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\Renderer.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\RibbonRenderer.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\SpriteRenderer.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\System.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\TrailPointRenderer.h" />
+    <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\TrailSystem.h" />
+    <ClInclude Include="..\..\..\..\blocks\SaveLoadCamera\src\SaveLoadCamera.h" />
+    <ClInclude Include="..\..\..\..\blocks\SaveLoadWindow\src\SaveLoadWindow.h" />
+    <ClInclude Include="..\..\..\..\blocks\SequenceSaver\include\SequenceSaver.h" />
+    <ClInclude Include="..\..\..\..\blocks\Tiler\src\Tiler.h" />
+    <ClInclude Include="..\include\RectRenderer.h" />
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\..\..\..\blocks\GlslParams\src\GlslParams.h" />
     <ClInclude Include="..\..\..\..\blocks\OSC\src\cinder\osc\Osc.h" />
