@@ -37,12 +37,12 @@
          "ID" : 26,
          "NAME" : "trailFade",
          "TYPE" : "Slider",
-         "VALUE" : 1
+         "VALUE" : 0.61224500000000004
       },
       {
          "ALPHA" : 1,
-         "BLUE" : 0.004999995231628418,
-         "GREEN" : 0.66169995069503784,
+         "BLUE" : 0.63000100000000003,
+         "GREEN" : 0,
          "ID" : 27,
          "NAME" : "color",
          "RED" : 1,

@@ -4,51 +4,51 @@
    "NAME" : "primitive",
    "SUBVIEWS" : [
       {
-         "ID" : 33,
+         "ID" : 21,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
-         "VALUE" : true
+         "VALUE" : false
       },
       {
-         "ID" : 34,
+         "ID" : 22,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 35,
+         "ID" : 23,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 36,
+         "ID" : 24,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 38,
+         "ID" : 26,
          "NAME" : "noiseScale",
          "TYPE" : "Slider",
-         "VALUE" : 0.38053098320960999
+         "VALUE" : 0.38053100000000001
       },
       {
-         "ID" : 39,
+         "ID" : 27,
          "NAME" : "amplitude",
          "TYPE" : "Slider",
-         "VALUE" : 0.97345131635665894
+         "VALUE" : 0.97345099999999996
       },
       {
          "HVALUE" : 1,
-         "ID" : 40,
+         "ID" : 28,
          "LVALUE" : 0,
          "NAME" : "er",
          "TYPE" : "Range"
       },
       {
-         "HVALUE" : 0.89380532503128052,
-         "ID" : 41,
+         "HVALUE" : 0.89380499999999996,
+         "ID" : 29,
          "LVALUE" : 0,
          "NAME" : "cr",
          "TYPE" : "Range"

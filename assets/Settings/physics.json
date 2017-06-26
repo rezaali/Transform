@@ -13,10 +13,10 @@
          "ID" : 10,
          "NAME" : "PARTICLES",
          "TYPE" : "Dialer",
-         "VALUE" : 1
+         "VALUE" : 1487
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 176
+   "XPOS" : 203,
+   "YPOS" : 337
 }

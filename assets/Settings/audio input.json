@@ -4,19 +4,24 @@
    "NAME" : "audio input",
    "SUBVIEWS" : [
       {
-         "ACTIVE" : "Microphone (Realtek High Definition",
          "ID" : 3,
          "NAME" : "INPUT",
          "SUBVIEWS" : [
             {
                "ID" : 0,
-               "NAME" : "Microphone (Realtek High Definition",
+               "NAME" : "Built-in Microphone",
                "TYPE" : "Toggle",
-               "VALUE" : true
+               "VALUE" : false
             },
             {
                "ID" : 1,
-               "NAME" : "CABLE Output (VB-Audio Virtual Cabl",
+               "NAME" : "Soundflower (2ch)",
+               "TYPE" : "Toggle",
+               "VALUE" : false
+            },
+            {
+               "ID" : 2,
+               "NAME" : "Soundflower (64ch)",
                "TYPE" : "Toggle",
                "VALUE" : false
             }

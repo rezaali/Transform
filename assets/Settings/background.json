@@ -7,7 +7,7 @@
          "ID" : 11,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
          "ID" : 12,

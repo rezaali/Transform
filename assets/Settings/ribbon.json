@@ -13,7 +13,7 @@
          "ID" : 38,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
          "ID" : 39,
@@ -35,18 +35,18 @@
       },
       {
          "ALPHA" : 1,
-         "BLUE" : 0,
-         "GREEN" : 0,
+         "BLUE" : 1,
+         "GREEN" : 1,
          "ID" : 43,
          "NAME" : "Color",
-         "RED" : 0,
+         "RED" : 1,
          "TYPE" : "ColorPicker"
       },
       {
          "ID" : 44,
          "NAME" : "linEffect",
          "TYPE" : "Slider",
-         "VALUE" : 1
+         "VALUE" : 0
       },
       {
          "ID" : 45,
@@ -58,13 +58,13 @@
          "ID" : 46,
          "NAME" : "sinEffect",
          "TYPE" : "Slider",
-         "VALUE" : 1
+         "VALUE" : 0
       },
       {
          "ID" : 47,
          "NAME" : "thickness",
          "TYPE" : "Slider",
-         "VALUE" : 0.10000000149011612
+         "VALUE" : 0.00153061
       }
    ],
    "TYPE" : "SuperCanvas",

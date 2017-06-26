@@ -1,4 +1,6 @@
-#include "..\include\RectRenderer.h"
+#include "RectRenderer.h"
+
+#include <memory>
 
 #include "LiveCode.h"
 #include "cinder/gl/gl.h"
@@ -16,11 +18,18 @@ RectRenderer::RectRenderer(
 	const WindowRef &window,
 	const fs::path &vertexPath,
 	const fs::path &fragmentPath,
-	reza::ps::ParticleSystemRef &particleSystemRef,
+	reza::ps::SystemRef systemRef,
 	std::function<void()> superFn,
 	std::function<void( GlslParamsRef )> glslUpdatedFn,
 	std::function<void( ci::Exception )> glslErrorFn )
-	: Renderer( window, vertexPath, fragmentPath, static_cast<SystemRef>( particleSystemRef ), superFn, glslUpdatedFn, glslErrorFn )
+	: Renderer(
+		  window,
+		  vertexPath,
+		  fragmentPath,
+		  systemRef,
+		  superFn,
+		  glslUpdatedFn,
+		  glslErrorFn )
 {
 }
 

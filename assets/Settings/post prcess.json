@@ -19,13 +19,13 @@
          "ID" : 13,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
          "ID" : 14,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       }
    ],
    "TYPE" : "SuperCanvas",

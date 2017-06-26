@@ -4,46 +4,34 @@
    "NAME" : "sprites",
    "SUBVIEWS" : [
       {
-         "ID" : 20,
+         "ID" : 63,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
-         "ID" : 21,
+         "ID" : 64,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 22,
+         "ID" : 65,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
-         "ID" : 23,
+         "ID" : 66,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
-         "VALUE" : false
-      },
-      {
-         "ID" : 25,
-         "NAME" : "scale-X",
-         "TYPE" : "Slider",
-         "VALUE" : 1
-      },
-      {
-         "ID" : 26,
-         "NAME" : "scale-Y",
-         "TYPE" : "Slider",
-         "VALUE" : 1
+         "VALUE" : true
       },
       {
          "ALPHA" : 1,
          "BLUE" : 1,
          "GREEN" : 1,
-         "ID" : 27,
+         "ID" : 68,
          "NAME" : "Color",
          "RED" : 1,
          "TYPE" : "ColorPicker"

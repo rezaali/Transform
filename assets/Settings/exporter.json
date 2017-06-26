@@ -13,28 +13,28 @@
          "ID" : 7,
          "NAME" : "MOV",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
          "ID" : 8,
          "NAME" : "PNG",
          "TYPE" : "Toggle",
-         "VALUE" : true
+         "VALUE" : false
       },
       {
          "ID" : 9,
          "NAME" : "FRAMES",
          "TYPE" : "Dialer",
-         "VALUE" : 288
+         "VALUE" : 300
       },
       {
          "ID" : 10,
          "NAME" : "PROGRESS",
          "TYPE" : "Slider",
-         "VALUE" : 0.60069441795349121
+         "VALUE" : 0.82999999999999996
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 164,
-   "YPOS" : 70
+   "XPOS" : 102,
+   "YPOS" : 86
 }

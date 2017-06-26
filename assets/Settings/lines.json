@@ -19,34 +19,34 @@
          "ID" : 22,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
          "ID" : 23,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
          "ALPHA" : 1,
-         "BLUE" : 0.61014962196350098,
+         "BLUE" : 1,
          "GREEN" : 1,
          "ID" : 25,
          "NAME" : "Color",
-         "RED" : 0.43499994277954102,
+         "RED" : 1,
          "TYPE" : "ColorPicker"
       },
       {
          "ID" : 26,
          "NAME" : "dist",
          "TYPE" : "Slider",
-         "VALUE" : 3.539823055267334
+         "VALUE" : 11.6327
       },
       {
          "ID" : 27,
          "NAME" : "power",
          "TYPE" : "Slider",
-         "VALUE" : 32
+         "VALUE" : 20.408200000000001
       }
    ],
    "TYPE" : "SuperCanvas",
