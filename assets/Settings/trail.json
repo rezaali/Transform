@@ -7,13 +7,13 @@
          "ID" : 9,
          "NAME" : "UPDATE",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
          "ID" : 10,
          "NAME" : "TOTAL",
          "TYPE" : "Dialer",
-         "VALUE" : 20
+         "VALUE" : 9
       }
    ],
    "TYPE" : "SuperCanvas",

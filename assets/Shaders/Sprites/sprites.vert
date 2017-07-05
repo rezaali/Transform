@@ -8,17 +8,17 @@ in vec4	ciPosition;
 in vec2 ciTexCoord0;
 
 out highp vec2 vTexCoord;
-out float vID;
+out highp float vMass;
 
 void main( void )
 {        
     int instID = gl_InstanceID;
-    vID = float( instID ); 
     vec4 pm = texelFetch( position_mass, instID ); 
-    vec3 vPos = 0.5 * ciPosition.xyz + pm.xyz;
-
-    vec4 pos = ciPosition;    
-    pos = ciModelViewProjection * vec4( vPos, 1.0 );
+    vec2 uv = 2.0 * ciTexCoord0 - 1.0;    
+    uv.x /= iAspect;   
+    vec4 pos = ciModelViewProjection * vec4( ciPosition.xyz + pm.xyz, 1.0 );
+    pos.xy += uv * ( pm.w + 0.1 ) * iRenderScale;
+    vMass = pm.w;
 	gl_Position	= pos; 
-    vTexCoord = ciTexCoord0;         
+    vTexCoord = ciTexCoord0;      
 }

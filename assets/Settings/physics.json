@@ -4,19 +4,19 @@
    "NAME" : "physics",
    "SUBVIEWS" : [
       {
-         "ID" : 9,
+         "ID" : 261,
          "NAME" : "UPDATE",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 10,
+         "ID" : 262,
          "NAME" : "PARTICLES",
          "TYPE" : "Dialer",
-         "VALUE" : 1487
+         "VALUE" : 1024
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 203,
-   "YPOS" : 337
+   "XPOS" : 6,
+   "YPOS" : 176
 }

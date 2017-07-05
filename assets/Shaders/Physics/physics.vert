@@ -1,6 +1,7 @@
 #version 330 
 #include "uniforms.glsl"
 #include "pi.glsl"
+#include "noise3D.glsl"
 
 in vec4 position_mass;		
 in vec4 velocity_mass;		
@@ -19,19 +20,50 @@ void main()
 	float mass = position_mass.w; 
 	vec3 vel = velocity_mass.xyz; 
 
-    int id = info.x % 2; 
+    int id = info.x; 
     float idf = float( id ); 
-    float sdf = mix( 1, -1, idf ); 
 
-    float norm = float( info.x ) / float( iNumParticles ) - 0.5; 
-	pos = vec3(     
-        3.0 * norm , 
-        sdf * 1.5 * sin( 2.0 * norm * TWO_PI + 2.0 * iAnimationTime * TWO_PI ), 
-        sdf * 1.5 * cos( 2.0 * norm * TWO_PI + 2.0 * iAnimationTime * TWO_PI ) ); 
+    int total = int( sqrt( iNumParticles ) );
+    float totalf = float( total ); 
+    
+    int row = id % total;  
+    int col = int( floor( id / total ) ); 
+
+    float norm = idf / iNumParticles; 
+
+    float x = float( row ) / ( totalf - 1 ); 
+    float z = float( col ) / ( totalf - 1 ); 
+    float y = 0.25 * snoise( vec3( x, z, 2.0 * iGlobalTime ) ); 
 	
-    mass = 3.0; 
+	float amp = texture( iAmplitude, vec2( norm/4, 0.0 ) ).r; 
+	y = max( y, 0.0 ); 
+    pos = vec3( x - 0.5, y, z - 0.5 );
+
+    mass = y * amp; 
 
 	tf_position_mass = vec4( pos, mass );
 	tf_velocity_mass = vec4( vel, mass );
 	tf_info = info; 
 }
+
+
+/*
+
+Rect 
+RoundedRect
+Cube
+Icosahedron
+Icosphere
+Teapot
+Circle
+Ring
+Sphere
+Capsule
+Torus
+TorusKnot
+Helix
+Cylinder
+Cone
+Plane
+
+*/

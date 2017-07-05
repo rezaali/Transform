@@ -31,12 +31,12 @@
          "ID" : 42,
          "NAME" : "trailFade",
          "TYPE" : "Slider",
-         "VALUE" : 1
+         "VALUE" : 0
       },
       {
-         "ALPHA" : 1,
-         "BLUE" : 1,
-         "GREEN" : 1,
+         "ALPHA" : 0.50712500000000005,
+         "BLUE" : 0.995,
+         "GREEN" : 0.995,
          "ID" : 43,
          "NAME" : "Color",
          "RED" : 1,
@@ -64,7 +64,7 @@
          "ID" : 47,
          "NAME" : "thickness",
          "TYPE" : "Slider",
-         "VALUE" : 0.00153061
+         "VALUE" : 0.0153061
       }
    ],
    "TYPE" : "SuperCanvas",

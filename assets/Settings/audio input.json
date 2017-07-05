@@ -4,6 +4,7 @@
    "NAME" : "audio input",
    "SUBVIEWS" : [
       {
+         "ACTIVE" : "Built-in Microphone",
          "ID" : 3,
          "NAME" : "INPUT",
          "SUBVIEWS" : [
@@ -11,7 +12,7 @@
                "ID" : 0,
                "NAME" : "Built-in Microphone",
                "TYPE" : "Toggle",
-               "VALUE" : false
+               "VALUE" : true
             },
             {
                "ID" : 1,

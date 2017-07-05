@@ -65,14 +65,10 @@ using namespace reza::seq;
 using namespace reza::ps;
 
 /*
-FFMPEG:
-ffmpeg -r 60 -f image2 -s 1920x1080 -i name%03d.png -vcodec libx264 -crf 5
--pix_fmt yuv420p name.mp4
-
 TODO:
-+ Fix Loading Multiple Times Issues
+
++ Integrate Color Palettes
 + Extend Primitive Renderer
-+ Get this working on OSX [FUCK WINDOWS]
 + Camera Animtion UI (Render to a 1 pixel fbo? pos, orientation quat)
 + Implement OSC for Params Control
 + Export Points (ply, draco, convex hull, poisson recreation)
@@ -80,6 +76,8 @@ TODO:
 + Export Meshes Spheres (OpenVDB)
 
 DONE:
++ Fix Loading Multiple Times Issues
++ Get this working on OSX [FUCK WINDOWS]
 + Render Plane in Background
 + Create Post Processing Pass
 + Create Audio UI Menu
@@ -184,6 +182,11 @@ class Transform : public App {
 	UIPanelRef setupExporterUI( UIPanelRef ui );
 	UIPanelRef setupCameraUI( UIPanelRef ui );
 	UIPanelRef setupRendererUI( UIPanelRef ui, reza::ps::RendererRef rendererRef );
+
+	// COLORS
+	ci::gl::Texture2dRef mPaletteTextureRef;
+	void loadPalettes();
+	void setupPalettes();
 
 	// CAMERA
 	EasyCameraRef mCameraRef;
@@ -311,7 +314,6 @@ class Transform : public App {
 
 void Transform::prepareSettings( App::Settings *settings )
 {
-	// settings->setBorderless( true );
 	settings->setWindowSize( 512, 512 );
 	settings->setFrameRate( 60.0f );
 	settings->setHighDensityDisplayEnabled();
@@ -322,6 +324,9 @@ void Transform::setup()
 	createAssetDirectories();
 	setupOutputWindow();
 	setupOutputFbo();
+
+	// PALETTES
+	setupPalettes();
 
 	// CAMERA
 	mCameraRef = EasyCamera::create( mOutputWindowRef );
@@ -807,16 +812,16 @@ UIPanelRef Transform::setupAudioUI( UIPanelRef ui )
 	auto input = ui->addRadio( "INPUT", names, rfmt );
 	input->setCallback( [this, shortToLongMap]( string name, bool value ) {
 		if( value ) {
-			//			auto ctx = audio::Context::master();
-			//			auto it = shortToLongMap.find( name );
-			//			if( it != shortToLongMap.end() ) {
-			//				CI_LOG_D( "SWITCHING AUDIO DEVICE: " + name );
-			//				audio::DeviceRef device = audio::Device::findDeviceByName( it->second );
-			//				mInputDeviceNode = ctx->createInputDeviceNode( device );
-			//				mInputDeviceNode >> mMonitorSpectralNode;
-			//				mInputDeviceNode->enable();
-			//				ctx->enable();
-			//		}
+			auto ctx = audio::Context::master();
+			auto it = shortToLongMap.find( name );
+			if( it != shortToLongMap.end() ) {
+				CI_LOG_D( "SWITCHING AUDIO DEVICE: " + name );
+				audio::DeviceRef device = audio::Device::findDeviceByName( it->second );
+				mInputDeviceNode = ctx->createInputDeviceNode( device );
+				mInputDeviceNode >> mMonitorSpectralNode;
+				mInputDeviceNode->enable();
+				ctx->enable();
+			}
 		}
 	} );
 
@@ -977,9 +982,11 @@ UIPanelRef Transform::setupPhysicsUI( UIPanelRef ui )
 	auto numparticles = ui->addDialeri( "PARTICLES", mParticleSystemRef->getTotal(), 0, 1000000 );
 	numparticles->setTrigger( Trigger::END );
 	numparticles->setCallback( [this]( int value ) {
+		//		if( mParticleSystemRef->getTotal() != value ) {
 		mParticleSystemRef->setTotal( value );
 		mPlexusSystemRef->setTotal( value );
 		mTrailSystemRef->setUpdateBuffers( true );
+		//		}
 	} );
 	ui->addSpacer();
 	return ui;
@@ -1124,12 +1131,10 @@ void Transform::setupPoints()
 
 void Transform::setupSprites()
 {
-	ci::geom::Sphere *sphere = new ci::geom::Sphere();
-	sphere->radius( 0.5 );
-	sphere->subdivisions( 60 );
-
+	ci::geom::Plane *geom = new ci::geom::Plane();
+	geom->size( vec2( 0 ) );
 	PrimitiveRenderer::Format fmt;
-	fmt.source( static_cast<ci::geom::SourceRef>( sphere ) );
+	fmt.source( static_cast<ci::geom::SourceRef>( geom ) );
 
 	mSpriteRendererRef = PrimitiveRenderer::create(
 		mOutputWindowRef,
@@ -1222,6 +1227,11 @@ void Transform::setupRibbon()
 
 void Transform::setupPrimitive()
 {
+	ci::geom::Plane *geom = new ci::geom::Plane();
+	geom->size( vec2( 0 ) );
+	PrimitiveRenderer::Format fmt;
+	fmt.source( static_cast<ci::geom::SourceRef>( geom ) );
+
 	mPrimitiveRendererRef = PrimitiveRenderer::create(
 		mOutputWindowRef, getShadersPath( "Primitive/primitive.vert" ), getShadersPath( "Primitive/primitive.frag" ), mParticleSystemRef, PrimitiveRenderer::Format(), [this]() {
         auto ui = mUIRef->getUI(PRIMITIVE_UI);
@@ -1364,13 +1374,53 @@ void Transform::setDefaultUniforms( gl::GlslProgRef glslProgRef )
 
 		glslProgRef->uniform( "iSpectrum", 2 );
 		glslProgRef->uniform( "iAmplitude", 3 );
+		glslProgRef->uniform( "iPalettes", 4 );
 		if( mSpectrumTextureRef ) {
 			mSpectrumTextureRef->bind( 2 );
 		}
 		if( mAmplitudeTextureRef ) {
 			mAmplitudeTextureRef->bind( 3 );
 		}
+		if( mPaletteTextureRef ) {
+			mPaletteTextureRef->bind( 4 );
+		}
 	}
+}
+
+void Transform::loadPalettes()
+{
+	ci::Surface32fRef surfaceRef = ci::Surface32f::create( 5, 992, false );
+
+	auto path = getPath( "Data/colors.json" );
+	if( fs::exists( path ) ) {
+		try {
+			JsonTree tree( loadFile( path ) );
+			int total = tree.getNumChildren();
+			cout << total << endl;
+			for( int i = 0; i < total; i++ ) {
+				auto palette = tree.getChild( i );
+				int colors = palette.getNumChildren();
+				for( int j = 0; j < colors; j++ ) {
+					auto color = palette.getChild( j );
+					string hexString = color.getValue();
+					Color clr = Color::hex( strtoul( hexString.c_str(), NULL, 16 ) );
+					surfaceRef->setPixel( ivec2( j, i ), clr );
+				}
+			}
+		}
+		catch( ci::Exception exc ) {
+			std::cout << "ERROR LOADING COLORS: " << exc.what() << std::endl;
+		}
+	}
+	writeImage( getPath( "Data/colors.png" ), *surfaceRef.get(), ImageTarget::Options().quality( 1.0 ) );
+}
+
+void Transform::setupPalettes()
+{
+	ci::gl::Texture2d::Format fmt;
+	fmt.magFilter( GL_NEAREST );
+	fmt.minFilter( GL_NEAREST );
+	mPaletteTextureRef = ci::gl::Texture2d::create( loadImage( getPath( "Data/colors.png" ) ), fmt );
 }
 
 void Transform::setupImageSaver()

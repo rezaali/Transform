@@ -4,28 +4,34 @@
    "NAME" : "post prcess",
    "SUBVIEWS" : [
       {
-         "ID" : 11,
+         "ID" : 12,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 12,
+         "ID" : 13,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 13,
+         "ID" : 14,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 14,
+         "ID" : 15,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : true
+      },
+      {
+         "ID" : 17,
+         "NAME" : "invert",
+         "TYPE" : "Toggle",
+         "VALUE" : false
       }
    ],
    "TYPE" : "SuperCanvas",

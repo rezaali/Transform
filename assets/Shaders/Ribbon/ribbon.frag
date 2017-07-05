@@ -20,16 +20,4 @@ float Line( vec3 pos, vec3 a, vec3 b ) {
 void main () {		
 	oColor = Color;
 	oColor.a *= mix( 1.0, 1.0 - gTexcoord.x, trailFade ) * Color.a;	
-	// vec2 uv = gTexcoord * 2.0 - 1.0; 
-	// float len = 2000.0; 
-	// uv.x *= len;
-
-	// float result = Line( 
-	// 	vec3( uv, 0.0 ), 
-	// 	vec3( -len + 1.0, 0.0, 0.0 ), 
-	// 	vec3( len - 1.0, 0.0, 0.0 ) ) + 0.25; 
-
-	// result = smoothstep( 0.7, 1.0, result ); 
-	// oColor.rgb *= ( 1.0 - result ); 
-
 }
