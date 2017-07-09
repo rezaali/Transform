@@ -12,6 +12,7 @@ uniform samplerBuffer uVelocity;
 
 uniform float amplitude; //slider:0.0,1.0,0.25
 uniform float speed; //slider:0.0,2.0,0.5
+uniform float scale; //dialer:0.0,1.0,0.5
 uniform vec2 pad; //pad:-1.0,1.0,0.0
 uniform bool activate; //button:0
 
@@ -38,10 +39,10 @@ void main()
 
     float x = float( row ) / ( totalf - 1 ); 
     float z = float( col ) / ( totalf - 1 ); 
-    float y = ( activate ? -1.0 : 1.0 ) * amplitude * snoise( vec3( x, z, speed * iGlobalTime ) ); 
+    float y = ( activate ? -1.0 : 1.0 ) * amplitude * snoise( scale * vec3( x, z, speed * iGlobalTime ) ); 
 	
 	float amp = texture( iAmplitude, vec2( norm/4, 0.0 ) ).r; 	
-    pos = vec3( x - 0.5 + pad.x, y, z - 0.5 - pad.y );
+    pos = 2.0 * vec3( x - 0.5 + pad.x, y, z - 0.5 - pad.y );
 
     mass = y * amp; 
 

@@ -4,31 +4,37 @@
    "NAME" : "physics",
    "SUBVIEWS" : [
       {
-         "ID" : 9,
+         "ID" : 68,
          "NAME" : "UPDATE",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 10,
+         "ID" : 69,
          "NAME" : "PARTICLES",
-         "TYPE" : "Dialer",
+         "TYPE" : "Dialeri",
          "VALUE" : 1024
       },
       {
-         "ID" : 12,
+         "ID" : 71,
          "NAME" : "amplitude",
          "TYPE" : "Sliderf",
-         "VALUE" : 0.33673500000000001
+         "VALUE" : 0.65881299999999998
       },
       {
-         "ID" : 13,
+         "ID" : 72,
          "NAME" : "speed",
          "TYPE" : "Sliderf",
-         "VALUE" : 0.30612200000000001
+         "VALUE" : 0.30541000000000001
       },
       {
-         "ID" : 14,
+         "ID" : 73,
+         "NAME" : "scale",
+         "TYPE" : "Dialerf",
+         "VALUE" : 0.58940400000000004
+      },
+      {
+         "ID" : 74,
          "NAME" : "pad",
          "TYPE" : "XYPad",
          "XVALUE" : -0.010204100000000001,
@@ -36,6 +42,6 @@
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 210
+   "XPOS" : 210,
+   "YPOS" : 91
 }

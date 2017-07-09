@@ -4,25 +4,25 @@
    "NAME" : "primitive",
    "SUBVIEWS" : [
       {
-         "ID" : 17,
+         "ID" : 9,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 18,
+         "ID" : 10,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 19,
+         "ID" : 11,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 20,
+         "ID" : 12,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : true

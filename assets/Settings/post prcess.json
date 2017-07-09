@@ -4,31 +4,31 @@
    "NAME" : "post prcess",
    "SUBVIEWS" : [
       {
-         "ID" : 12,
+         "ID" : 3,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 13,
+         "ID" : 4,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 14,
+         "ID" : 5,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 15,
+         "ID" : 6,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 17,
+         "ID" : 8,
          "NAME" : "invert",
          "TYPE" : "Toggle",
          "VALUE" : true

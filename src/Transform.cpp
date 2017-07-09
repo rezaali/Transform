@@ -1771,14 +1771,11 @@ void Transform::setupOsc()
 	mReceiverRef->setListener( "/*",
 		[this]( const osc::Message &msg ) {
 			string address = msg.getAddress().substr( 1 );
-			//			cout << "ADDRESS: " << address << endl;
 			string typeTag = msg.getTypeTagString();
-			//			cout << "TYPE TAG: " << typeTag << endl;
 			vector<string> keys = split( address, "/" );
 			if( int( keys.size() ) > 1 ) {
 				auto ui = mUIRef->getUI( keys[0] );
 				if( ui ) {
-					//					cout << "GOT UI: " << ui->getName() << endl;
 					string subkey = keys[1];
 					auto view = ui->getSubView( subkey );
 					if( view == nullptr ) {
@@ -1786,19 +1783,30 @@ void Transform::setupOsc()
 						view = ui->getSubView( subkey );
 					}
 					if( view ) {
-						//						cout << "GOT WIDGET: " << view->getName() << endl;
 						string type = view->getType();
 						if( type == "Slideri" && typeTag == "f" ) {
-							Slideri *slider = static_cast<Slideri *>( view.get() );
-							slider->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, slider->getMin(), slider->getMax() ) );
+							Slideri *widget = static_cast<Slideri *>( view.get() );
+							widget->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
 						}
 						else if( type == "Sliderf" && typeTag == "f" ) {
-							Sliderf *slider = static_cast<Sliderf *>( view.get() );
-							slider->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, slider->getMin(), slider->getMax() ) );
+							Sliderf *widget = static_cast<Sliderf *>( view.get() );
+							widget->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
 						}
 						else if( type == "Sliderd" && typeTag == "f" ) {
-							Sliderd *slider = static_cast<Sliderd *>( view.get() );
-							slider->setValue( lmap<double>( msg.getArgDouble( 0 ), 0.0, 1.0, slider->getMin(), slider->getMax() ) );
+							Sliderd *widget = static_cast<Sliderd *>( view.get() );
+							widget->setValue( lmap<double>( msg.getArgDouble( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
+						}
+						else if( type == "Dialeri" && typeTag == "f" ) {
+							Dialeri *widget = static_cast<Dialeri *>( view.get() );
+							widget->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
+						}
+						else if( type == "Dialerf" && typeTag == "f" ) {
+							Dialerf *widget = static_cast<Dialerf *>( view.get() );
+							widget->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
+						}
+						else if( type == "Dialerd" && typeTag == "f" ) {
+							Dialerd *widget = static_cast<Dialerd *>( view.get() );
+							widget->setValue( lmap<double>( msg.getArgDouble( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
 						}
 						else if( type == "Toggle" ) {
 							Toggle *toggle = static_cast<Toggle *>( view.get() );

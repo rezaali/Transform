@@ -4,37 +4,37 @@
    "NAME" : "trail points",
    "SUBVIEWS" : [
       {
-         "ID" : 20,
+         "ID" : 9,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 21,
+         "ID" : 10,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 22,
+         "ID" : 11,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 23,
+         "ID" : 12,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 25,
+         "ID" : 14,
          "NAME" : "pointSize",
          "TYPE" : "Sliderf",
          "VALUE" : 3
       },
       {
-         "ID" : 26,
+         "ID" : 15,
          "NAME" : "trailFade",
          "TYPE" : "Sliderf",
          "VALUE" : 0.61224500000000004
@@ -43,7 +43,7 @@
          "ALPHA" : 1,
          "BLUE" : 0.63000100000000003,
          "GREEN" : 0,
-         "ID" : 27,
+         "ID" : 16,
          "NAME" : "color",
          "RED" : 1,
          "TYPE" : "ColorPicker"

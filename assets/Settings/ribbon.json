@@ -4,31 +4,31 @@
    "NAME" : "ribbon",
    "SUBVIEWS" : [
       {
-         "ID" : 37,
+         "ID" : 23,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 38,
+         "ID" : 24,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 39,
+         "ID" : 25,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 40,
+         "ID" : 26,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 42,
+         "ID" : 28,
          "NAME" : "trailFade",
          "TYPE" : "Sliderf",
          "VALUE" : 0
@@ -37,31 +37,31 @@
          "ALPHA" : 0.50712500000000005,
          "BLUE" : 0.995,
          "GREEN" : 0.995,
-         "ID" : 43,
+         "ID" : 29,
          "NAME" : "Color",
          "RED" : 1,
          "TYPE" : "ColorPicker"
       },
       {
-         "ID" : 44,
+         "ID" : 30,
          "NAME" : "linEffect",
          "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
-         "ID" : 45,
+         "ID" : 31,
          "NAME" : "cosEffect",
          "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
-         "ID" : 46,
+         "ID" : 32,
          "NAME" : "sinEffect",
          "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
-         "ID" : 47,
+         "ID" : 33,
          "NAME" : "thickness",
          "TYPE" : "Sliderf",
          "VALUE" : 0.057653099999999999
