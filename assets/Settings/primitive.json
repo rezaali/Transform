@@ -4,28 +4,40 @@
    "NAME" : "primitive",
    "SUBVIEWS" : [
       {
-         "ID" : 9,
+         "ID" : 1600,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 10,
+         "ID" : 1601,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 11,
+         "ID" : 1602,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 12,
+         "ID" : 1603,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : true
+      },
+      {
+         "ID" : 1605,
+         "NAME" : "TYPE",
+         "TYPE" : "Slideri",
+         "VALUE" : 5
+      },
+      {
+         "ID" : 1606,
+         "NAME" : "palette",
+         "TYPE" : "Sliderf",
+         "VALUE" : 840.16300000000001
       }
    ],
    "TYPE" : "SuperCanvas",

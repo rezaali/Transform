@@ -12,11 +12,11 @@
       {
          "ID" : 10,
          "NAME" : "TOTAL",
-         "TYPE" : "Dialer",
+         "TYPE" : "Dialeri",
          "VALUE" : 6
       }
    ],
    "TYPE" : "SuperCanvas",
    "XPOS" : 6,
-   "YPOS" : 448
+   "YPOS" : 482
 }

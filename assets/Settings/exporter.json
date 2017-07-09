@@ -1,13 +1,13 @@
 {
    "ID" : -1,
-   "MINIFIED" : true,
+   "MINIFIED" : false,
    "NAME" : "exporter",
    "SUBVIEWS" : [
       {
          "ID" : 4,
          "NAME" : "OUTPUT IMAGE SCALE",
-         "TYPE" : "Dialer",
-         "VALUE" : 4
+         "TYPE" : "Dialeri",
+         "VALUE" : 6
       },
       {
          "ID" : 7,
@@ -24,17 +24,17 @@
       {
          "ID" : 9,
          "NAME" : "FRAMES",
-         "TYPE" : "Dialer",
-         "VALUE" : 900
+         "TYPE" : "Dialeri",
+         "VALUE" : 300
       },
       {
          "ID" : 10,
          "NAME" : "PROGRESS",
          "TYPE" : "Sliderf",
-         "VALUE" : 0.13555600000000001
+         "VALUE" : 0.74333300000000002
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 108
+   "XPOS" : 154,
+   "YPOS" : 70
 }

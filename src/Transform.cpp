@@ -85,13 +85,30 @@ using protocol = asio::ip::tcp;
 typedef std::shared_ptr<class osc::ReceiverTcp> ReceiverRef;
 #endif
 
+enum PRIMITIVE {
+	RECT,
+	ROUNDEDRECT,
+	CUBE,
+	ICOSAHEDRON,
+	ICOSPHERE,
+	TEAPOT,
+	CIRCLE,
+	RING,
+	SPHERE,
+	CAPSULE,
+	TORUS,
+	TORUSKNOT,
+	HELIX,
+	CYLINDER,
+	CONE,
+	PLANE
+};
 /*
 TODO:
 + Implement better UI system
+DONE:
 + Extend Primitive Renderer
 + Implement OSC for Params Control
- 
-DONE:
 + Setup OSC UI
 + Fix Loading Issue
 + Export Points via ply
@@ -208,6 +225,8 @@ class Transform : public App {
 	UIPanelRef setupExporterUI( UIPanelRef ui );
 	UIPanelRef setupCameraUI( UIPanelRef ui );
 	UIPanelRef setupRendererUI( UIPanelRef ui, reza::ps::RendererRef rendererRef );
+	UIPanelRef setupPrimitiveUI( UIPanelRef ui, reza::ps::RendererRef rendererRef );
+	UIPanelRef setupPrimitiveGeometryUI( UIPanelRef ui );
 
 	// COLORS
 	ci::gl::Texture2dRef mPaletteTextureRef;
@@ -290,6 +309,72 @@ class Transform : public App {
 	// PRIMTIVE RENDERER
 	PrimitiveRendererRef mPrimitiveRendererRef;
 	void setupPrimitive();
+	void updatePrimitive();
+	void updatePrimitiveGeometry();
+	int mPrimitiveType = 0;
+	ci::geom::Source *mPrimitiveGeometry = nullptr;
+	bool mUpdatePrimitiveGeometry = true;
+
+	//CONSIDER A REFACTOR
+
+	//ROUNDED RECT
+	float mRoundedRectCornerRadius = 0.2;
+	int mRoundedRectCornerSubdivisions = 8;
+	//CUBE
+	int mCubeSubdivisions = 0;
+	//ICOSPHERE
+	int mIcoSphereSubdivisions = 2;
+	//TEAPOT
+	int mTeapotSubdivisions = 8;
+	//CIRCLE
+	int mCircleSubdivisions = 40;
+	//RING
+	int mRingSubdivisions = 40;
+	float mRingRadius = 0.5f;
+	float mRingWidth = 0.1f;
+	//SPHERE
+	int mSphereSubdivisions = 60;
+	//CAPSULE
+	float mCapsuleRadius = 0.5;
+	float mCapsuleLength = 1.0;
+	int mCapsuleAxisSubdivisions = 40;
+	int mCapsuleHeightSubdivisions = 30;
+	//TORUS
+	float mTorusMajorRadius = 1.0;
+	float mTorusMinorRadius = 0.8;
+	int mTorusAxisSubdivisions = 60;
+	int mTorusHeightSubdivisions = 60;
+	int mTorusTwist = 0;
+	float mTorusTwistOffset = 0;
+	//TORUS KNOT
+	int mTorusKnotP = 2;
+	int mTorusKnotQ = 3;
+	float mTorusKnotRadius = 0.25;
+	int mTorusKnotAxisSubdivisions = 30;
+	int mTorusKnotHeightSubdivisions = 120;
+	//HELIX
+	float mHelixCoils = 2.0;
+	float mHelixHeight = 2.0;
+	float mHelixMajorRadius = 1.0;
+	float mHelixMinorRadius = 0.8;
+	int mHelixAxisSubdivisions = 40;
+	int mHelixHeightSubdivisions = 40;
+	int mHelixTwist = 3;
+	float mHelixTwistOffset = M_PI;
+	//CYLINDER
+	int mCylinderAxisSubdivisions = 40;
+	int mCylinderHeightSubdivisions = 40;
+	int mCylinderCapSubdivisions = 20;
+	float mCylinderHeight = 1.0f;
+	float mCylinderRadius = 0.5f;
+	//CONE
+	int mConeAxisSubdivisions = 40;
+	int mConeHeightSubdivisions = 40;
+	float mConeApexRadius = 0.0;
+	float mConeBaseRadius = 0.5;
+	float mConeHeight = 1.0;
+	//PLANE
+	int mPlaneSubdivisions = 0;
 
 	// SHADER TOYIFIER
 	void setDefaultUniforms( gl::GlslProgRef glslProgRef );
@@ -363,76 +448,78 @@ void Transform::prepareSettings( App::Settings *settings )
 
 void Transform::setup()
 {
-	cout << "SETUP DIRECTORIES" << endl;
+	CI_LOG_V( "SETUP DIRECTORIES" );
 	createAssetDirectories();
 	setupOutputWindow();
 	setupOutputFbo();
 
-	cout << "SETUP PALETTES" << endl;
+	CI_LOG_V( "SETUP PALETTES" );
 	// PALETTES
 	setupPalettes();
 
-	cout << "SETUP CAMERA" << endl;
+	CI_LOG_V( "SETUP CAMERA" );
 	// CAMERA
 	mCameraRef = EasyCamera::create( mOutputWindowRef );
 	mCameraRef->enable();
 
-	cout << "SETUP SAVERS" << endl;
+	CI_LOG_V( "SETUP SAVERS" );
 	// SAVERS
 	setupImageSaver();
 	setupSequenceSaver();
 	setupMovieSaver();
 
-	cout << "SETUP DEBUG" << endl;
+	CI_LOG_V( "SETUP DEBUG" );
 	// DEBUG
 	setupBoxBatch();
 	setupGrid();
 
-	cout << "SETUP PARTICLES" << endl;
+	CI_LOG_V( "SETUP PARTICLES" );
 	// SYSTEMS
 	setupParticles();
-	cout << "SETUP PLEXUS" << endl;
+	CI_LOG_V( "SETUP PLEXUS" );
 	setupPlexus();
-	cout << "SETUP TRAIL" << endl;
+	CI_LOG_V( "SETUP TRAIL" );
 	setupTrail();
 
-	cout << "SETUP POINTS" << endl;
+	CI_LOG_V( "SETUP POINTS" );
 	// RENDERERS
 	setupPoints();
-	cout << "SETUP SPRITES" << endl;
+	CI_LOG_V( "SETUP SPRITES" );
 	setupSprites();
-	cout << "SETUP LINES" << endl;
+	CI_LOG_V( "SETUP LINES" );
 	setupLines();
-	cout << "SETUP TRAIL POINTS" << endl;
+	CI_LOG_V( "SETUP TRAIL POINTS" );
 	setupTrailPoint();
-	cout << "SETUP RIBBONS" << endl;
+	CI_LOG_V( "SETUP RIBBONS" );
 	setupRibbon();
-	cout << "SETUP PRIMITIVE" << endl;
+	CI_LOG_V( "SETUP PRIMITIVE" );
 	setupPrimitive();
-	cout << "SETUP POST" << endl;
+	CI_LOG_V( "SETUP POST" );
 	setupPost();
-	cout << "SETUP BG" << endl;
+	CI_LOG_V( "SETUP BG" );
 	setupBg();
 
-	cout << "SETUP AUDIO" << endl;
+	CI_LOG_V( "SETUP AUDIO" );
 	// AUDIO
 	setupAudio();
 
-	cout << "SETUP UI" << endl;
+	CI_LOG_V( "SETUP UI" );
 	// UI
 	setupUIs();
 
-	cout << "LOAD SETTINGS" << endl;
+	CI_LOG_V( "LOAD SETTINGS" );
 	// SETTINGS
 	loadSettings( getPath() );
-	cout << "DONE LOADING" << endl;
+	CI_LOG_V( "DONE LOADING" );
 }
 
 void Transform::cleanup()
 {
 	auto ctx = audio::Context::master();
 	ctx->disable();
-
+	if( mPrimitiveGeometry != nullptr ) {
+		delete mPrimitiveGeometry;
+	}
 	saveSettings( getPath() );
 }
 
@@ -660,6 +747,7 @@ void Transform::updateOutput()
 	updateParticles();
 	updateTrail();
 	updateSystems();
+	updatePrimitive();
 	updateRenderers();
 	updateBg();
 	updatePost();
@@ -776,7 +864,10 @@ void Transform::setupUIs()
 		return setupRendererUI( ui, mRibbonRendererRef );
 	} );
 	mUIRef->setupUI( PRIMITIVE_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-		return setupRendererUI( ui, mPrimitiveRendererRef );
+		return setupPrimitiveUI( ui, mPrimitiveRendererRef );
+	} );
+	mUIRef->setupUI( PRIMITIVE_GEOMETRY_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
+		return setupPrimitiveGeometryUI( ui );
 	} );
 }
 
@@ -1060,6 +1151,139 @@ UIPanelRef Transform::setupRendererUI( UIPanelRef ui,
 	return ui;
 }
 
+UIPanelRef Transform::setupPrimitiveUI( UIPanelRef ui,
+	reza::ps::RendererRef rendererRef )
+{
+	setupRendererUI( ui, rendererRef );
+	map<int, string> types = {
+		{ 0, "Rect" },
+		{ 1, "RoundedRect" },
+		{ 2, "Cube" },
+		{ 3, "Icosahedron" },
+		{ 4, "Icosphere" },
+		{ 5, "Teapot" },
+		{ 6, "Circle" },
+		{ 7, "Ring" },
+		{ 8, "Sphere" },
+		{ 9, "Capsule" },
+		{ 10, "Torus" },
+		{ 11, "TorusKnot" },
+		{ 12, "Helix" },
+		{ 13, "Cylinder" },
+		{ 14, "Cone" },
+		{ 15, "Plane" }
+	};
+	auto slider = ui->addSlideri( "TYPE", &mPrimitiveType, 0, (int)types.size() - 1 );
+	slider->setTrigger( Trigger::END );
+	slider->setCallback( [this, types]( int value ) {
+		auto it = types.find( mPrimitiveType );
+		if( it != types.end() ) {
+			auto ui = mUIRef->getUI( PRIMITIVE_GEOMETRY_UI );
+			if( ui ) {
+				ui->clear();
+				setupPrimitiveGeometryUI( ui );
+			}
+		}
+	} );
+	return ui;
+}
+
+UIPanelRef Transform::setupPrimitiveGeometryUI( UIPanelRef ui )
+{
+	auto cbf = [this]( float value ) {
+		mUpdatePrimitiveGeometry = true;
+	};
+	auto cbi = [this]( int value ) {
+		mUpdatePrimitiveGeometry = true;
+	};
+
+	switch( mPrimitiveType ) {
+	case RECT: {
+	} break;
+	case ROUNDEDRECT: {
+		ui->addSliderf( "CORNER RADIUS", &mRoundedRectCornerRadius )->setCallback( cbf );
+		ui->addSlideri( "DIVISIONS", &mRoundedRectCornerSubdivisions, 0, 100 )->setCallback( cbi );
+	} break;
+	case CUBE: {
+		ui->addSlideri( "DIVISIONS", &mCubeSubdivisions, 0, 400 )->setCallback( cbi );
+	} break;
+	case ICOSAHEDRON: {
+	} break;
+	case ICOSPHERE: {
+		ui->addSlideri( "DIVISIONS", &mIcoSphereSubdivisions, 0, 6 )->setCallback( cbi );
+	} break;
+	case TEAPOT: {
+		ui->addSlideri( "DIVISIONS", &mTeapotSubdivisions, 0, 12 )->setCallback( cbi );
+	} break;
+	case CIRCLE: {
+		ui->addSlideri( "DIVISIONS", &mCircleSubdivisions, 0, 200 )->setCallback( cbi );
+	} break;
+	case RING: {
+		//RING
+		ui->addSlideri( "DIVISIONS", &mRingSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSliderf( "RADIUS", &mRingRadius )->setCallback( cbf );
+		ui->addSliderf( "WIDTH", &mRingWidth )->setCallback( cbf );
+	} break;
+	case SPHERE: {
+		ui->addSlideri( "DIVISIONS", &mSphereSubdivisions, 0, 200 )->setCallback( cbi );
+	} break;
+	case CAPSULE: {
+		ui->addSlideri( "AXIS DIVISIONS", &mCapsuleAxisSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSlideri( "HEIGHT DIVISIONS", &mCapsuleHeightSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSliderf( "RADIUS", &mCapsuleRadius )->setCallback( cbf );
+		ui->addSliderf( "LENGTH", &mCapsuleLength )->setCallback( cbf );
+	} break;
+	case TORUS: {
+		ui->addSlideri( "AXIS DIVISIONS", &mTorusAxisSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSlideri( "HEIGHT DIVISIONS", &mTorusHeightSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSliderf( "MINOR RADIUS", &mTorusMinorRadius )->setCallback( cbf );
+		ui->addSliderf( "MAJOR RADIUS", &mTorusMajorRadius )->setCallback( cbf );
+		ui->addSlideri( "TWIST", &mTorusTwist, 0, 200 )->setCallback( cbi );
+		ui->addSliderf( "TWIST OFFSET", &mTorusTwistOffset, 0, M_PI )->setCallback( cbf );
+	} break;
+	case TORUSKNOT: {
+		ui->addSlideri( "AXIS DIVISIONS", &mTorusKnotAxisSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSlideri( "HEIGHT DIVISIONS", &mTorusKnotHeightSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSliderf( "RADIUS", &mTorusKnotRadius )->setCallback( cbf )->setCallback( cbf );
+		ui->addSlideri( "P", &mTorusKnotP, 0, 20 )->setCallback( cbi );
+		ui->addSlideri( "Q", &mTorusKnotQ, 0, 20 )->setCallback( cbi );
+	} break;
+	case HELIX: {
+		ui->addSlideri( "AXIS DIVISIONS", &mHelixAxisSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSlideri( "HEIGHT DIVISIONS", &mHelixHeightSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSliderf( "MINOR RADIUS", &mHelixMinorRadius )->setCallback( cbf );
+		ui->addSliderf( "MAJOR RADIUS", &mHelixMajorRadius )->setCallback( cbf );
+		ui->addSliderf( "COILS", &mHelixCoils, 0, 10 )->setCallback( cbf );
+		ui->addSliderf( "HEIGHT", &mHelixHeight, 0.0, 5.0 )->setCallback( cbf );
+		ui->addSlideri( "TWIST", &mHelixTwist, 0, 200 )->setCallback( cbi );
+		ui->addSliderf( "TWIST OFFSET", &mHelixTwistOffset, 0, M_PI )->setCallback( cbf );
+	} break;
+	case CYLINDER: {
+		ui->addSlideri( "AXIS DIVISIONS", &mCylinderAxisSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSlideri( "HEIGHT DIVISIONS", &mCylinderHeightSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSlideri( "CAP DIVISIONS", &mCylinderCapSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSliderf( "RADIUS", &mCylinderRadius )->setCallback( cbf );
+		ui->addSliderf( "HEIGHT", &mCylinderHeight )->setCallback( cbf );
+	} break;
+	case CONE: {
+		ui->addSlideri( "AXIS DIVISIONS", &mConeAxisSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSlideri( "HEIGHT DIVISIONS", &mConeHeightSubdivisions, 0, 200 )->setCallback( cbi );
+		ui->addSliderf( "APEX RADIUS", &mConeApexRadius )->setCallback( cbf );
+		ui->addSliderf( "BASE RADIUS", &mConeBaseRadius )->setCallback( cbf );
+		ui->addSliderf( "HEIGHT", &mConeHeight, 0, 2.0 )->setCallback( cbf );
+	} break;
+	case PLANE: {
+		ui->addSlideri( "DIVISIONS", &mPlaneSubdivisions, 0, 200 )->setCallback( cbi );
+	} break;
+	default:
+		break;
+	}
+
+	mUpdatePrimitiveGeometry = true;
+	ui->autoSizeToFitSubviews();
+	return ui;
+}
+
 UIPanelRef Transform::setupSystemUI( UIPanelRef ui, SystemRef systemRef )
 {
 #if USE_WINDOW_CANVAS
@@ -1231,7 +1455,7 @@ void Transform::setupSprites()
 	ci::geom::Plane *geom = new ci::geom::Plane();
 	geom->size( vec2( 0 ) );
 	PrimitiveRenderer::Format fmt;
-	fmt.source( static_cast<ci::geom::SourceRef>( geom ) );
+	fmt.geometry( geom );
 
 	mSpriteRendererRef = PrimitiveRenderer::create(
 		mOutputWindowRef,
@@ -1327,7 +1551,7 @@ void Transform::setupPrimitive()
 	ci::geom::Plane *geom = new ci::geom::Plane();
 	geom->size( vec2( 0 ) );
 	PrimitiveRenderer::Format fmt;
-	fmt.source( static_cast<ci::geom::SourceRef>( geom ) );
+	fmt.geometry( geom );
 
 	mPrimitiveRendererRef = PrimitiveRenderer::create(
 		mOutputWindowRef, getShadersPath( "Primitive/primitive.vert" ), getShadersPath( "Primitive/primitive.frag" ), mParticleSystemRef, PrimitiveRenderer::Format(), [this]() {
@@ -1340,12 +1564,133 @@ void Transform::setupPrimitive()
         auto ui = mUIRef->getUI(PRIMITIVE_UI);
         if (ui != nullptr) {
           ui->clear();
-          setupRendererUI(ui, mPrimitiveRendererRef);
+          setupPrimitiveUI(ui, mPrimitiveRendererRef);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getSettingsPath());
         } }, [this]( ci::Exception exc ) { CI_LOG_E( string( PRIMITIVE_UI ) + " ERROR: " + string( exc.what() ) ); } );
 	mPrimitiveRendererRef->setup();
 	mRenderers.push_back( mPrimitiveRendererRef );
+}
+
+void Transform::updatePrimitive()
+{
+	if( mUpdatePrimitiveGeometry && mPrimitiveRendererRef ) {
+		updatePrimitiveGeometry();
+		if( mPrimitiveGeometry ) {
+			mPrimitiveRendererRef->setGeometry( mPrimitiveGeometry );
+			mUpdatePrimitiveGeometry = false;
+		}
+	}
+}
+
+void Transform::updatePrimitiveGeometry()
+{
+	switch( mPrimitiveType ) {
+	case RECT: {
+		ci::geom::Rect *geom = new ci::geom::Rect();
+		mPrimitiveGeometry = geom;
+	} break;
+	case ROUNDEDRECT: {
+		ci::geom::RoundedRect *geom = new ci::geom::RoundedRect();
+		geom->cornerRadius( mRoundedRectCornerRadius );
+		geom->cornerSubdivisions( mRoundedRectCornerSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case CUBE: {
+		ci::geom::Cube *geom = new ci::geom::Cube();
+		geom->subdivisions( mCubeSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case ICOSAHEDRON: {
+		ci::geom::Icosahedron *geom = new ci::geom::Icosahedron();
+		mPrimitiveGeometry = geom;
+	} break;
+	case ICOSPHERE: {
+		ci::geom::Icosphere *geom = new ci::geom::Icosphere();
+		geom->subdivisions( mIcoSphereSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case TEAPOT: {
+		ci::geom::Teapot *geom = new ci::geom::Teapot();
+		geom->subdivisions( mTeapotSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case CIRCLE: {
+		ci::geom::Circle *geom = new ci::geom::Circle();
+		geom->subdivisions( mCircleSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case RING: {
+		ci::geom::Ring *geom = new ci::geom::Ring();
+		geom->radius( mRingRadius );
+		geom->width( mRingWidth );
+		geom->subdivisions( mRingSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case SPHERE: {
+		ci::geom::Sphere *geom = new ci::geom::Sphere();
+		geom->subdivisions( mSphereSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case CAPSULE: {
+		ci::geom::Capsule *geom = new ci::geom::Capsule();
+		geom->length( mCapsuleLength );
+		geom->radius( mCapsuleRadius );
+		geom->subdivisionsAxis( mCapsuleAxisSubdivisions );
+		geom->subdivisionsHeight( mCapsuleHeightSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case TORUS: {
+		ci::geom::Torus *geom = new ci::geom::Torus();
+		geom->radius( mTorusMajorRadius, mTorusMinorRadius );
+		geom->subdivisionsAxis( mTorusAxisSubdivisions );
+		geom->subdivisionsHeight( mTorusHeightSubdivisions );
+		geom->twist( mTorusTwist, mTorusTwistOffset );
+		mPrimitiveGeometry = geom;
+	} break;
+	case TORUSKNOT: {
+		ci::geom::TorusKnot *geom = new ci::geom::TorusKnot();
+		geom->parameters( mTorusKnotP, mTorusKnotQ );
+		geom->radius( mTorusKnotRadius );
+		geom->subdivisionsAxis( mTorusKnotAxisSubdivisions );
+		geom->subdivisionsHeight( mTorusKnotHeightSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case HELIX: {
+		ci::geom::Helix *geom = new ci::geom::Helix();
+		geom->coils( mHelixCoils );
+		geom->height( mHelixHeight );
+		geom->radius( mHelixMajorRadius, mHelixMinorRadius );
+		geom->subdivisionsAxis( mHelixAxisSubdivisions );
+		geom->subdivisionsHeight( mHelixHeightSubdivisions );
+		geom->twist( mHelixTwist, mHelixTwistOffset );
+		mPrimitiveGeometry = geom;
+	} break;
+	case CYLINDER: {
+		ci::geom::Cylinder *geom = new ci::geom::Cylinder();
+		geom->height( mCylinderHeight );
+		geom->radius( mCylinderRadius );
+		geom->subdivisionsAxis( mCylinderAxisSubdivisions );
+		geom->subdivisionsHeight( mCylinderHeightSubdivisions );
+		geom->subdivisionsCap( mCylinderCapSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case CONE: {
+		ci::geom::Cone *geom = new ci::geom::Cone();
+		geom->height( mConeHeight );
+		geom->radius( mConeBaseRadius, mConeApexRadius );
+		geom->subdivisionsAxis( mConeAxisSubdivisions );
+		geom->subdivisionsHeight( mConeHeightSubdivisions );
+		mPrimitiveGeometry = geom;
+	} break;
+	case PLANE: {
+		ci::geom::Plane *geom = new ci::geom::Plane();
+		geom->subdivisions( ivec2( mPlaneSubdivisions ) );
+		mPrimitiveGeometry = geom;
+	} break;
+	default:
+		break;
+	}
 }
 
 void Transform::setupParticles()

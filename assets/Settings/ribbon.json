@@ -4,31 +4,31 @@
    "NAME" : "ribbon",
    "SUBVIEWS" : [
       {
-         "ID" : 23,
+         "ID" : 37,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 24,
+         "ID" : 38,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 25,
+         "ID" : 39,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 26,
+         "ID" : 40,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 28,
+         "ID" : 42,
          "NAME" : "trailFade",
          "TYPE" : "Sliderf",
          "VALUE" : 0
@@ -37,31 +37,31 @@
          "ALPHA" : 0.50712500000000005,
          "BLUE" : 0.995,
          "GREEN" : 0.995,
-         "ID" : 29,
+         "ID" : 43,
          "NAME" : "Color",
          "RED" : 1,
          "TYPE" : "ColorPicker"
       },
       {
-         "ID" : 30,
+         "ID" : 44,
          "NAME" : "linEffect",
          "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
-         "ID" : 31,
+         "ID" : 45,
          "NAME" : "cosEffect",
          "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
-         "ID" : 32,
+         "ID" : 46,
          "NAME" : "sinEffect",
          "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
-         "ID" : 33,
+         "ID" : 47,
          "NAME" : "thickness",
          "TYPE" : "Sliderf",
          "VALUE" : 0.057653099999999999
@@ -69,5 +69,5 @@
    ],
    "TYPE" : "SuperCanvas",
    "XPOS" : 6,
-   "YPOS" : 380
+   "YPOS" : 414
 }

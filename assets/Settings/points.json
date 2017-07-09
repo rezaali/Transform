@@ -4,31 +4,31 @@
    "NAME" : "points",
    "SUBVIEWS" : [
       {
-         "ID" : 9,
+         "ID" : 19,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 10,
+         "ID" : 20,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 11,
+         "ID" : 21,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 12,
+         "ID" : 22,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 14,
+         "ID" : 24,
          "NAME" : "size",
          "TYPE" : "Sliderf",
          "VALUE" : 4.0306100000000002
@@ -37,7 +37,7 @@
          "ALPHA" : 1,
          "BLUE" : 1,
          "GREEN" : 1,
-         "ID" : 15,
+         "ID" : 25,
          "NAME" : "Color",
          "RED" : 1,
          "TYPE" : "ColorPicker"

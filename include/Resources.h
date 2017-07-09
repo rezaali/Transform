@@ -24,5 +24,6 @@
 #define LINES_UI "lines"
 #define TRAIL_UI "trail"
 #define PRIMITIVE_UI "primitive"
+#define PRIMITIVE_GEOMETRY_UI "primitive geometry"
 #define RIBBON_UI "ribbon"
 #define TRAIL_POINTS_UI "trail points"
