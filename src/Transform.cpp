@@ -1,13 +1,22 @@
+// STD
+#include <algorithm>
+#include <ctype.h>
+#include <string>
+
 // CINDER
 #include "cinder/CameraUi.h"
-#include "cinder/Log.h"
 #include "cinder/Rand.h"
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/gl/gl.h"
 
+#define CI_MIN_LOG_LEVEL 4
+#include "cinder/Log.h"
+
+//EXT
 #include "cinder/audio/audio.h"
+#include "cinder/osc/Osc.h"
 
 // STD
 #include <chrono>
@@ -64,18 +73,29 @@ using namespace reza::mov;
 using namespace reza::seq;
 using namespace reza::ps;
 
+#define USE_UDP 1
+
+#if USE_UDP
+using Receiver = osc::ReceiverUdp;
+using protocol = asio::ip::udp;
+typedef std::shared_ptr<class osc::ReceiverUdp> ReceiverRef;
+#else
+using Receiver = osc::ReceiverTcp;
+using protocol = asio::ip::tcp;
+typedef std::shared_ptr<class osc::ReceiverTcp> ReceiverRef;
+#endif
+
 /*
 TODO:
-
-+ Integrate Color Palettes
++ Implement better UI system
 + Extend Primitive Renderer
-+ Camera Animtion UI (Render to a 1 pixel fbo? pos, orientation quat)
 + Implement OSC for Params Control
-+ Export Points (ply, draco, convex hull, poisson recreation)
-+ Export Curves (MEL)
-+ Export Meshes Spheres (OpenVDB)
-
+ 
 DONE:
++ Setup OSC UI
++ Fix Loading Issue
++ Export Points via ply
++ Integrate Color Palettes
 + Fix Loading Multiple Times Issues
 + Get this working on OSX [FUCK WINDOWS]
 + Render Plane in Background
@@ -119,6 +139,11 @@ DONE:
 + Save & Load
 + 3D Camera System
 + Draw Debug Area
+ 
+ABANDONED: 
++ Export Curves (MEL)
++ Export Meshes Spheres (OpenVDB)
++ Camera Animtion UI (Render to a 1 pixel fbo? pos, orientation quat)
 */
 
 class Transform : public App {
@@ -173,6 +198,7 @@ class Transform : public App {
 	void setupUIs();
 	UIPanelRef setupAppUI( UIPanelRef ui );
 	UIPanelRef setupAudioUI( UIPanelRef ui );
+	UIPanelRef setupOscUI( UIPanelRef ui );
 	UIPanelRef setupPostUI( UIPanelRef ui );
 	UIPanelRef setupBgUI( UIPanelRef ui );
 	UIPanelRef setupSystemUI( UIPanelRef ui, reza::ps::SystemRef systemRef );
@@ -225,6 +251,10 @@ class Transform : public App {
 	// PARTICLE SYSTEM
 	ParticleSystemRef mParticleSystemRef;
 	void setupParticles();
+	void updateParticles();
+
+	int mParticleTotal = 100;
+	bool mUpdateParticleTotal = true;
 
 	// PLEXUS SYSTEM
 	PlexusSystemRef mPlexusSystemRef;
@@ -233,6 +263,9 @@ class Transform : public App {
 	// TRAIL SYSTEM
 	TrailSystemRef mTrailSystemRef;
 	void setupTrail();
+	void updateTrail();
+	int mTrailTotal = 100;
+	bool mUpdateTrailTotal = true;
 
 	// POINT RENDERER
 	PointRendererRef mPointRendererRef;
@@ -278,10 +311,14 @@ class Transform : public App {
 	float mCurrentTime = 0.0f;
 	float mSeconds = 0.0;
 
+	// POINT EXPORTER
+	void exportPoints( const ci::fs::path &path, const std::string &filename );
+
 	// SAVING & LOADING
 	ci::fs::path mDefaultRenderPath;
 	fs::path mDefaultSaveLoadPath;
 	fs::path mDefaultMoviePath;
+	fs::path mDefaultExportPath;
 
 	// AUDIO
 	audio::InputDeviceNodeRef mInputDeviceNode;
@@ -310,6 +347,11 @@ class Transform : public App {
 	void updateBg();
 	void drawBg();
 	void drawBg( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll );
+
+	// OSC
+	ReceiverRef mReceiverRef;
+	void setupOsc();
+	int mOscPort = 10001;
 };
 
 void Transform::prepareSettings( App::Settings *settings )
@@ -321,53 +363,76 @@ void Transform::prepareSettings( App::Settings *settings )
 
 void Transform::setup()
 {
+	cout << "SETUP DIRECTORIES" << endl;
 	createAssetDirectories();
 	setupOutputWindow();
 	setupOutputFbo();
 
+	cout << "SETUP PALETTES" << endl;
 	// PALETTES
 	setupPalettes();
 
+	cout << "SETUP CAMERA" << endl;
 	// CAMERA
 	mCameraRef = EasyCamera::create( mOutputWindowRef );
 	mCameraRef->enable();
 
+	cout << "SETUP SAVERS" << endl;
 	// SAVERS
 	setupImageSaver();
 	setupSequenceSaver();
 	setupMovieSaver();
 
+	cout << "SETUP DEBUG" << endl;
 	// DEBUG
 	setupBoxBatch();
 	setupGrid();
 
+	cout << "SETUP PARTICLES" << endl;
 	// SYSTEMS
 	setupParticles();
+	cout << "SETUP PLEXUS" << endl;
 	setupPlexus();
+	cout << "SETUP TRAIL" << endl;
 	setupTrail();
 
+	cout << "SETUP POINTS" << endl;
 	// RENDERERS
 	setupPoints();
+	cout << "SETUP SPRITES" << endl;
 	setupSprites();
+	cout << "SETUP LINES" << endl;
 	setupLines();
+	cout << "SETUP TRAIL POINTS" << endl;
 	setupTrailPoint();
+	cout << "SETUP RIBBONS" << endl;
 	setupRibbon();
+	cout << "SETUP PRIMITIVE" << endl;
 	setupPrimitive();
+	cout << "SETUP POST" << endl;
 	setupPost();
+	cout << "SETUP BG" << endl;
 	setupBg();
 
+	cout << "SETUP AUDIO" << endl;
 	// AUDIO
 	setupAudio();
 
+	cout << "SETUP UI" << endl;
 	// UI
 	setupUIs();
 
+	cout << "LOAD SETTINGS" << endl;
 	// SETTINGS
 	loadSettings( getPath() );
+	cout << "DONE LOADING" << endl;
 }
 
 void Transform::cleanup()
 {
+	auto ctx = audio::Context::master();
+	ctx->disable();
+
 	saveSettings( getPath() );
 }
 
@@ -592,6 +657,8 @@ void Transform::updateOutput()
 	}
 
 	updateAudio();
+	updateParticles();
+	updateTrail();
 	updateSystems();
 	updateRenderers();
 	updateBg();
@@ -664,6 +731,11 @@ void Transform::setupUIs()
 	mUIRef->setupUI( AUDIO_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
 		return setupAudioUI( ui );
 	} );
+
+	mUIRef->setupUI( OSC_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
+		return setupOscUI( ui );
+	} );
+
 	mUIRef->setupUI( BACKGROUND_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
 		return setupBgUI( ui );
 	} );
@@ -815,7 +887,6 @@ UIPanelRef Transform::setupAudioUI( UIPanelRef ui )
 			auto ctx = audio::Context::master();
 			auto it = shortToLongMap.find( name );
 			if( it != shortToLongMap.end() ) {
-				CI_LOG_D( "SWITCHING AUDIO DEVICE: " + name );
 				audio::DeviceRef device = audio::Device::findDeviceByName( it->second );
 				mInputDeviceNode = ctx->createInputDeviceNode( device );
 				mInputDeviceNode >> mMonitorSpectralNode;
@@ -828,6 +899,19 @@ UIPanelRef Transform::setupAudioUI( UIPanelRef ui )
 	ui->addSpacer();
 	ui->addTexture( "AMPLITUDE", mAmplitudeTextureRef, TextureView::Format().height( 32 ) );
 	ui->addTexture( "SPECTRUM", mSpectrumTextureRef, TextureView::Format().height( 32 ) );
+	ui->setTriggerOnLoad( false );
+	return ui;
+}
+
+UIPanelRef Transform::setupOscUI( UIPanelRef ui )
+{
+	ui->clear();
+	ui->addSpacer();
+	auto dialer = ui->addDialeri( "PORT", &mOscPort, 0, 65535 );
+	dialer->setTrigger( Trigger::END );
+	dialer->setCallback( [this]( int value ) {
+		setupOsc();
+	} );
 	return ui;
 }
 
@@ -940,6 +1024,24 @@ UIPanelRef Transform::setupExporterUI( UIPanelRef ui )
 	ui->down();
 	ui->setSliderHeight( 8 );
 	ui->addSliderf( "PROGRESS", &mCurrentTime, 0.0, 1.0, Sliderf::Format().label( false ) );
+	ui->addSpacer();
+	ui->addButton( "EXPORT PLY", false )->setCallback( [this]( bool value ) {
+		if( value ) {
+			fs::path path = getSaveFilePath( mDefaultExportPath );
+			if( !path.empty() ) {
+				mDefaultExportPath = path.parent_path();
+				string filename = path.filename().string();
+				string dir = path.parent_path().string() + "/";
+				fs::path opath = fs::path( dir );
+				auto it = filename.rfind( "." );
+				if( it != string::npos ) {
+					filename = filename.substr( 0, it );
+				}
+				saveAs( addPath( opath, filename ) );
+				exportPoints( opath, filename );
+			}
+		}
+	} );
 	return ui;
 }
 
@@ -982,11 +1084,8 @@ UIPanelRef Transform::setupPhysicsUI( UIPanelRef ui )
 	auto numparticles = ui->addDialeri( "PARTICLES", mParticleSystemRef->getTotal(), 0, 1000000 );
 	numparticles->setTrigger( Trigger::END );
 	numparticles->setCallback( [this]( int value ) {
-		//		if( mParticleSystemRef->getTotal() != value ) {
-		mParticleSystemRef->setTotal( value );
-		mPlexusSystemRef->setTotal( value );
-		mTrailSystemRef->setUpdateBuffers( true );
-		//		}
+		mParticleTotal = value;
+		mUpdateParticleTotal = true;
 	} );
 	ui->addSpacer();
 	return ui;
@@ -998,10 +1097,8 @@ UIPanelRef Transform::setupTrailUI( UIPanelRef ui )
 	auto trailLength = ui->addDialeri( "TOTAL", mTrailSystemRef->getTotal(), 0, 1000 );
 	trailLength->setTrigger( Trigger::END );
 	trailLength->setCallback( [this]( int value ) {
-		mTrailSystemRef->setTotal( value );
-		if( mRibbonRendererRef && mRibbonRendererRef->isInitialized() ) {
-			mRibbonRendererRef->_setupBatch();
-		}
+		mUpdateTrailTotal = true;
+		mTrailTotal = value;
 	} );
 	ui->addSpacer();
 	return ui;
@@ -1283,6 +1380,16 @@ void Transform::setupParticles()
 	mSystems.push_back( mParticleSystemRef );
 }
 
+void Transform::updateParticles()
+{
+	if( mUpdateParticleTotal && mParticleSystemRef && mPlexusSystemRef && mTrailSystemRef ) {
+		mParticleSystemRef->setTotal( mParticleTotal );
+		mPlexusSystemRef->setTotal( mParticleTotal );
+		mTrailSystemRef->setUpdateBuffers( true );
+		mUpdateParticleTotal = false;
+	}
+}
+
 void Transform::setupPlexus()
 {
 	vector<string> varyings( 1 );
@@ -1338,6 +1445,17 @@ void Transform::setupTrail()
           mUIRef->loadUI(ui, getSettingsPath());
         } }, [this]( ci::Exception exc ) { CI_LOG_E( string( TRAIL_UI ) + " ERROR: " + string( exc.what() ) ); } );
 	mSystems.push_back( mTrailSystemRef );
+}
+
+void Transform::updateTrail()
+{
+	if( mUpdateTrailTotal && mTrailSystemRef ) {
+		mTrailSystemRef->setTotal( mTrailTotal );
+		if( mRibbonRendererRef && mRibbonRendererRef->isInitialized() ) {
+			mRibbonRendererRef->_setupBatch();
+		}
+		mUpdateTrailTotal = false;
+	}
 }
 
 void Transform::setDefaultUniforms( gl::GlslProgRef glslProgRef )
@@ -1396,7 +1514,6 @@ void Transform::loadPalettes()
 		try {
 			JsonTree tree( loadFile( path ) );
 			int total = tree.getNumChildren();
-			cout << total << endl;
 			for( int i = 0; i < total; i++ ) {
 				auto palette = tree.getChild( i );
 				int colors = palette.getNumChildren();
@@ -1446,6 +1563,32 @@ void Transform::setupSequenceSaver()
         drawBg(ul, ur, lr, ll); }, [this]( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll ) {
         gl::clear(mBgColor);
         drawPost(ul, ur, lr, ll); } );
+}
+
+void Transform::exportPoints( const ci::fs::path &path, const std::string &filename )
+{
+	fs::path final = path;
+	final += fs::path( filename );
+	final += fs::path( ".ply" );
+	ofstream stream( final.string(), ios_base::out );
+	stream << "ply" << endl;
+	stream << "format ascii 1.0" << endl;
+	stream << "element vertex " << mParticleSystemRef->getTotal() << endl;
+	stream << "property float32 x" << endl;
+	stream << "property float32 y" << endl;
+	stream << "property float32 z" << endl;
+	stream << "property float32 w" << endl;
+	stream << "end_header" << endl;
+
+	ci::gl::BufferTextureRef buffer = mParticleSystemRef->getPositionBufferTextureRef( 0 );
+	ci::gl::BufferObjRef &bufObj = buffer->getBufferObj();
+	float *data = (float *)bufObj->map( GL_READ_ONLY );
+	int total = mParticleSystemRef->getTotal() * 4;
+	for( int i = 0; i < total; i += 4 ) {
+		stream << data[i] << " " << data[i + 1] << " " << data[i + 2] << " " << data[i + 3] << endl;
+	}
+	bufObj->unmap();
+	stream.close();
 }
 
 void Transform::setupAudio()
@@ -1621,4 +1764,93 @@ void Transform::drawBg( const vec2 &ul, const vec2 &ur, const vec2 &lr, const ve
 	}
 }
 
-CINDER_APP( Transform, RendererGl( RendererGl::Options().msaa( 16 ) ), Transform::prepareSettings );
+void Transform::setupOsc()
+{
+	mReceiverRef = nullptr;
+	mReceiverRef = ReceiverRef( new Receiver( mOscPort ) );
+	mReceiverRef->setListener( "/*",
+		[this]( const osc::Message &msg ) {
+			string address = msg.getAddress().substr( 1 );
+			//			cout << "ADDRESS: " << address << endl;
+			string typeTag = msg.getTypeTagString();
+			//			cout << "TYPE TAG: " << typeTag << endl;
+			vector<string> keys = split( address, "/" );
+			if( int( keys.size() ) > 1 ) {
+				auto ui = mUIRef->getUI( keys[0] );
+				if( ui ) {
+					//					cout << "GOT UI: " << ui->getName() << endl;
+					string subkey = keys[1];
+					auto view = ui->getSubView( subkey );
+					if( view == nullptr ) {
+						std::transform( subkey.begin(), subkey.end(), subkey.begin(), ::toupper );
+						view = ui->getSubView( subkey );
+					}
+					if( view ) {
+						//						cout << "GOT WIDGET: " << view->getName() << endl;
+						string type = view->getType();
+						if( type == "Slideri" && typeTag == "f" ) {
+							Slideri *slider = static_cast<Slideri *>( view.get() );
+							slider->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, slider->getMin(), slider->getMax() ) );
+						}
+						else if( type == "Sliderf" && typeTag == "f" ) {
+							Sliderf *slider = static_cast<Sliderf *>( view.get() );
+							slider->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, slider->getMin(), slider->getMax() ) );
+						}
+						else if( type == "Sliderd" && typeTag == "f" ) {
+							Sliderd *slider = static_cast<Sliderd *>( view.get() );
+							slider->setValue( lmap<double>( msg.getArgDouble( 0 ), 0.0, 1.0, slider->getMin(), slider->getMax() ) );
+						}
+						else if( type == "Toggle" ) {
+							Toggle *toggle = static_cast<Toggle *>( view.get() );
+							if( typeTag == "f" ) {
+								toggle->setValue( msg.getArgFloat( 0 ) );
+							}
+							else if( typeTag == "b" ) {
+								toggle->setValue( msg.getArgBool( 0 ) );
+							}
+						}
+						else if( type == "Button" ) {
+							Button *button = static_cast<Button *>( view.get() );
+							if( typeTag == "f" ) {
+								button->setValue( msg.getArgFloat( 0 ) );
+							}
+							else if( typeTag == "b" ) {
+								button->setValue( msg.getArgBool( 0 ) );
+							}
+						}
+						else if( type == "XYPad" ) {
+							XYPad *widget = static_cast<XYPad *>( view.get() );
+							if( typeTag == "ff" ) {
+								vec2 min = widget->getMin();
+								vec2 max = widget->getMax();
+								float x = lmap<float>( msg.getArgFloat( 0 ), 0, 1, min.x, max.x );
+								float y = lmap<float>( msg.getArgFloat( 1 ), 0, 1, min.y, max.y );
+								widget->setValue( vec2( x, y ) );
+							}
+						}
+						view->trigger();
+					}
+				}
+			}
+		} );
+
+	try {
+		mReceiverRef->bind();
+	}
+	catch( const osc::Exception &ex ) {
+		CI_LOG_E( "Error binding: " << ex.what() << " val: " << ex.value() );
+	}
+#if USE_UDP
+	mReceiverRef->listen(
+		[]( asio::error_code error, protocol::endpoint endpoint ) -> bool {
+			if( error ) {
+				CI_LOG_E( "Error Listening: " << error.message() << " val: " << error.value() << " endpoint: " << endpoint );
+				return false;
+			}
+			else
+				return true;
+		} );
+#endif
+}
+
+CINDER_APP( Transform, RendererGl( RendererGl::Options().msaa( 0 ) ), Transform::prepareSettings );

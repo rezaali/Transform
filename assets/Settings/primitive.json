@@ -4,57 +4,31 @@
    "NAME" : "primitive",
    "SUBVIEWS" : [
       {
-         "ID" : 21,
+         "ID" : 17,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
-         "ID" : 22,
+         "ID" : 18,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 23,
+         "ID" : 19,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 24,
+         "ID" : 20,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : true
-      },
-      {
-         "ID" : 26,
-         "NAME" : "noiseScale",
-         "TYPE" : "Slider",
-         "VALUE" : 0.38053100000000001
-      },
-      {
-         "ID" : 27,
-         "NAME" : "amplitude",
-         "TYPE" : "Slider",
-         "VALUE" : 0.97345099999999996
-      },
-      {
-         "HVALUE" : 1,
-         "ID" : 28,
-         "LVALUE" : 0,
-         "NAME" : "er",
-         "TYPE" : "Range"
-      },
-      {
-         "HVALUE" : 0.89380499999999996,
-         "ID" : 29,
-         "LVALUE" : 0,
-         "NAME" : "cr",
-         "TYPE" : "Range"
       }
    ],
    "TYPE" : "SuperCanvas",
    "XPOS" : 6,
-   "YPOS" : 312
+   "YPOS" : 346
 }

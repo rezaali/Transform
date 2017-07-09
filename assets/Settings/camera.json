@@ -6,7 +6,7 @@
       {
          "ID" : 4,
          "NAME" : "FOV",
-         "TYPE" : "Slider",
+         "TYPE" : "Sliderf",
          "VALUE" : 60
       }
    ],

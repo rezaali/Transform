@@ -31,10 +31,10 @@
          "ID" : 17,
          "NAME" : "invert",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       }
    ],
    "TYPE" : "SuperCanvas",
    "XPOS" : 6,
-   "YPOS" : 278
+   "YPOS" : 312
 }

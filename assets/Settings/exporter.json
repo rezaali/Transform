@@ -30,8 +30,8 @@
       {
          "ID" : 10,
          "NAME" : "PROGRESS",
-         "TYPE" : "Slider",
-         "VALUE" : 0.31333299999999997
+         "TYPE" : "Sliderf",
+         "VALUE" : 0.13555600000000001
       }
    ],
    "TYPE" : "SuperCanvas",

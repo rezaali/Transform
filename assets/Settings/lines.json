@@ -39,13 +39,13 @@
       {
          "ID" : 26,
          "NAME" : "dist",
-         "TYPE" : "Slider",
+         "TYPE" : "Sliderf",
          "VALUE" : 11.6327
       },
       {
          "ID" : 27,
          "NAME" : "power",
-         "TYPE" : "Slider",
+         "TYPE" : "Sliderf",
          "VALUE" : 20.408200000000001
       }
    ],

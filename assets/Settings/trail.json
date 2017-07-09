@@ -7,16 +7,16 @@
          "ID" : 9,
          "NAME" : "UPDATE",
          "TYPE" : "Toggle",
-         "VALUE" : true
+         "VALUE" : false
       },
       {
          "ID" : 10,
          "NAME" : "TOTAL",
          "TYPE" : "Dialer",
-         "VALUE" : 9
+         "VALUE" : 6
       }
    ],
    "TYPE" : "SuperCanvas",
    "XPOS" : 6,
-   "YPOS" : 414
+   "YPOS" : 448
 }

@@ -10,6 +10,11 @@ in ivec4 info;
 uniform samplerBuffer uPositionMass;
 uniform samplerBuffer uVelocity;
 
+uniform float amplitude; //slider:0.0,1.0,0.25
+uniform float speed; //slider:0.0,2.0,0.5
+uniform vec2 pad; //pad:-1.0,1.0,0.0
+uniform bool activate; //button:0
+
 out vec4 tf_position_mass;
 out vec4 tf_velocity_mass;
 out ivec4 tf_info;
@@ -33,11 +38,10 @@ void main()
 
     float x = float( row ) / ( totalf - 1 ); 
     float z = float( col ) / ( totalf - 1 ); 
-    float y = 0.25 * snoise( vec3( x, z, 2.0 * iGlobalTime ) ); 
+    float y = ( activate ? -1.0 : 1.0 ) * amplitude * snoise( vec3( x, z, speed * iGlobalTime ) ); 
 	
-	float amp = texture( iAmplitude, vec2( norm/4, 0.0 ) ).r; 
-	y = max( y, 0.0 ); 
-    pos = vec3( x - 0.5, y, z - 0.5 );
+	float amp = texture( iAmplitude, vec2( norm/4, 0.0 ) ).r; 	
+    pos = vec3( x - 0.5 + pad.x, y, z - 0.5 - pad.y );
 
     mass = y * amp; 
 

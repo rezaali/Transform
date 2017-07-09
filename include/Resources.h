@@ -13,6 +13,7 @@
 #define BACKGROUND_UI "background"
 #define POST_UI "post prcess"
 #define AUDIO_UI "audio input"
+#define OSC_UI "osc"
 #define EXPORTER_UI "exporter"
 #define PHYSICS_UI "physics"
 #define PARTICLE_UI "particles"

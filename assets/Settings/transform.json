@@ -1,15 +1,15 @@
 {
    "ID" : -1,
-   "MINIFIED" : false,
+   "MINIFIED" : true,
    "NAME" : "transform",
    "SUBVIEWS" : [
       {
          "ALPHA" : 1,
-         "BLUE" : 0,
-         "GREEN" : 0,
+         "BLUE" : 1,
+         "GREEN" : 1,
          "ID" : 6,
          "NAME" : "BACKGROUND COLOR",
-         "RED" : 0,
+         "RED" : 1,
          "TYPE" : "ColorPicker"
       },
       {
@@ -60,5 +60,5 @@
    ],
    "TYPE" : "SuperCanvas",
    "XPOS" : 6,
-   "YPOS" : 482
+   "YPOS" : 516
 }

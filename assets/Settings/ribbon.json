@@ -30,7 +30,7 @@
       {
          "ID" : 42,
          "NAME" : "trailFade",
-         "TYPE" : "Slider",
+         "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
@@ -45,29 +45,29 @@
       {
          "ID" : 44,
          "NAME" : "linEffect",
-         "TYPE" : "Slider",
+         "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
          "ID" : 45,
          "NAME" : "cosEffect",
-         "TYPE" : "Slider",
+         "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
          "ID" : 46,
          "NAME" : "sinEffect",
-         "TYPE" : "Slider",
+         "TYPE" : "Sliderf",
          "VALUE" : 0
       },
       {
          "ID" : 47,
          "NAME" : "thickness",
-         "TYPE" : "Slider",
-         "VALUE" : 0.0153061
+         "TYPE" : "Sliderf",
+         "VALUE" : 0.057653099999999999
       }
    ],
    "TYPE" : "SuperCanvas",
    "XPOS" : 6,
-   "YPOS" : 346
+   "YPOS" : 380
 }

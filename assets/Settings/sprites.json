@@ -1,28 +1,28 @@
 {
    "ID" : -1,
-   "MINIFIED" : false,
+   "MINIFIED" : true,
    "NAME" : "sprites",
    "SUBVIEWS" : [
       {
-         "ID" : 479,
+         "ID" : 21,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
-         "VALUE" : true
+         "VALUE" : false
       },
       {
-         "ID" : 480,
+         "ID" : 22,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 481,
+         "ID" : 23,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 482,
+         "ID" : 24,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : false
@@ -31,31 +31,31 @@
          "ALPHA" : 1,
          "BLUE" : 1,
          "GREEN" : 1,
-         "ID" : 484,
+         "ID" : 26,
          "NAME" : "Color",
          "RED" : 1,
          "TYPE" : "ColorPicker"
       },
       {
-         "ID" : 485,
+         "ID" : 27,
          "NAME" : "power",
-         "TYPE" : "Slider",
+         "TYPE" : "Sliderf",
          "VALUE" : 0.28571400000000002
       },
       {
-         "ID" : 486,
+         "ID" : 28,
          "NAME" : "sigma",
-         "TYPE" : "Slider",
+         "TYPE" : "Sliderf",
          "VALUE" : 0.27550999999999998
       },
       {
-         "ID" : 487,
+         "ID" : 29,
          "NAME" : "palette",
          "TYPE" : "Dialer",
          "VALUE" : 37
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 252,
-   "YPOS" : 518
+   "XPOS" : 6,
+   "YPOS" : 414
 }
