@@ -4,10 +4,10 @@
    "NAME" : "primitive geometry",
    "SUBVIEWS" : [
       {
-         "ID" : 682,
+         "ID" : 6,
          "NAME" : "DIVISIONS",
          "TYPE" : "Slideri",
-         "VALUE" : 12
+         "VALUE" : 60
       }
    ],
    "TYPE" : "SuperCanvas",

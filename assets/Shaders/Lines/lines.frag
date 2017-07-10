@@ -7,7 +7,6 @@ uniform float dist; //slider:0.0,40.0,2.0
 uniform float power; //slider:0.0,32.0,10.0
 
 in float vDist; 
-in float vMass; 
 
 out vec4 oColor;
 

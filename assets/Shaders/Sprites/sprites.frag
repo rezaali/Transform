@@ -23,7 +23,7 @@ void main( void )
 	float b = 0.0; 
 	float gau = a * exp( - pow( dist - b, 2.0 ) / ( 2.0 * pow( sigma, 2.0 ) ) );
 	
-	float lookup = fract( abs( vMass ) * 10.0 );
+	float lookup = fract( abs( vMass ) );
 	float pIndex = float( palette ) / 992.0; 
 
 	oColor = Color * texture( iPalettes, vec2( lookup, pIndex ) );

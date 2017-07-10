@@ -1,6 +1,6 @@
 {
    "ID" : -1,
-   "MINIFIED" : false,
+   "MINIFIED" : true,
    "NAME" : "exporter",
    "SUBVIEWS" : [
       {
@@ -25,16 +25,16 @@
          "ID" : 9,
          "NAME" : "FRAMES",
          "TYPE" : "Dialeri",
-         "VALUE" : 300
+         "VALUE" : 595
       },
       {
          "ID" : 10,
          "NAME" : "PROGRESS",
          "TYPE" : "Sliderf",
-         "VALUE" : 0.74333300000000002
+         "VALUE" : 0.018487400000000001
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 154,
-   "YPOS" : 70
+   "XPOS" : 6,
+   "YPOS" : 108
 }

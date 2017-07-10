@@ -19,13 +19,13 @@
          "ID" : 22,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
-         "VALUE" : true
+         "VALUE" : false
       },
       {
          "ID" : 23,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
-         "VALUE" : true
+         "VALUE" : false
       },
       {
          "ALPHA" : 1,
@@ -40,13 +40,13 @@
          "ID" : 26,
          "NAME" : "dist",
          "TYPE" : "Sliderf",
-         "VALUE" : 11.6327
+         "VALUE" : 12.040800000000001
       },
       {
          "ID" : 27,
          "NAME" : "power",
          "TYPE" : "Sliderf",
-         "VALUE" : 20.408200000000001
+         "VALUE" : 32
       }
    ],
    "TYPE" : "SuperCanvas",

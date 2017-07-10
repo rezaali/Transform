@@ -4,28 +4,29 @@
 #include "random.glsl"
 #include "noise3D.glsl"
 
-in vec4 position_mass;		
+in vec4 position_id;		
 in vec4 velocity_mass;		
-in ivec4 info;				
+in vec4 color;
+in vec4 orientation;      
 
-uniform samplerBuffer uPositionMass;
-uniform samplerBuffer uVelocity;
+uniform samplerBuffer uPositionId;
+uniform samplerBuffer uVelocityMass;
 
 uniform float amplitude; //slider:0.0,1.0,0.25
-uniform float speed; //slider:0.0,2.0,0.5
-uniform float scale; //dialer:0.0,1.0,0.5
+uniform float radius; //slider:0.0,1.0,0.25
 
-out vec4 tf_position_mass;
+out vec4 tf_position_id;
 out vec4 tf_velocity_mass;
-out ivec4 tf_info;
+out vec4 tf_color;
+out vec4 tf_orientation;
 
 void main()
 {
-	vec3 pos = position_mass.xyz; 
-	float mass = position_mass.w; 
+	vec3 pos = position_id.xyz; 	
 	vec3 vel = velocity_mass.xyz; 
+    float mass = velocity_mass.w; 
 
-    int id = info.x; 
+    int id = int( position_id.w ); 
     float idf = float( id ); 
 
     int total = int( sqrt( iNumParticles ) );
@@ -35,15 +36,16 @@ void main()
     int col = int( floor( id / total ) ); 
 
     float norm = idf / iNumParticles; 
-
-    float x = float( row ) / ( totalf - 1 ); 
-    float z = float( col ) / ( totalf - 1 ); 
-    float y = amplitude * snoise( scale * vec3( x, z, speed * iGlobalTime ) ); 
+    
+    float x = radius * sin( norm * TWO_PI ); 
+    float z = radius * cos( norm * TWO_PI );     
+    float y = 0.2 + amplitude * sin( norm * TWO_PI * 4.0 + 10.0 * iAnimationTime * TWO_PI ); 
 		
-    pos = 2.0 * vec3( random( x ), random( y ), random( z ) ) - 1.0; 
-    mass = random( length( pos ) ); 
+    pos = vec3( x, y, z ); 
+    mass = 2.5 * amplitude * sin( norm * TWO_PI * 4.0 - 10.0 * iAnimationTime * TWO_PI ); 
 
-	tf_position_mass = vec4( pos, mass );
+	tf_position_id = vec4( pos, position_id.w );
 	tf_velocity_mass = vec4( vel, mass );
-	tf_info = info; 
+	tf_color = color; 
+    tf_orientation = orientation; 
 }

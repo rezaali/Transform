@@ -5,11 +5,11 @@
    "SUBVIEWS" : [
       {
          "ALPHA" : 1,
-         "BLUE" : 1,
-         "GREEN" : 1,
+         "BLUE" : 0,
+         "GREEN" : 0,
          "ID" : 6,
          "NAME" : "BACKGROUND COLOR",
-         "RED" : 1,
+         "RED" : 0,
          "TYPE" : "ColorPicker"
       },
       {

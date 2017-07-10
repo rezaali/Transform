@@ -31,8 +31,7 @@ void main()
 	vec3 up = upp.xyz;  
 	int offset = int( vLookUp[0].x*trailLength ); 
 	int index = int( vLookUp[0].y ); 
-	vec4 info = texelFetch( tex_position, int( offset + index ) );  					
-	gOffset = info.w; 
+	vec4 info = texelFetch( tex_position, int( offset + index ) );  						
 	if( ( index + 1 ) % trailLength > 0 && index % trailLength > 0 )
 	{			
 		vec3 ppos = texelFetch( tex_position, int( offset + ( index - 1 ) ) ).xyz; 
@@ -65,7 +64,7 @@ void main()
 		push *= amp; 
 		ppush *= pamp; 
 
-		float th = thickness * ( gOffset ); 
+		float th = thickness; 
 		ppush *= th; 
 		push *= th; 
 

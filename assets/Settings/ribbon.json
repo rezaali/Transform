@@ -31,10 +31,10 @@
          "ID" : 42,
          "NAME" : "trailFade",
          "TYPE" : "Sliderf",
-         "VALUE" : 0
+         "VALUE" : 1
       },
       {
-         "ALPHA" : 0.50712500000000005,
+         "ALPHA" : 1,
          "BLUE" : 0.995,
          "GREEN" : 0.995,
          "ID" : 43,
@@ -46,25 +46,25 @@
          "ID" : 44,
          "NAME" : "linEffect",
          "TYPE" : "Sliderf",
-         "VALUE" : 0
+         "VALUE" : 1
       },
       {
          "ID" : 45,
          "NAME" : "cosEffect",
          "TYPE" : "Sliderf",
-         "VALUE" : 0
+         "VALUE" : 1
       },
       {
          "ID" : 46,
          "NAME" : "sinEffect",
          "TYPE" : "Sliderf",
-         "VALUE" : 0
+         "VALUE" : 1
       },
       {
          "ID" : 47,
          "NAME" : "thickness",
          "TYPE" : "Sliderf",
-         "VALUE" : 0.057653099999999999
+         "VALUE" : 0.0025510200000000002
       }
    ],
    "TYPE" : "SuperCanvas",

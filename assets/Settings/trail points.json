@@ -31,18 +31,18 @@
          "ID" : 25,
          "NAME" : "pointSize",
          "TYPE" : "Sliderf",
-         "VALUE" : 3
+         "VALUE" : 4
       },
       {
          "ID" : 26,
          "NAME" : "trailFade",
          "TYPE" : "Sliderf",
-         "VALUE" : 0.61224500000000004
+         "VALUE" : 1
       },
       {
          "ALPHA" : 1,
-         "BLUE" : 0.63000100000000003,
-         "GREEN" : 0,
+         "BLUE" : 1,
+         "GREEN" : 1,
          "ID" : 27,
          "NAME" : "color",
          "RED" : 1,

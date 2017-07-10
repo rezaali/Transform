@@ -106,6 +106,8 @@ enum PRIMITIVE {
 /*
 TODO:
 + Implement better UI system
++ Implemnt buffers for color & orientation
+ 
 DONE:
 + Extend Primitive Renderer
 + Implement OSC for Params Control
@@ -1181,7 +1183,9 @@ UIPanelRef Transform::setupPrimitiveUI( UIPanelRef ui,
 			auto ui = mUIRef->getUI( PRIMITIVE_GEOMETRY_UI );
 			if( ui ) {
 				ui->clear();
+				bool minified = ui->isMinified();
 				setupPrimitiveGeometryUI( ui );
+				ui->setMinified( minified );
 			}
 		}
 	} );
@@ -1696,16 +1700,18 @@ void Transform::updatePrimitiveGeometry()
 void Transform::setupParticles()
 {
 	vector<string> varyings( 3 );
-	varyings[PARTICLES_POS_INDEX] = "tf_position_mass";
+	varyings[PARTICLES_POS_INDEX] = "tf_position_id";
 	varyings[PARTICLES_VEL_INDEX] = "tf_velocity_mass";
-	varyings[PARTICLES_INFO_INDEX] = "tf_info";
+	varyings[PARTICLES_CLR_INDEX] = "tf_color";
+	varyings[PARTICLES_ORI_INDEX] = "tf_orientation";
 
 	gl::GlslProg::Format format;
 	format.feedbackFormat( GL_SEPARATE_ATTRIBS )
 		.feedbackVaryings( varyings )
-		.attribLocation( "position_mass", PARTICLES_POS_INDEX )
+		.attribLocation( "position_id", PARTICLES_POS_INDEX )
 		.attribLocation( "velocity_mass", PARTICLES_VEL_INDEX )
-		.attribLocation( "info", PARTICLES_INFO_INDEX );
+		.attribLocation( "color", PARTICLES_CLR_INDEX )
+		.attribLocation( "orientation", PARTICLES_ORI_INDEX );
 
 	mParticleSystemRef = ParticleSystem::create(
 		mOutputWindowRef, getShadersPath( "Physics/physics.vert" ), format, [this]() {
