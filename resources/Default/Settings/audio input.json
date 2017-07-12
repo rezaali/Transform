@@ -1,0 +1,42 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "audio input",
+   "SUBVIEWS" : [
+      {
+         "ACTIVE" : "Built-in Microphone",
+         "ID" : 3,
+         "NAME" : "INPUT",
+         "SUBVIEWS" : [
+            {
+               "ID" : 0,
+               "NAME" : "Bose QuietComfort 35",
+               "TYPE" : "Toggle",
+               "VALUE" : false
+            },
+            {
+               "ID" : 1,
+               "NAME" : "Built-in Microphone",
+               "TYPE" : "Toggle",
+               "VALUE" : true
+            },
+            {
+               "ID" : 2,
+               "NAME" : "Soundflower (2ch)",
+               "TYPE" : "Toggle",
+               "VALUE" : false
+            },
+            {
+               "ID" : 3,
+               "NAME" : "Soundflower (64ch)",
+               "TYPE" : "Toggle",
+               "VALUE" : false
+            }
+         ],
+         "TYPE" : "Radio"
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 6
+}

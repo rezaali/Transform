@@ -1,0 +1,15 @@
+uniform vec3 iResolution;
+uniform float iAspect;
+uniform float iGlobalTime;
+uniform float iAnimationTime;
+uniform vec4 iMouse;
+uniform vec4 iBackgroundColor;
+uniform vec4 iDate;
+uniform bool iPreview;
+uniform float iRenderScale; 
+uniform float iNumParticles; 
+uniform sampler2D iSpectrum; 
+uniform sampler2D iAmplitude; 
+uniform sampler2D iPalettes; 
+uniform vec3 iCamEyePos;
+uniform vec3 iCamViewDir;

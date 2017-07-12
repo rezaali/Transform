@@ -1,0 +1,16 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "primitive geometry",
+   "SUBVIEWS" : [
+      {
+         "ID" : 6,
+         "NAME" : "DIVISIONS",
+         "TYPE" : "Slideri",
+         "VALUE" : 60
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 380
+}

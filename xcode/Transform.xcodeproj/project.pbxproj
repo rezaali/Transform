@@ -42,6 +42,9 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		8F566D65377E4FFC83972C07 /* Label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3FE4FAD11482AA354D434 /* Label.cpp */; };
 		99FA0EBDE39540D689997247 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFDA98920B4AC69D6B609F /* Graph.cpp */; };
+		9E63BD561F15EEB500EC4809 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 9E63BD531F15EEB500EC4809 /* Assets */; };
+		9E63BD571F15EEB500EC4809 /* Default in Resources */ = {isa = PBXBuildFile; fileRef = 9E63BD541F15EEB500EC4809 /* Default */; };
+		9E63BD581F15EEB500EC4809 /* Working in Resources */ = {isa = PBXBuildFile; fileRef = 9E63BD551F15EEB500EC4809 /* Working */; };
 		9EBC26F11EFEFD0900B6BCD1 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EBC26F01EFEFD0900B6BCD1 /* Transform.cpp */; };
 		9EBC26F31EFEFD0D00B6BCD1 /* RectRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EBC26F21EFEFD0D00B6BCD1 /* RectRenderer.cpp */; };
 		9EBC26FF1EFEFD3400B6BCD1 /* AppUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EBC26FC1EFEFD3400B6BCD1 /* AppUI.cpp */; };
@@ -141,6 +144,10 @@
 		970C360F5A0E4D3D9F60E25B /* ColorPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ColorPicker.h; path = ../../../../blocks/UI/src/ColorPicker.h; sourceTree = "<group>"; };
 		988D42CA434441E28927F8A7 /* Dialer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = Dialer.cpp; path = ../../../../blocks/UI/src/Dialer.cpp; sourceTree = "<group>"; };
 		9E414F2C594449F385320BF6 /* Spectrum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Spectrum.h; path = ../../../../blocks/UI/src/Spectrum.h; sourceTree = "<group>"; };
+		9E63BCB81F15DA3F00EC4809 /* Transform.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Transform.entitlements; sourceTree = "<group>"; };
+		9E63BD531F15EEB500EC4809 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = ../resources/Assets; sourceTree = "<group>"; };
+		9E63BD541F15EEB500EC4809 /* Default */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Default; path = ../resources/Default; sourceTree = "<group>"; };
+		9E63BD551F15EEB500EC4809 /* Working */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Working; path = ../resources/Working; sourceTree = "<group>"; };
 		9EBC26F01EFEFD0900B6BCD1 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = ../src/Transform.cpp; sourceTree = "<group>"; };
 		9EBC26F21EFEFD0D00B6BCD1 /* RectRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RectRenderer.cpp; path = ../src/RectRenderer.cpp; sourceTree = "<group>"; };
 		9EBC26F51EFEFD2300B6BCD1 /* RectRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RectRenderer.h; path = ../include/RectRenderer.h; sourceTree = "<group>"; };
@@ -309,6 +316,7 @@
 		29B97314FDCFA39411CA2CEA /* Transform */ = {
 			isa = PBXGroup;
 			children = (
+				9E63BCB81F15DA3F00EC4809 /* Transform.entitlements */,
 				01B97315FEAEA392516A2CEA /* Blocks */,
 				29B97315FDCFA39411CA2CEA /* Headers */,
 				080E96DDFE201D6D7F000001 /* Source */,
@@ -332,6 +340,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9E63BD531F15EEB500EC4809 /* Assets */,
+				9E63BD541F15EEB500EC4809 /* Default */,
+				9E63BD551F15EEB500EC4809 /* Working */,
 				A3B12A84A325406BAD12D6BC /* CinderApp.icns */,
 				A9404CAB1B3647EFB829A06B /* Info.plist */,
 			);
@@ -824,6 +835,16 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				TargetAttributes = {
+					8D1107260486CEB800E47090 = {
+						DevelopmentTeam = CC7PU3PUHS;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Transform" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -849,7 +870,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E63BD581F15EEB500EC4809 /* Working in Resources */,
+				9E63BD571F15EEB500EC4809 /* Default in Resources */,
 				FD80C81A3DB6418B85DFE9E3 /* CinderApp.icns in Resources */,
+				9E63BD561F15EEB500EC4809 /* Assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,6 +948,8 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Transform.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
@@ -940,7 +966,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Transform;
 				PRODUCT_NAME = Transform;
 				SYMROOT = ./build;
 				WRAPPER_EXTENSION = app;
@@ -950,6 +976,8 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Transform.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -967,7 +995,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Transform;
 				PRODUCT_NAME = Transform;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
