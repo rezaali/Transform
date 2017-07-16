@@ -181,6 +181,9 @@ class Transform : public App {
 	void createSessionDefaultDirectories();
 	void createSessionWorkingDirectories();
 
+	// EDITOR
+	void openEditor();
+
 	// SAVE & LOAD
 	void save();
 	void load();
@@ -449,8 +452,6 @@ void Transform::prepareSettings( App::Settings *settings )
 
 void Transform::setup()
 {
-	cout << getAppSupportPath() << endl;
-
 	CI_LOG_V( "SETUP ASSETS DIRECTORIES" );
 	createAssetDirectories();
 	CI_LOG_V( "SETUP DEFAULT DIRECTORIES" );
@@ -575,6 +576,13 @@ void Transform::createSessionWorkingDirectories()
 		copyDirectory( localWorkingSettingsSession, appWorkingSettingsSession );
 		copyDirectory( localWorkingShadersSession, appWorkingShadersSession );
 	}
+}
+
+void Transform::openEditor()
+{
+	auto shaderPath = getAppSupportWorkingSessionShadersPath();
+	string cmd = "cd " + shaderPath.string() + " && open -a /Applications/Sublime\\ Text.app .";
+	system( cmd.c_str() );
 }
 
 void Transform::save()
@@ -741,7 +749,7 @@ void Transform::_drawOutput()
 
 void Transform::keyDownOutput( KeyEvent event )
 {
-	if( event.isControlDown() ) {
+	if( event.isMetaDown() || event.isControlDown() ) {
 		switch( event.getCode() ) {
 		case KeyEvent::KEY_p: {
 			mUIRef->toggleUIs();
@@ -760,6 +768,10 @@ void Transform::keyDownOutput( KeyEvent event )
 		} break;
 		case KeyEvent::KEY_SLASH: {
 			mUIRef->arrange();
+		} break;
+
+		case KeyEvent::KEY_e: {
+			openEditor();
 		} break;
 
 		case KeyEvent::KEY_c: {
@@ -890,6 +902,15 @@ UIPanelRef Transform::setupAppUI( UIPanelRef ui )
 	ui->addButton( "LOAD SESSION", false )->setCallback( [this]( bool value ) {
 		if( value ) {
 			loadSession();
+			loadSettings( getAppSupportWorkingSessionPath() );
+		}
+	} );
+
+	ui->addSpacer();
+
+	ui->addButton( "OPEN EDITOR", false )->setCallback( [this]( bool value ) {
+		if( value ) {
+			openEditor();
 		}
 	} );
 
