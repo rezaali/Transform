@@ -31,6 +31,7 @@ git clone git@github.com:rezaali/Cinder-EasyCamera.git EasyCamera
 git clone git@github.com:rezaali/Cinder-ImageSaver.git ImageSaver
 git clone git@github.com:rezaali/Cinder-SaveLoadWindow.git SaveLoadWindow
 git clone git@github.com:rezaali/Cinder-SaveLoadCamera.git SaveLoadCamera
+git clone git@github.com:rezaali/Cinder-UI.git UI
 git clone git@github.com:rezaali/Watchdog.git Watchdog
 ```
 
