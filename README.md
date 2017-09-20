@@ -1,12 +1,14 @@
 Transform
----
+--
 
-Instructions:
-1. Clone Cinder
+### Instructions:
+
+
+#### 1. Clone Cinder
 ```
-git clone --recursive https://github.com/cinder/Cinder.git
+git clone --recursive https://github.com/cinder/Cinder.git Cinder
 ```
-2. Clone Transform:
+#### 2. Clone Transform:
 ```
 cd Cinder/samples
 mkdir _reza
@@ -14,7 +16,7 @@ cd _reza
 git clone git@github.com:rezaali/Transform.git
 ```
 
-3. Clone Dependencies
+#### 3. Clone Dependencies
 ```
 cd ../../blocks/
 git clone git@github.com:rezaali/Cinder-MovieSaver.git MovieSaver
@@ -32,18 +34,19 @@ git clone git@github.com:rezaali/Cinder-SaveLoadCamera.git SaveLoadCamera
 git clone git@github.com:rezaali/Watchdog.git Watchdog
 ```
 
-4. Build Cinder
+#### 4. Build Cinder
 ```
 cd ../proj/xcode/ && ./fullbuild.sh
 ```
 
-5. Open Transform Xcode project
+#### 5. Open Transform Xcode project
 ```
-cd ../samples/_reza/Transform/xcode && open Transform.xcodeproj/
+cd ../samples/_reza/Transform/xcode
+open Transform.xcodeproj/
 ```
 
-6. Run
-Product > Run or Apple + R
+#### 6. Run
+In Xcode, go to the Product Menu and then Run or press Apple + R
 
 
 
