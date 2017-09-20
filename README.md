@@ -41,7 +41,7 @@ cd ../proj/xcode/ && ./fullbuild.sh
 
 #### 5. Open Transform Xcode project
 ```
-cd ../samples/_reza/Transform/xcode
+cd ../../samples/_reza/Transform/xcode/
 open Transform.xcodeproj/
 ```
 
