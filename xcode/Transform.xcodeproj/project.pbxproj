@@ -818,7 +818,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				9E63BD591F18A20C00EC4809 /* ShellScript */,
+				9EE4BD1C1F70EA8D00730939 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -839,6 +839,7 @@
 				TargetAttributes = {
 					8D1107260486CEB800E47090 = {
 						DevelopmentTeam = CC7PU3PUHS;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -881,7 +882,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9E63BD591F18A20C00EC4809 /* ShellScript */ = {
+		9EE4BD1C1F70EA8D00730939 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -892,7 +893,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "FILE=\"${SRCROOT}/../frameworks/HockeySDK-Mac/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -966,10 +967,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Transform.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = CC7PU3PUHS;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -985,7 +988,9 @@
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Transform;
 				PRODUCT_NAME = Transform;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SYMROOT = ./build;
+				USE_WINDOW_CANVAS = 0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -994,10 +999,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Transform.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = CC7PU3PUHS;
 				GCC_FAST_MATH = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
@@ -1014,8 +1021,10 @@
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Transform;
 				PRODUCT_NAME = Transform;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
+				USE_WINDOW_CANVAS = 0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
