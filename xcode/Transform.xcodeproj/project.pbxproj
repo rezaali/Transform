@@ -980,6 +980,7 @@
 				GCC_PREFIX_HEADER = Transform_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
+					"USE_WINDOW_CANVAS=0",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -990,7 +991,6 @@
 				PRODUCT_NAME = Transform;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SYMROOT = ./build;
-				USE_WINDOW_CANVAS = 0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1013,6 +1013,7 @@
 				GCC_PREFIX_HEADER = Transform_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"NDEBUG=1",
+					"USE_WINDOW_CANVAS=0",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -1024,7 +1025,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
-				USE_WINDOW_CANVAS = 0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

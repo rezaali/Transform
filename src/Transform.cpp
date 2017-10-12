@@ -452,6 +452,7 @@ void Transform::prepareSettings( App::Settings *settings )
 
 void Transform::setup()
 {
+    cout << getAppSupportPath() << endl;
     CI_LOG_V( "SETUP ASSETS DIRECTORIES" );
     createAssetDirectories();
     CI_LOG_V( "SETUP DEFAULT DIRECTORIES" );
@@ -737,6 +738,7 @@ void Transform::drawOutput()
         mOutputFboRef->unbindFramebuffer();
         drawPost();
     }
+    gl::setMatricesWindow( mOutputWindowRef->getSize() );
 }
 
 void Transform::_drawOutput()
@@ -1299,8 +1301,10 @@ UIPanelRef Transform::setupPhysicsUI( UIPanelRef ui )
     auto numparticles = ui->addDialeri( "PARTICLES", mParticleSystemRef->getTotal(), 0, 1000000 );
     numparticles->setTrigger( Trigger::END );
     numparticles->setCallback( [this]( int value ) {
-        mParticleTotal = value;
-        mUpdateParticleTotal = true;
+//        if( mParticleTotal != value ) {
+            mParticleTotal = value;
+            mUpdateParticleTotal = true;
+//        }
     } );
     ui->addSpacer();
     return ui;
