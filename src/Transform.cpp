@@ -1992,6 +1992,11 @@ void Transform::updateAudio()
         mAmplitudeBuffer[i] = amplitudeData[i] * 2.0;
     }
     mAmplitudeTextureRef->update( (void *)mAmplitudeBuffer.data(), GL_RED, GL_FLOAT, 0, int( mAmplitudeBuffer.size() ), 1.0 );
+    
+    auto ui = mUIRef->getUI(AUDIO_UI);
+    if(ui != nullptr) {
+        ui->setNeedsDisplay();
+    }
 }
 
 void Transform::setupPost()
