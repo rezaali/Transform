@@ -3,6 +3,7 @@
 
 #define ASSETS_PATH "Assets"
 #define IMAGE_PATH "Images"
+#define MODEL_PATH "Models"
 #define JSON_PATH "Json"
 #define DEFAULT_PATH "Default"
 #define WORKING_PATH "Working"

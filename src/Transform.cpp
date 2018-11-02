@@ -165,10 +165,11 @@ ABANDONED:
 + Camera Animtion UI (Render to a 1 pixel fbo? pos, orientation quat)
 */
 
-class Transform : public App {
+class Transform : public App
+{
   public:
     // PREPARE SETTINGS
-    static void prepareSettings( Settings *settings );
+    static void prepareSettings(Settings *settings);
 
     // SETUP
     void setup() override;
@@ -191,13 +192,13 @@ class Transform : public App {
     void saveSession();
     void loadSession();
 
-    void saveAs( const fs::path &path );
-    void saveSettings( const fs::path &path );
-    void saveShaders( const fs::path &path );
+    void saveAs(const fs::path &path);
+    void saveSettings(const fs::path &path);
+    void saveShaders(const fs::path &path);
 
-    void loadAs( const fs::path &path );
-    void loadSettings( const fs::path &path );
-    void loadShaders( const fs::path &path );
+    void loadAs(const fs::path &path);
+    void loadSettings(const fs::path &path);
+    void loadShaders(const fs::path &path);
 
     // OUTPUT
     gl::FboRef mOutputFboRef;
@@ -206,31 +207,31 @@ class Transform : public App {
     void updateOutput();
     void drawOutput();
     void _drawOutput();
-    void keyDownOutput( KeyEvent event );
+    void keyDownOutput(KeyEvent event);
     ci::app::WindowRef mOutputWindowRef;
-    vec2 mMouse = vec2( 0.0 );
-    vec2 mMousePrev = vec2( 0.0 );
-    vec2 mMouseClick = vec2( 0.0 );
-    ivec2 mOutputWindowOrigin = ivec2( 0 );
-    ivec2 mOutputWindowSize = ivec2( 1920, 1080 );
+    vec2 mMouse = vec2(0.0);
+    vec2 mMousePrev = vec2(0.0);
+    vec2 mMouseClick = vec2(0.0);
+    ivec2 mOutputWindowOrigin = ivec2(0);
+    ivec2 mOutputWindowSize = ivec2(1920, 1080);
 
     // UI
     AppUIRef mUIRef;
     void setupUIs();
-    UIPanelRef setupAppUI( UIPanelRef ui );
-    UIPanelRef setupAudioUI( UIPanelRef ui );
-    UIPanelRef setupOscUI( UIPanelRef ui );
-    UIPanelRef setupPostUI( UIPanelRef ui );
-    UIPanelRef setupBgUI( UIPanelRef ui );
-    UIPanelRef setupSystemUI( UIPanelRef ui, reza::ps::SystemRef systemRef );
-    UIPanelRef setupPhysicsUI( UIPanelRef ui );
-    UIPanelRef setupTrailUI( UIPanelRef ui );
-    UIPanelRef setupPlexusUI( UIPanelRef ui );
-    UIPanelRef setupExporterUI( UIPanelRef ui );
-    UIPanelRef setupCameraUI( UIPanelRef ui );
-    UIPanelRef setupRendererUI( UIPanelRef ui, reza::ps::RendererRef rendererRef );
-    UIPanelRef setupPrimitiveUI( UIPanelRef ui, reza::ps::RendererRef rendererRef );
-    UIPanelRef setupPrimitiveGeometryUI( UIPanelRef ui );
+    UIPanelRef setupAppUI(UIPanelRef ui);
+    UIPanelRef setupAudioUI(UIPanelRef ui);
+    UIPanelRef setupOscUI(UIPanelRef ui);
+    UIPanelRef setupPostUI(UIPanelRef ui);
+    UIPanelRef setupBgUI(UIPanelRef ui);
+    UIPanelRef setupSystemUI(UIPanelRef ui, reza::ps::SystemRef systemRef);
+    UIPanelRef setupPhysicsUI(UIPanelRef ui);
+    UIPanelRef setupTrailUI(UIPanelRef ui);
+    UIPanelRef setupPlexusUI(UIPanelRef ui);
+    UIPanelRef setupExporterUI(UIPanelRef ui);
+    UIPanelRef setupCameraUI(UIPanelRef ui);
+    UIPanelRef setupRendererUI(UIPanelRef ui, reza::ps::RendererRef rendererRef);
+    UIPanelRef setupPrimitiveUI(UIPanelRef ui, reza::ps::RendererRef rendererRef);
+    UIPanelRef setupPrimitiveGeometryUI(UIPanelRef ui);
 
     // COLORS
     ci::gl::Texture2dRef mPaletteTextureRef;
@@ -246,7 +247,7 @@ class Transform : public App {
     // BOX
     bool mDrawBox = true;
     gl::BatchRef mBoxBatchRef;
-    vec3 mBoxSize = vec3( 5.0f, 5.0f, 5.0f );
+    vec3 mBoxSize = vec3(5.0f, 5.0f, 5.0f);
     ColorA mBoxColor = ColorA::white();
     void setupBoxBatch();
     void drawBoxBatch();
@@ -381,7 +382,7 @@ class Transform : public App {
     int mPlaneSubdivisions = 0;
 
     // SHADER TOYIFIER
-    void setDefaultUniforms( gl::GlslProgRef glslProgRef );
+    void setDefaultUniforms(gl::GlslProgRef glslProgRef);
 
     // IMAGE EXPORTER
     ImageSaverRef mImageSaverRef;
@@ -401,7 +402,7 @@ class Transform : public App {
     float mSeconds = 0.0;
 
     // POINT EXPORTER
-    void exportPoints( const ci::fs::path &path, const std::string &filename );
+    void exportPoints(const ci::fs::path &path, const std::string &filename);
 
     // SAVING & LOADING
     ci::fs::path mDefaultRenderPath;
@@ -417,6 +418,7 @@ class Transform : public App {
     void setupAudioAmplitudeTexture();
     void setupAudioInput();
     void updateAudio();
+    int mSampleSize;
     vector<float> mSpectrumBuffer;
     vector<float> mAmplitudeBuffer;
 
@@ -428,14 +430,14 @@ class Transform : public App {
     void setupPost();
     void updatePost();
     void drawPost();
-    void drawPost( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll );
+    void drawPost(const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll);
 
     // BACKGROUND
     RectRendererRef mBgRendererRef;
     void setupBg();
     void updateBg();
     void drawBg();
-    void drawBg( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll );
+    void drawBg(const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll);
 
     // OSC
     ReceiverRef mReceiverRef;
@@ -443,89 +445,88 @@ class Transform : public App {
     int mOscPort = 10001;
 };
 
-void Transform::prepareSettings( App::Settings *settings )
+void Transform::prepareSettings(App::Settings *settings)
 {
-    settings->setWindowSize( 512, 512 );
-    settings->setFrameRate( 60.0f );
+    settings->setWindowSize(512, 512);
+    settings->setFrameRate(60.0f);
     settings->setHighDensityDisplayEnabled();
 }
 
 void Transform::setup()
 {
+    //    gl::enableVerticalSync();
+
     cout << getAppSupportPath() << endl;
-    CI_LOG_V( "SETUP ASSETS DIRECTORIES" );
+    CI_LOG_V("SETUP ASSETS DIRECTORIES");
     createAssetDirectories();
-    CI_LOG_V( "SETUP DEFAULT DIRECTORIES" );
+    CI_LOG_V("SETUP DEFAULT DIRECTORIES");
     createSessionDefaultDirectories();
-    CI_LOG_V( "SETUP WORKING DIRECTORIES" );
+    CI_LOG_V("SETUP WORKING DIRECTORIES");
     createSessionWorkingDirectories();
 
-    CI_LOG_V( "SETUP OUTPUT WINDOW" );
+    CI_LOG_V("SETUP OUTPUT WINDOW");
     setupOutputWindow();
-    CI_LOG_V( "SETUP OUTPUT FBO" );
+    CI_LOG_V("SETUP OUTPUT FBO");
     setupOutputFbo();
 
-    CI_LOG_V( "SETUP PALETTES" );
+    CI_LOG_V("SETUP PALETTES");
     setupPalettes();
 
-    CI_LOG_V( "SETUP CAMERA" );
-    mCameraRef = EasyCamera::create( mOutputWindowRef );
+    CI_LOG_V("SETUP CAMERA");
+    mCameraRef = EasyCamera::create(mOutputWindowRef);
     mCameraRef->enable();
 
-    CI_LOG_V( "SETUP SAVERS" );
+    CI_LOG_V("SETUP SAVERS");
     setupImageSaver();
     setupSequenceSaver();
     setupMovieSaver();
 
-    CI_LOG_V( "SETUP DEBUG" );
+    CI_LOG_V("SETUP DEBUG");
     setupBoxBatch();
     setupGrid();
 
-    CI_LOG_V( "SETUP PARTICLES" );
+    CI_LOG_V("SETUP PARTICLES");
     setupParticles();
-    CI_LOG_V( "SETUP PLEXUS" );
+    CI_LOG_V("SETUP PLEXUS");
     setupPlexus();
-    CI_LOG_V( "SETUP TRAIL" );
+    CI_LOG_V("SETUP TRAIL");
     setupTrail();
 
-    CI_LOG_V( "SETUP POINTS" );
+    CI_LOG_V("SETUP POINTS");
     setupPoints();
-    CI_LOG_V( "SETUP SPRITES" );
+    CI_LOG_V("SETUP SPRITES");
     setupSprites();
-    CI_LOG_V( "SETUP LINES" );
+    CI_LOG_V("SETUP LINES");
     setupLines();
-    CI_LOG_V( "SETUP TRAIL POINTS" );
+    CI_LOG_V("SETUP TRAIL POINTS");
     setupTrailPoint();
-    CI_LOG_V( "SETUP RIBBONS" );
+    CI_LOG_V("SETUP RIBBONS");
     setupRibbon();
-    CI_LOG_V( "SETUP PRIMITIVE" );
+    CI_LOG_V("SETUP PRIMITIVE");
     setupPrimitive();
-    CI_LOG_V( "SETUP POST" );
+    CI_LOG_V("SETUP POST");
     setupPost();
-    CI_LOG_V( "SETUP BG" );
+    CI_LOG_V("SETUP BG");
     setupBg();
 
-    CI_LOG_V( "SETUP AUDIO" );
+    CI_LOG_V("SETUP AUDIO");
     setupAudio();
 
-    CI_LOG_V( "SETUP UI" );
+    CI_LOG_V("SETUP UI");
     setupUIs();
 
-    CI_LOG_V( "LOAD SETTINGS" );
-    loadSettings( getAppSupportWorkingSessionPath() );
-    CI_LOG_V( "DONE LOADING" );
+    CI_LOG_V("LOAD SETTINGS");
+    loadSettings(getAppSupportWorkingSessionPath());
+    CI_LOG_V("DONE LOADING");
 }
 
 void Transform::cleanup()
 {
-    auto ctx = audio::Context::master();
-    ctx->disable();
-
-    if( mPrimitiveGeometry != nullptr ) {
+    if (mPrimitiveGeometry != nullptr) {
         delete mPrimitiveGeometry;
     }
 
-    saveSettings( getAppSupportWorkingSessionPath() );
+    saveSettings(getAppSupportWorkingSessionPath());
 }
 
 void Transform::createAssetDirectories()
@@ -536,8 +537,8 @@ void Transform::createAssetDirectories()
     //OUTSIDE THE APP
     auto appAssets = getAppSupportAssetsPath();
 
-    if( !fs::exists( appAssets ) ) {
-        copyDirectory( localAssets, appAssets );
+    if (!fs::exists(appAssets)) {
+        copyDirectory(localAssets, appAssets);
     }
 }
 
@@ -553,10 +554,10 @@ void Transform::createSessionDefaultDirectories()
     auto appDefaultSettingsSession = getAppSupportDefaultSessionSettingsPath();
     auto appDefaultShadersSession = getAppSupportDefaultSessionShadersPath();
 
-    if( !fs::exists( appDefaultSession ) ) {
-        createDirectories( appDefaultSession );
-        copyDirectory( localDefaultSettingsSession, appDefaultSettingsSession );
-        copyDirectory( localDefaultShadersSession, appDefaultShadersSession );
+    if (!fs::exists(appDefaultSession)) {
+        createDirectories(appDefaultSession);
+        copyDirectory(localDefaultSettingsSession, appDefaultSettingsSession);
+        copyDirectory(localDefaultShadersSession, appDefaultShadersSession);
     }
 }
 
@@ -572,10 +573,10 @@ void Transform::createSessionWorkingDirectories()
     auto appWorkingSettingsSession = getAppSupportWorkingSessionSettingsPath();
     auto appWorkingShadersSession = getAppSupportWorkingSessionShadersPath();
 
-    if( !fs::exists( appWorkingSession ) ) {
-        createDirectories( appWorkingSession );
-        copyDirectory( localWorkingSettingsSession, appWorkingSettingsSession );
-        copyDirectory( localWorkingShadersSession, appWorkingShadersSession );
+    if (!fs::exists(appWorkingSession)) {
+        createDirectories(appWorkingSession);
+        copyDirectory(localWorkingSettingsSession, appWorkingSettingsSession);
+        copyDirectory(localWorkingShadersSession, appWorkingShadersSession);
     }
 }
 
@@ -583,136 +584,136 @@ void Transform::openEditor()
 {
     auto shaderPath = getAppSupportWorkingSessionShadersPath();
     string cmd = "cd " + shaderPath.string() + " && open -a /Applications/Sublime\\ Text.app .";
-    system( cmd.c_str() );
+    system(cmd.c_str());
 }
 
 void Transform::save()
 {
-    saveAs( getAppSupportWorkingSessionPath() );
+    saveAs(getAppSupportWorkingSessionPath());
 }
 
-void Transform::saveAs( const fs::path &path )
+void Transform::saveAs(const fs::path &path)
 {
-    createDirectories( path );
-    saveSettings( path );
-    saveShaders( path );
+    createDirectories(path);
+    saveSettings(path);
+    saveShaders(path);
 }
 
-void Transform::saveSettings( const fs::path &path )
+void Transform::saveSettings(const fs::path &path)
 {
-    auto settingsPath = addPath( path, SETTINGS_PATH );
-    saveWindow( addPath( settingsPath, WINDOW_PATH ), mOutputWindowOrigin, mOutputWindowSize, true );
-    saveCamera( addPath( settingsPath, CAMERA_PATH ), mCameraRef->getCameraPersp() );
-    mUIRef->saveUIs( settingsPath );
+    auto settingsPath = addPath(path, SETTINGS_PATH);
+    saveWindow(addPath(settingsPath, WINDOW_PATH), mOutputWindowOrigin, mOutputWindowSize, true);
+    saveCamera(addPath(settingsPath, CAMERA_PATH), mCameraRef->getCameraPersp());
+    mUIRef->saveUIs(settingsPath);
 }
 
-void Transform::saveShaders( const fs::path &path )
+void Transform::saveShaders(const fs::path &path)
 {
-    auto shadersPath = addPath( path, SHADERS_PATH );
-    createDirectory( shadersPath );
-    copyDirectory( getAppSupportWorkingSessionShadersPath(), shadersPath );
+    auto shadersPath = addPath(path, SHADERS_PATH);
+    createDirectory(shadersPath);
+    copyDirectory(getAppSupportWorkingSessionShadersPath(), shadersPath);
 }
 
 void Transform::load()
 {
-    loadAs( getAppSupportWorkingSessionPath() );
+    loadAs(getAppSupportWorkingSessionPath());
 }
 
-void Transform::loadAs( const fs::path &path )
+void Transform::loadAs(const fs::path &path)
 {
-    loadSettings( path );
-    loadShaders( path );
+    loadSettings(path);
+    loadShaders(path);
 }
 
-void Transform::loadSettings( const fs::path &path )
+void Transform::loadSettings(const fs::path &path)
 {
-    auto settingsPath = addPath( path, SETTINGS_PATH );
-    loadWindow( addPath( settingsPath, WINDOW_PATH ), false, [this]( ivec2 origin, ivec2 size, bool closed ) {
-        mOutputWindowRef->setPos( origin );
-        mOutputWindowRef->setSize( size );
-    } );
-    loadCamera( addPath( settingsPath, CAMERA_PATH ), mCameraRef->getCameraPersp(), [this]() { mCameraRef->update(); } );
-    mUIRef->loadUIs( settingsPath );
+    auto settingsPath = addPath(path, SETTINGS_PATH);
+    loadWindow(addPath(settingsPath, WINDOW_PATH), false, [this](ivec2 origin, ivec2 size, bool closed) {
+        if (mOutputWindowRef) {
+            mOutputWindowRef->setPos(origin);
+            mOutputWindowRef->setSize(size);
+        }
+    });
+    loadCamera(addPath(settingsPath, CAMERA_PATH), mCameraRef->getCameraPersp(), [this]() { mCameraRef->update(); });
+    mUIRef->loadUIs(settingsPath);
 }
 
-void Transform::loadShaders( const fs::path &path )
+void Transform::loadShaders(const fs::path &path)
 {
-    auto shadersPath = addPath( path, SHADERS_PATH );
-    copyDirectory( shadersPath, getAppSupportWorkingSessionShadersPath() );
+    auto shadersPath = addPath(path, SHADERS_PATH);
+    copyDirectory(shadersPath, getAppSupportWorkingSessionShadersPath());
 }
 
 void Transform::setupOutputWindow()
 {
     mOutputWindowRef = getWindow();
-    mOutputWindowRef->getSignalClose().connect( [this] { quit(); } );
-    mOutputWindowRef->getSignalDraw().connect( [this] {
+    mOutputWindowRef->getSignalClose().connect([this] { quit(); });
+    mOutputWindowRef->getSignalDraw().connect([this] {
         updateOutput();
         mImageSaverRef->update();
         mSequenceSaverRef->update();
         drawOutput();
         mMovieSaverRef->update();
-    } );
-    mOutputWindowRef->getSignalResize().connect( [this] {
+    });
+    mOutputWindowRef->getSignalResize().connect([this] {
         mOutputWindowSize = mOutputWindowRef->getSize();
-        saveCamera( getAppSupportWorkingSessionSettingsPath( CAMERA_PATH ), mCameraRef->getCameraPersp() );
+        saveCamera(getAppSupportWorkingSessionSettingsPath(CAMERA_PATH), mCameraRef->getCameraPersp());
         mCameraRef->setup();
-        loadCamera( getAppSupportWorkingSessionSettingsPath( CAMERA_PATH ), mCameraRef->getCameraPersp(), [this]() { mCameraRef->update(); } );
+        loadCamera(getAppSupportWorkingSessionSettingsPath(CAMERA_PATH), mCameraRef->getCameraPersp(), [this]() { mCameraRef->update(); });
         setupOutputFbo();
-        if( mRectRendererRef ) {
+        if (mRectRendererRef) {
             mRectRendererRef->setupBatch();
         }
-        if( mBgRendererRef ) {
+        if (mBgRendererRef) {
             mBgRendererRef->setupBatch();
         }
-    } );
+    });
     mOutputWindowRef->getSignalMove().connect(
-        [this] { mOutputWindowOrigin = mOutputWindowRef->getPos(); } );
+        [this] { mOutputWindowOrigin = mOutputWindowRef->getPos(); });
     mOutputWindowRef->getSignalKeyDown().connect(
-        [this]( KeyEvent event ) { keyDownOutput( event ); } );
-    mOutputWindowRef->getSignalMouseDown().connect( [this]( MouseEvent event ) {
-        if( mUIRef ) {
-            if( mUIRef->isHit( event.getPos() ) ) {
-                if( mCameraRef ) {
+        [this](KeyEvent event) { keyDownOutput(event); });
+    mOutputWindowRef->getSignalMouseDown().connect([this](MouseEvent event) {
+        if (mUIRef) {
+            if (mUIRef->isHit(event.getPos())) {
+                if (mCameraRef) {
                     mCameraRef->disable();
                 }
             }
         }
-        mMousePrev = mMouseClick = mMouse = vec2( event.getPos() );
-    } );
-    mOutputWindowRef->getSignalMouseDrag().connect( [this]( MouseEvent event ) {
+        mMousePrev = mMouseClick = mMouse = vec2(event.getPos());
+    });
+    mOutputWindowRef->getSignalMouseDrag().connect([this](MouseEvent event) {
         mMousePrev = mMouse;
         mMouse = event.getPos();
-    } );
-    mOutputWindowRef->getSignalMouseUp().connect( [this]( MouseEvent event ) {
-        mMouse = vec2( 0.0 );
-        if( mCameraRef ) {
+    });
+    mOutputWindowRef->getSignalMouseUp().connect([this](MouseEvent event) {
+        mMouse = vec2(0.0);
+        if (mCameraRef) {
             mCameraRef->enable();
         }
-    } );
+    });
 }
 
 void Transform::setupOutputFbo()
 {
     gl::Fbo::Format fmt;
-    //    fmt.samples( gl::Fbo::getMaxSamples() );
-    mOutputFboRef = gl::Fbo::create( toPixels( mOutputWindowRef->getWidth() ),
-        toPixels( mOutputWindowRef->getHeight() ),
-        fmt );
+//    fmt.samples( gl::Fbo::getMaxSamples() );
+    mOutputFboRef = gl::Fbo::create(toPixels(mOutputWindowRef->getWidth()),
+                                    toPixels(mOutputWindowRef->getHeight()),
+                                    fmt);
 }
 
 void Transform::updateOutput()
 {
     mSeconds += 0.016f;
-    mOutputWindowRef->setTitle( to_string( (int)getAverageFps() ) + " FPS" );
+    mOutputWindowRef->setTitle(to_string((int)getAverageFps()) + " FPS");
     mOutputWindowRef->getRenderer()->makeCurrentContext();
 
-    if( mSequenceSaverRef->isRecording() ) {
+    if (mSequenceSaverRef->isRecording()) {
         mCurrentTime = mSequenceSaverRef->getCurrentTime();
-    }
-    else if( mMovieSaverRef->isRecording() ) {
+    } else if (mMovieSaverRef->isRecording()) {
         mCurrentTime = mMovieSaverRef->getCurrentTime();
-    }
-    else {
+    } else {
         mCurrentTime = mSequenceSaverRef->getCurrentTime();
     }
 
@@ -728,17 +729,17 @@ void Transform::updateOutput()
 
 void Transform::drawOutput()
 {
-    gl::clear( mBgColor );
-    if( mOutputFboRef ) {
+    gl::clear(mBgColor);
+    if (mOutputFboRef) {
         mOutputFboRef->bindFramebuffer();
-        gl::ScopedViewport scpVp( ivec2( 0 ), mOutputFboRef->getSize() );
+        gl::ScopedViewport scpVp(ivec2(0), mOutputFboRef->getSize());
         drawBg();
-        gl::setMatrices( mCameraRef->getCameraPersp() );
-        _drawOutput();
+        gl::setMatrices(mCameraRef->getCameraPersp());
+    _drawOutput();
         mOutputFboRef->unbindFramebuffer();
         drawPost();
     }
-    gl::setMatricesWindow( mOutputWindowRef->getSize() );
+    gl::setMatricesWindow(mOutputWindowRef->getSize());
 }
 
 void Transform::_drawOutput()
@@ -750,40 +751,40 @@ void Transform::_drawOutput()
     drawRenderers();
 }
 
-void Transform::keyDownOutput( KeyEvent event )
+void Transform::keyDownOutput(KeyEvent event)
 {
-    if( event.isMetaDown() || event.isControlDown() ) {
-        switch( event.getCode() ) {
-        case KeyEvent::KEY_p: {
-            mUIRef->toggleUIs();
-        } break;
-        case KeyEvent::KEY_f: {
-            mOutputWindowRef->setFullScreen( !mOutputWindowRef->isFullScreen() );
-            setupOutputFbo();
-        } break;
-        case KeyEvent::KEY_LEFTBRACKET: {
-            mUIRef->minimize();
-            mUIRef->arrange();
-        } break;
-        case KeyEvent::KEY_RIGHTBRACKET: {
-            mUIRef->maximize();
-            mUIRef->arrange();
-        } break;
-        case KeyEvent::KEY_SLASH: {
-            mUIRef->arrange();
-        } break;
+    if (event.isMetaDown() || event.isControlDown()) {
+        switch (event.getCode()) {
+            case KeyEvent::KEY_p: {
+                mUIRef->toggleUIs();
+            } break;
+            case KeyEvent::KEY_f: {
+                mOutputWindowRef->setFullScreen(!mOutputWindowRef->isFullScreen());
+                setupOutputFbo();
+            } break;
+            case KeyEvent::KEY_LEFTBRACKET: {
+                mUIRef->minimize();
+                mUIRef->arrange();
+            } break;
+            case KeyEvent::KEY_RIGHTBRACKET: {
+                mUIRef->maximize();
+                mUIRef->arrange();
+            } break;
+            case KeyEvent::KEY_SLASH: {
+                mUIRef->arrange();
+            } break;
 
-        case KeyEvent::KEY_e: {
-            openEditor();
-        } break;
+            case KeyEvent::KEY_e: {
+                openEditor();
+            } break;
 
-        case KeyEvent::KEY_c: {
-            hideCursor();
-        } break;
+            case KeyEvent::KEY_c: {
+                hideCursor();
+            } break;
 
-        case KeyEvent::KEY_x: {
-            showCursor();
-        } break;
+            case KeyEvent::KEY_x: {
+                showCursor();
+            } break;
         }
     }
 }
@@ -794,150 +795,150 @@ void Transform::setupUIs()
 
     // APP
     mUIRef->setupUI(
-        APP_UI, [this]( UIPanelRef ui ) -> UIPanelRef { return setupAppUI( ui ); } );
-    mUIRef->setupUI( AUDIO_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupAudioUI( ui );
-    } );
+        APP_UI, [this](UIPanelRef ui) -> UIPanelRef { return setupAppUI(ui); });
+    mUIRef->setupUI(AUDIO_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupAudioUI(ui);
+    });
 
-    mUIRef->setupUI( OSC_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupOscUI( ui );
-    } );
+    mUIRef->setupUI(OSC_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupOscUI(ui);
+    });
 
-    mUIRef->setupUI( BACKGROUND_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupBgUI( ui );
-    } );
+    mUIRef->setupUI(BACKGROUND_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupBgUI(ui);
+    });
     mUIRef->setupUI(
-        POST_UI, [this]( UIPanelRef ui ) -> UIPanelRef { return setupPostUI( ui ); } );
-    mUIRef->setupUI( CAMERA_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupCameraUI( ui );
-    } );
-    mUIRef->setupUI( EXPORTER_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupExporterUI( ui );
-    } );
+        POST_UI, [this](UIPanelRef ui) -> UIPanelRef { return setupPostUI(ui); });
+    mUIRef->setupUI(CAMERA_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupCameraUI(ui);
+    });
+    mUIRef->setupUI(EXPORTER_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupExporterUI(ui);
+    });
 
     // SYSTEMS
-    mUIRef->setupUI( PHYSICS_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupPhysicsUI( ui );
-    } );
-    mUIRef->setupUI( PLEXUS_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupPlexusUI( ui );
-    } );
-    mUIRef->setupUI( TRAIL_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupTrailUI( ui );
-    } );
+    mUIRef->setupUI(PHYSICS_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupPhysicsUI(ui);
+    });
+    mUIRef->setupUI(PLEXUS_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupPlexusUI(ui);
+    });
+    mUIRef->setupUI(TRAIL_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupTrailUI(ui);
+    });
 
     // RENDERERS
-    mUIRef->setupUI( SPRITES_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupRendererUI( ui, mSpriteRendererRef );
-    } );
-    mUIRef->setupUI( POINTS_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupRendererUI( ui, mPointRendererRef );
-    } );
-    mUIRef->setupUI( LINES_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupRendererUI( ui, mPlexusRendererRef );
-    } );
-    mUIRef->setupUI( TRAIL_POINTS_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupRendererUI( ui, mTrailPointRendererRef );
-    } );
-    mUIRef->setupUI( RIBBON_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupRendererUI( ui, mRibbonRendererRef );
-    } );
-    mUIRef->setupUI( PRIMITIVE_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupPrimitiveUI( ui, mPrimitiveRendererRef );
-    } );
-    mUIRef->setupUI( PRIMITIVE_GEOMETRY_UI, [this]( UIPanelRef ui ) -> UIPanelRef {
-        return setupPrimitiveGeometryUI( ui );
-    } );
+    mUIRef->setupUI(SPRITES_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupRendererUI(ui, mSpriteRendererRef);
+    });
+    mUIRef->setupUI(POINTS_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupRendererUI(ui, mPointRendererRef);
+    });
+    mUIRef->setupUI(LINES_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupRendererUI(ui, mPlexusRendererRef);
+    });
+    mUIRef->setupUI(TRAIL_POINTS_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupRendererUI(ui, mTrailPointRendererRef);
+    });
+    mUIRef->setupUI(RIBBON_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupRendererUI(ui, mRibbonRendererRef);
+    });
+    mUIRef->setupUI(PRIMITIVE_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupPrimitiveUI(ui, mPrimitiveRendererRef);
+    });
+    mUIRef->setupUI(PRIMITIVE_GEOMETRY_UI, [this](UIPanelRef ui) -> UIPanelRef {
+        return setupPrimitiveGeometryUI(ui);
+    });
 }
 
 void Transform::saveSession()
 {
-    auto rtrim = []( string input, string key ) {
+    auto rtrim = [](string input, string key) {
         string result = "";
-        size_t found = input.rfind( key );
-        if( found != string::npos ) {
-            result = input.substr( 0, found );
+        size_t found = input.rfind(key);
+        if (found != string::npos) {
+            result = input.substr(0, found);
         }
         return result;
     };
 
     auto prePath = mDefaultSaveLoadPath;
-    auto pth = getSaveFilePath( prePath );
-    if( !pth.empty() ) {
-        if( createDirectory( pth ) ) {
-            mDefaultSaveLoadPath = fs::path( rtrim( pth.string(), "/" ) );
-            saveAs( pth );
+    auto pth = getSaveFilePath(prePath);
+    if (!pth.empty()) {
+        if (createDirectory(pth)) {
+            mDefaultSaveLoadPath = fs::path(rtrim(pth.string(), "/"));
+            saveAs(pth);
         }
     }
 }
 
 void Transform::loadSession()
 {
-    auto pth = getFolderPath( mDefaultSaveLoadPath );
-    if( !pth.empty() ) {
-        copyDirectory( addPath( pth, "Settings" ), getAppSupportWorkingSessionSettingsPath() );
-        copyDirectory( addPath( pth, "Shaders" ), getAppSupportWorkingSessionShadersPath() );
+    auto pth = getFolderPath(mDefaultSaveLoadPath);
+    if (!pth.empty()) {
+        copyDirectory(addPath(pth, "Settings"), getAppSupportWorkingSessionSettingsPath());
+        copyDirectory(addPath(pth, "Shaders"), getAppSupportWorkingSessionShadersPath());
 
-        for( auto &it : mSystems ) {
+        for (auto &it : mSystems) {
             it->setupGlsl();
-            it->setInitialized( false );
+            it->setInitialized(false);
         }
 
-        for( auto &it : mRenderers ) {
+        for (auto &it : mRenderers) {
             it->setupGlsl();
-            it->setInitialized( false );
+            it->setInitialized(false);
         }
 
         mDefaultSaveLoadPath = pth.parent_path();
     }
 }
 
-UIPanelRef Transform::setupAppUI( UIPanelRef ui )
+UIPanelRef Transform::setupAppUI(UIPanelRef ui)
 {
     ui->clear();
     ui->addSpacer();
-    ui->addButton( "SAVE SESSION", false )->setCallback( [this]( bool value ) {
-        if( value ) {
+    ui->addButton("SAVE SESSION", false)->setCallback([this](bool value) {
+        if (value) {
             saveSession();
         }
-    } );
+    });
 
-    ui->addButton( "LOAD SESSION", false )->setCallback( [this]( bool value ) {
-        if( value ) {
+    ui->addButton("LOAD SESSION", false)->setCallback([this](bool value) {
+        if (value) {
             loadSession();
-            loadSettings( getAppSupportWorkingSessionPath() );
+            loadSettings(getAppSupportWorkingSessionPath());
         }
-    } );
+    });
 
     ui->addSpacer();
 
-    ui->addButton( "OPEN EDITOR", false )->setCallback( [this]( bool value ) {
-        if( value ) {
+    ui->addButton("OPEN EDITOR", false)->setCallback([this](bool value) {
+        if (value) {
             openEditor();
         }
-    } );
+    });
 
     ui->addSpacer();
-    auto clrfmt = ColorPicker::Format().label( false );
-    ui->addColorPicker( "BACKGROUND COLOR", &mBgColor );
-    ui->addColorPicker( "BOX COLOR", &mBoxColor, clrfmt );
+    auto clrfmt = ColorPicker::Format().label(false);
+    ui->addColorPicker("BACKGROUND COLOR", &mBgColor);
+    ui->addColorPicker("BOX COLOR", &mBoxColor, clrfmt);
     ui->right();
-    ui->addToggle( "DRAW BOX", &mDrawBox );
+    ui->addToggle("DRAW BOX", &mDrawBox);
     ui->down();
     ui->addSpacer();
-    ui->addColorPicker( "GRID LINES COLOR", &mGridLinesColor, clrfmt );
+    ui->addColorPicker("GRID LINES COLOR", &mGridLinesColor, clrfmt);
     ui->right();
-    ui->addToggle( "DRAW GRID LINES", &mDrawGridLines );
+    ui->addToggle("DRAW GRID LINES", &mDrawGridLines);
     ui->down();
-    ui->addColorPicker( "GRID POINTS COLOR", &mGridPointsColor, clrfmt );
+    ui->addColorPicker("GRID POINTS COLOR", &mGridPointsColor, clrfmt);
     ui->right();
-    ui->addToggle( "DRAW GRID POINTS", &mDrawGridPoints );
+    ui->addToggle("DRAW GRID POINTS", &mDrawGridPoints);
     ui->down();
     ui->addSpacer();
     return ui;
 }
 
-UIPanelRef Transform::setupAudioUI( UIPanelRef ui )
+UIPanelRef Transform::setupAudioUI(UIPanelRef ui)
 {
     ui->clear();
     ui->addSpacer();
@@ -945,331 +946,326 @@ UIPanelRef Transform::setupAudioUI( UIPanelRef ui )
     map<string, string> shortToLongMap;
     vector<string> names;
     auto devices = audio::Device::getInputDevices();
-    for( auto &it : devices ) {
+    for (auto &it : devices) {
         string name = it->getName();
-        if( name.length() > 35 ) {
-            string shortName = name.substr( 0, 35 );
-            names.push_back( shortName );
+        if (name.length() > 35) {
+            string shortName = name.substr(0, 35);
+            names.push_back(shortName);
             shortToLongMap[shortName] = name;
-        }
-        else {
-            names.push_back( name );
+        } else {
+            names.push_back(name);
             shortToLongMap[name] = name;
         }
     }
 
-    auto rfmt = Radio::Format().direction( Direction::SOUTH );
+    auto rfmt = Radio::Format().direction(Direction::SOUTH);
 
-    auto input = ui->addRadio( "INPUT", names, rfmt );
-    input->setCallback( [this, shortToLongMap]( string name, bool value ) {
-        if( value ) {
-            auto ctx = audio::Context::master();
-            auto it = shortToLongMap.find( name );
-            if( it != shortToLongMap.end() ) {
-                audio::DeviceRef device = audio::Device::findDeviceByName( it->second );
-                mInputDeviceNode = ctx->createInputDeviceNode( device );
-                mInputDeviceNode >> mMonitorSpectralNode;
-                mInputDeviceNode->enable();
-                ctx->enable();
+    auto input = ui->addRadio("INPUT", names, rfmt);
+    input->setCallback([this, shortToLongMap](string name, bool value) {
+        if (value) {
+            auto it = shortToLongMap.find(name);
+            if (it != shortToLongMap.end()) {
+                auto longName = it->second;
+                cout << longName << endl;
+//                mMonitorSpectralNode->disconnectAll();
+//                mInputDeviceNode->disconnectAll();
             }
         }
-    } );
+    });
 
     ui->addSpacer();
-    ui->addTexture( "AMPLITUDE", mAmplitudeTextureRef, TextureView::Format().height( 32 ) );
-    ui->addTexture( "SPECTRUM", mSpectrumTextureRef, TextureView::Format().height( 32 ) );
-    ui->setTriggerOnLoad( false );
+    ui->addTexture("AMPLITUDE", mAmplitudeTextureRef, TextureView::Format().height(32));
+    ui->addTexture("SPECTRUM", mSpectrumTextureRef, TextureView::Format().height(32));
+    ui->setTriggerOnLoad(false);
     return ui;
 }
 
-UIPanelRef Transform::setupOscUI( UIPanelRef ui )
+UIPanelRef Transform::setupOscUI(UIPanelRef ui)
 {
     ui->clear();
     ui->addSpacer();
-    auto dialer = ui->addDialeri( "PORT", &mOscPort, 0, 65535 );
-    dialer->setTrigger( Trigger::END );
-    dialer->setCallback( [this]( int value ) {
+    auto dialer = ui->addDialeri("PORT", &mOscPort, 0, 65535);
+    dialer->setTrigger(Trigger::END);
+    dialer->setCallback([this](int value) {
         setupOsc();
-    } );
+    });
     return ui;
 }
 
-UIPanelRef Transform::setupPostUI( UIPanelRef ui )
+UIPanelRef Transform::setupPostUI(UIPanelRef ui)
 {
     return ui;
 }
 
-UIPanelRef Transform::setupBgUI( UIPanelRef ui )
+UIPanelRef Transform::setupBgUI(UIPanelRef ui)
 {
     return ui;
 }
 
-UIPanelRef Transform::setupCameraUI( UIPanelRef ui )
+UIPanelRef Transform::setupCameraUI(UIPanelRef ui)
 {
     ui->clear();
     ui->addSpacer();
-    ui->addButton( "RESET CAMERA", false )->setCallback( [this]( bool value ) {
-        if( value ) {
+    ui->addButton("RESET CAMERA", false)->setCallback([this](bool value) {
+        if (value) {
             mCameraRef->setup();
         }
-    } );
-    ui->addSliderf( "FOV", &mCameraRef->getFov(), 0.0f, 180.0f )
-        ->setCallback( [this]( float value ) { mCameraRef->update(); } );
+    });
+    ui->addSliderf("FOV", &mCameraRef->getFov(), 0.0f, 180.0f)
+        ->setCallback([this](float value) { mCameraRef->update(); });
 
     return ui;
 }
 
-UIPanelRef Transform::setupExporterUI( UIPanelRef ui )
+UIPanelRef Transform::setupExporterUI(UIPanelRef ui)
 {
     ui->clear();
     ui->addSpacer();
-    ui->addButton( "SAVE IMAGE AS", false )->setCallback( [this]( bool value ) {
-        if( value ) {
-            fs::path path = ci::app::getSaveFilePath( mDefaultRenderPath );
-            if( !path.empty() ) {
+    ui->addButton("SAVE IMAGE AS", false)->setCallback([this](bool value) {
+        if (value) {
+            fs::path path = ci::app::getSaveFilePath(mDefaultRenderPath);
+            if (!path.empty()) {
                 mDefaultRenderPath = path.parent_path();
                 string filename = path.filename().string();
                 string ext = path.extension().string();
-                string dir = path.parent_path().string() + "/";
+                string dir = path.parent_path().string();
 
-                fs::path opath = fs::path( dir );
-                auto it = filename.find( "." );
-                if( it != string::npos ) {
-                    filename = filename.substr( 0, it );
+                fs::path opath = fs::path(dir);
+                auto it = filename.find(".");
+                if (it != string::npos) {
+                    filename = filename.substr(0, it);
                 }
-                vector<string> extensions = { "png", "jpg", "tif" };
+                vector<string> extensions = {"png", "jpg", "tif"};
                 bool valid = false;
-                for( auto it : extensions ) {
-                    if( it == ext ) {
+                for (auto it : extensions) {
+                    if (it == ext) {
                         valid = true;
                         break;
                     }
                 }
-                if( !valid ) {
+                if (!valid) {
                     ext = "png";
                 }
-                dispatchSync( [this, opath, filename, ext]() {
-                    saveAs( addPath( opath, filename ) );
-                    mImageSaverRef->save( mCameraRef->getCameraPersp(), opath, filename, ext );
-                } );
+                dispatchSync([this, opath, filename, ext]() {
+                    //                    saveAs( addPath( opath, filename ) );
+                    mImageSaverRef->save(mCameraRef->getCameraPersp(), opath, filename, ext);
+                });
             }
         }
-    } );
+    });
     ui->down();
-    ui->addDialeri( "OUTPUT IMAGE SCALE", mImageSaverRef->getSizeMultiplier(), 1, 20 )
-        ->setCallback( [this]( int value ) {
-            mImageSaverRef->setSizeMultiplier( value );
-            mSequenceSaverRef->setSizeMultiplier( value );
-        } );
+    ui->addDialeri("OUTPUT IMAGE SCALE", mImageSaverRef->getSizeMultiplier(), 1, 20)
+        ->setCallback([this](int value) {
+            mImageSaverRef->setSizeMultiplier(value);
+            mSequenceSaverRef->setSizeMultiplier(value);
+        });
 
     ui->addSpacer();
-    ui->addButton( "RENDER", false )->setCallback( [this]( bool value ) {
-        if( value && ( mSaveMovie || mSaveSequence ) ) {
-            fs::path path = getSaveFilePath( mDefaultMoviePath );
-            if( !path.empty() ) {
+    ui->addButton("RENDER", false)->setCallback([this](bool value) {
+        if (value && (mSaveMovie || mSaveSequence)) {
+            fs::path path = getSaveFilePath(mDefaultMoviePath);
+            if (!path.empty()) {
                 mDefaultMoviePath = path.parent_path();
 
                 string filename = path.filename().string();
                 string dir = path.parent_path().string();
                 fs::path opath = path.parent_path();
 
-                auto it = filename.rfind( "." );
-                if( it != string::npos ) {
-                    filename = filename.substr( 0, it );
+                auto it = filename.rfind(".");
+                if (it != string::npos) {
+                    filename = filename.substr(0, it);
                 }
 
-                auto savePath = addPath( opath, filename );
+                auto savePath = addPath(opath, filename);
                 cout << "savePath: " << savePath << endl;
                 //                saveAs( savePath );
 
-                if( mSaveMovie ) {
-                    mMovieSaverRef->save( opath, filename, "mov" );
+                if (mSaveMovie) {
+                    mMovieSaverRef->save(opath, filename, "mov");
                 }
 
-                if( mSaveSequence ) {
-                    mSequenceSaverRef->save( mCameraRef->getCameraPersp(),
-                        addPath( opath, filename ),
-                        filename,
-                        "png" );
+                if (mSaveSequence) {
+                    mSequenceSaverRef->save(mCameraRef->getCameraPersp(),
+                                            addPath(opath, filename),
+                                            filename,
+                                            "png");
                 }
             }
         }
-    } );
+    });
     ui->right();
-    ui->addToggle( "MOV", &mSaveMovie );
-    ui->addToggle( "PNG", &mSaveSequence );
-    ui->addDialeri( "FRAMES", &mTotalFrames, 0, 99999, Dialeri::Format().label( false ) )
-        ->setCallback( [this]( int value ) {
-            mMovieSaverRef->setTotalFrames( value );
-            mSequenceSaverRef->setTotalFrames( value );
-        } );
+    ui->addToggle("MOV", &mSaveMovie);
+    ui->addToggle("PNG", &mSaveSequence);
+    ui->addDialeri("FRAMES", &mTotalFrames, 0, 99999, Dialeri::Format().label(false))
+        ->setCallback([this](int value) {
+            mMovieSaverRef->setTotalFrames(value);
+            mSequenceSaverRef->setTotalFrames(value);
+        });
     ui->down();
-    ui->setSliderHeight( 8 );
-    ui->addSliderf( "PROGRESS", &mCurrentTime, 0.0, 1.0, Sliderf::Format().label( false ) );
+    ui->setSliderHeight(8);
+    ui->addSliderf("PROGRESS", &mCurrentTime, 0.0, 1.0, Sliderf::Format().label(false));
     ui->addSpacer();
-    ui->addButton( "EXPORT PLY", false )->setCallback( [this]( bool value ) {
-        if( value ) {
-            fs::path path = getSaveFilePath( mDefaultExportPath );
-            if( !path.empty() ) {
+    ui->addButton("EXPORT PLY", false)->setCallback([this](bool value) {
+        if (value) {
+            fs::path path = getSaveFilePath(mDefaultExportPath);
+            if (!path.empty()) {
                 mDefaultExportPath = path.parent_path();
                 string filename = path.filename().string();
-                string dir = path.parent_path().string() + "/";
-                fs::path opath = fs::path( dir );
-                auto it = filename.rfind( "." );
-                if( it != string::npos ) {
-                    filename = filename.substr( 0, it );
+                string dir = path.parent_path().string() + fs::path::preferred_separator;
+                fs::path opath = fs::path(dir);
+                auto it = filename.rfind(".");
+                if (it != string::npos) {
+                    filename = filename.substr(0, it);
                 }
-                saveAs( addPath( opath, filename ) );
-                exportPoints( opath, filename );
+                exportPoints(opath, filename);
             }
         }
-    } );
+    });
     return ui;
 }
 
-UIPanelRef Transform::setupRendererUI( UIPanelRef ui,
-    reza::ps::RendererRef rendererRef )
+UIPanelRef Transform::setupRendererUI(UIPanelRef ui,
+                                      reza::ps::RendererRef rendererRef)
 {
 #if USE_WINDOW_CANVAS
 #else
     ui->addSpacer();
 #endif
-    ui->addToggle( "DRAW", &rendererRef->mDraw );
-    ui->addToggle( "ADDITIVE BLENDING", &rendererRef->mAdditiveBlending );
-    ui->addToggle( "DEPTH WRITE", &rendererRef->mDepthWrite );
-    ui->addToggle( "DEPTH READ", &rendererRef->mDepthTest );
+    ui->addToggle("DRAW", &rendererRef->mDraw);
+    ui->addToggle("ADDITIVE BLENDING", &rendererRef->mAdditiveBlending);
+    ui->addToggle("DEPTH WRITE", &rendererRef->mDepthWrite);
+    ui->addToggle("DEPTH READ", &rendererRef->mDepthTest);
     ui->addSpacer();
     return ui;
 }
 
-UIPanelRef Transform::setupPrimitiveUI( UIPanelRef ui,
-    reza::ps::RendererRef rendererRef )
+UIPanelRef Transform::setupPrimitiveUI(UIPanelRef ui,
+                                       reza::ps::RendererRef rendererRef)
 {
-    setupRendererUI( ui, rendererRef );
+    setupRendererUI(ui, rendererRef);
     map<int, string> types = {
-        { 0, "Rect" },
-        { 1, "RoundedRect" },
-        { 2, "Cube" },
-        { 3, "Icosahedron" },
-        { 4, "Icosphere" },
-        { 5, "Teapot" },
-        { 6, "Circle" },
-        { 7, "Ring" },
-        { 8, "Sphere" },
-        { 9, "Capsule" },
-        { 10, "Torus" },
-        { 11, "TorusKnot" },
-        { 12, "Helix" },
-        { 13, "Cylinder" },
-        { 14, "Cone" },
-        { 15, "Plane" }
-    };
-    auto slider = ui->addSlideri( "TYPE", &mPrimitiveType, 0, (int)types.size() - 1 );
-    slider->setTrigger( Trigger::END );
-    slider->setCallback( [this, types]( int value ) {
-        auto it = types.find( mPrimitiveType );
-        if( it != types.end() ) {
-            auto ui = mUIRef->getUI( PRIMITIVE_GEOMETRY_UI );
-            if( ui ) {
+        {0, "Rect"},
+        {1, "RoundedRect"},
+        {2, "Cube"},
+        {3, "Icosahedron"},
+        {4, "Icosphere"},
+        {5, "Teapot"},
+        {6, "Circle"},
+        {7, "Ring"},
+        {8, "Sphere"},
+        {9, "Capsule"},
+        {10, "Torus"},
+        {11, "TorusKnot"},
+        {12, "Helix"},
+        {13, "Cylinder"},
+        {14, "Cone"},
+        {15, "Plane"}};
+    auto slider = ui->addSlideri("TYPE", &mPrimitiveType, 0, (int)types.size() - 1);
+    slider->setTrigger(Trigger::END);
+    slider->setCallback([this, types](int value) {
+        auto it = types.find(mPrimitiveType);
+        if (it != types.end()) {
+            auto ui = mUIRef->getUI(PRIMITIVE_GEOMETRY_UI);
+            if (ui) {
                 ui->clear();
                 bool minified = ui->isMinified();
-                setupPrimitiveGeometryUI( ui );
-                ui->setMinified( minified );
+                setupPrimitiveGeometryUI(ui);
+                ui->setMinified(minified);
             }
         }
-    } );
+    });
     return ui;
 }
 
-UIPanelRef Transform::setupPrimitiveGeometryUI( UIPanelRef ui )
+UIPanelRef Transform::setupPrimitiveGeometryUI(UIPanelRef ui)
 {
-    auto cbf = [this]( float value ) {
+    auto cbf = [this](float value) {
         mUpdatePrimitiveGeometry = true;
     };
-    auto cbi = [this]( int value ) {
+    auto cbi = [this](int value) {
         mUpdatePrimitiveGeometry = true;
     };
 
-    switch( mPrimitiveType ) {
-    case RECT: {
-    } break;
-    case ROUNDEDRECT: {
-        ui->addSliderf( "CORNER RADIUS", &mRoundedRectCornerRadius )->setCallback( cbf );
-        ui->addSlideri( "DIVISIONS", &mRoundedRectCornerSubdivisions, 0, 100 )->setCallback( cbi );
-    } break;
-    case CUBE: {
-        ui->addSlideri( "DIVISIONS", &mCubeSubdivisions, 0, 400 )->setCallback( cbi );
-    } break;
-    case ICOSAHEDRON: {
-    } break;
-    case ICOSPHERE: {
-        ui->addSlideri( "DIVISIONS", &mIcoSphereSubdivisions, 0, 6 )->setCallback( cbi );
-    } break;
-    case TEAPOT: {
-        ui->addSlideri( "DIVISIONS", &mTeapotSubdivisions, 0, 12 )->setCallback( cbi );
-    } break;
-    case CIRCLE: {
-        ui->addSlideri( "DIVISIONS", &mCircleSubdivisions, 0, 200 )->setCallback( cbi );
-    } break;
-    case RING: {
-        //RING
-        ui->addSlideri( "DIVISIONS", &mRingSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSliderf( "RADIUS", &mRingRadius )->setCallback( cbf );
-        ui->addSliderf( "WIDTH", &mRingWidth )->setCallback( cbf );
-    } break;
-    case SPHERE: {
-        ui->addSlideri( "DIVISIONS", &mSphereSubdivisions, 0, 200 )->setCallback( cbi );
-    } break;
-    case CAPSULE: {
-        ui->addSlideri( "AXIS DIVISIONS", &mCapsuleAxisSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSlideri( "HEIGHT DIVISIONS", &mCapsuleHeightSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSliderf( "RADIUS", &mCapsuleRadius )->setCallback( cbf );
-        ui->addSliderf( "LENGTH", &mCapsuleLength )->setCallback( cbf );
-    } break;
-    case TORUS: {
-        ui->addSlideri( "AXIS DIVISIONS", &mTorusAxisSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSlideri( "HEIGHT DIVISIONS", &mTorusHeightSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSliderf( "MINOR RADIUS", &mTorusMinorRadius )->setCallback( cbf );
-        ui->addSliderf( "MAJOR RADIUS", &mTorusMajorRadius )->setCallback( cbf );
-        ui->addSlideri( "TWIST", &mTorusTwist, 0, 200 )->setCallback( cbi );
-        ui->addSliderf( "TWIST OFFSET", &mTorusTwistOffset, 0, M_PI )->setCallback( cbf );
-    } break;
-    case TORUSKNOT: {
-        ui->addSlideri( "AXIS DIVISIONS", &mTorusKnotAxisSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSlideri( "HEIGHT DIVISIONS", &mTorusKnotHeightSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSliderf( "RADIUS", &mTorusKnotRadius )->setCallback( cbf )->setCallback( cbf );
-        ui->addSlideri( "P", &mTorusKnotP, 0, 20 )->setCallback( cbi );
-        ui->addSlideri( "Q", &mTorusKnotQ, 0, 20 )->setCallback( cbi );
-    } break;
-    case HELIX: {
-        ui->addSlideri( "AXIS DIVISIONS", &mHelixAxisSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSlideri( "HEIGHT DIVISIONS", &mHelixHeightSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSliderf( "MINOR RADIUS", &mHelixMinorRadius )->setCallback( cbf );
-        ui->addSliderf( "MAJOR RADIUS", &mHelixMajorRadius )->setCallback( cbf );
-        ui->addSliderf( "COILS", &mHelixCoils, 0, 10 )->setCallback( cbf );
-        ui->addSliderf( "HEIGHT", &mHelixHeight, 0.0, 5.0 )->setCallback( cbf );
-        ui->addSlideri( "TWIST", &mHelixTwist, 0, 200 )->setCallback( cbi );
-        ui->addSliderf( "TWIST OFFSET", &mHelixTwistOffset, 0, M_PI )->setCallback( cbf );
-    } break;
-    case CYLINDER: {
-        ui->addSlideri( "AXIS DIVISIONS", &mCylinderAxisSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSlideri( "HEIGHT DIVISIONS", &mCylinderHeightSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSlideri( "CAP DIVISIONS", &mCylinderCapSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSliderf( "RADIUS", &mCylinderRadius )->setCallback( cbf );
-        ui->addSliderf( "HEIGHT", &mCylinderHeight )->setCallback( cbf );
-    } break;
-    case CONE: {
-        ui->addSlideri( "AXIS DIVISIONS", &mConeAxisSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSlideri( "HEIGHT DIVISIONS", &mConeHeightSubdivisions, 0, 200 )->setCallback( cbi );
-        ui->addSliderf( "APEX RADIUS", &mConeApexRadius )->setCallback( cbf );
-        ui->addSliderf( "BASE RADIUS", &mConeBaseRadius )->setCallback( cbf );
-        ui->addSliderf( "HEIGHT", &mConeHeight, 0, 2.0 )->setCallback( cbf );
-    } break;
-    case PLANE: {
-        ui->addSlideri( "DIVISIONS", &mPlaneSubdivisions, 0, 200 )->setCallback( cbi );
-    } break;
-    default:
-        break;
+    switch (mPrimitiveType) {
+        case RECT: {
+        } break;
+        case ROUNDEDRECT: {
+            ui->addSliderf("CORNER RADIUS", &mRoundedRectCornerRadius)->setCallback(cbf);
+            ui->addSlideri("DIVISIONS", &mRoundedRectCornerSubdivisions, 0, 100)->setCallback(cbi);
+        } break;
+        case CUBE: {
+            ui->addSlideri("DIVISIONS", &mCubeSubdivisions, 0, 400)->setCallback(cbi);
+        } break;
+        case ICOSAHEDRON: {
+        } break;
+        case ICOSPHERE: {
+            ui->addSlideri("DIVISIONS", &mIcoSphereSubdivisions, 0, 6)->setCallback(cbi);
+        } break;
+        case TEAPOT: {
+            ui->addSlideri("DIVISIONS", &mTeapotSubdivisions, 0, 12)->setCallback(cbi);
+        } break;
+        case CIRCLE: {
+            ui->addSlideri("DIVISIONS", &mCircleSubdivisions, 0, 200)->setCallback(cbi);
+        } break;
+        case RING: {
+            //RING
+            ui->addSlideri("DIVISIONS", &mRingSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSliderf("RADIUS", &mRingRadius)->setCallback(cbf);
+            ui->addSliderf("WIDTH", &mRingWidth)->setCallback(cbf);
+        } break;
+        case SPHERE: {
+            ui->addSlideri("DIVISIONS", &mSphereSubdivisions, 0, 200)->setCallback(cbi);
+        } break;
+        case CAPSULE: {
+            ui->addSlideri("AXIS DIVISIONS", &mCapsuleAxisSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSlideri("HEIGHT DIVISIONS", &mCapsuleHeightSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSliderf("RADIUS", &mCapsuleRadius)->setCallback(cbf);
+            ui->addSliderf("LENGTH", &mCapsuleLength)->setCallback(cbf);
+        } break;
+        case TORUS: {
+            ui->addSlideri("AXIS DIVISIONS", &mTorusAxisSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSlideri("HEIGHT DIVISIONS", &mTorusHeightSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSliderf("MINOR RADIUS", &mTorusMinorRadius)->setCallback(cbf);
+            ui->addSliderf("MAJOR RADIUS", &mTorusMajorRadius)->setCallback(cbf);
+            ui->addSlideri("TWIST", &mTorusTwist, 0, 200)->setCallback(cbi);
+            ui->addSliderf("TWIST OFFSET", &mTorusTwistOffset, 0, M_PI)->setCallback(cbf);
+        } break;
+        case TORUSKNOT: {
+            ui->addSlideri("AXIS DIVISIONS", &mTorusKnotAxisSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSlideri("HEIGHT DIVISIONS", &mTorusKnotHeightSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSliderf("RADIUS", &mTorusKnotRadius)->setCallback(cbf)->setCallback(cbf);
+            ui->addSlideri("P", &mTorusKnotP, 0, 20)->setCallback(cbi);
+            ui->addSlideri("Q", &mTorusKnotQ, 0, 20)->setCallback(cbi);
+        } break;
+        case HELIX: {
+            ui->addSlideri("AXIS DIVISIONS", &mHelixAxisSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSlideri("HEIGHT DIVISIONS", &mHelixHeightSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSliderf("MINOR RADIUS", &mHelixMinorRadius)->setCallback(cbf);
+            ui->addSliderf("MAJOR RADIUS", &mHelixMajorRadius)->setCallback(cbf);
+            ui->addSliderf("COILS", &mHelixCoils, 0, 10)->setCallback(cbf);
+            ui->addSliderf("HEIGHT", &mHelixHeight, 0.0, 5.0)->setCallback(cbf);
+            ui->addSlideri("TWIST", &mHelixTwist, 0, 200)->setCallback(cbi);
+            ui->addSliderf("TWIST OFFSET", &mHelixTwistOffset, 0, M_PI)->setCallback(cbf);
+        } break;
+        case CYLINDER: {
+            ui->addSlideri("AXIS DIVISIONS", &mCylinderAxisSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSlideri("HEIGHT DIVISIONS", &mCylinderHeightSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSlideri("CAP DIVISIONS", &mCylinderCapSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSliderf("RADIUS", &mCylinderRadius)->setCallback(cbf);
+            ui->addSliderf("HEIGHT", &mCylinderHeight)->setCallback(cbf);
+        } break;
+        case CONE: {
+            ui->addSlideri("AXIS DIVISIONS", &mConeAxisSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSlideri("HEIGHT DIVISIONS", &mConeHeightSubdivisions, 0, 200)->setCallback(cbi);
+            ui->addSliderf("APEX RADIUS", &mConeApexRadius)->setCallback(cbf);
+            ui->addSliderf("BASE RADIUS", &mConeBaseRadius)->setCallback(cbf);
+            ui->addSliderf("HEIGHT", &mConeHeight, 0, 2.0)->setCallback(cbf);
+        } break;
+        case PLANE: {
+            ui->addSlideri("DIVISIONS", &mPlaneSubdivisions, 0, 200)->setCallback(cbi);
+        } break;
+        default:
+            break;
     }
 
     mUpdatePrimitiveGeometry = true;
@@ -1277,55 +1273,55 @@ UIPanelRef Transform::setupPrimitiveGeometryUI( UIPanelRef ui )
     return ui;
 }
 
-UIPanelRef Transform::setupSystemUI( UIPanelRef ui, SystemRef systemRef )
+UIPanelRef Transform::setupSystemUI(UIPanelRef ui, SystemRef systemRef)
 {
 #if USE_WINDOW_CANVAS
 #else
     ui->addSpacer();
 #endif
-    ui->addButton( "RESET", false )->setCallback( [this, systemRef]( bool value ) {
-        if( value ) {
+    ui->addButton("RESET", false)->setCallback([this, systemRef](bool value) {
+        if (value) {
             systemRef->reset();
         }
-    } );
+    });
 
-    ui->addToggle( "UPDATE", systemRef->getUpdate() )
+    ui->addToggle("UPDATE", systemRef->getUpdate())
         ->setCallback(
-            [this, systemRef]( bool value ) { systemRef->setUpdate( value ); } );
+            [this, systemRef](bool value) { systemRef->setUpdate(value); });
     return ui;
 }
 
-UIPanelRef Transform::setupPhysicsUI( UIPanelRef ui )
+UIPanelRef Transform::setupPhysicsUI(UIPanelRef ui)
 {
-    setupSystemUI( ui, mParticleSystemRef );
-    auto numparticles = ui->addDialeri( "PARTICLES", mParticleSystemRef->getTotal(), 0, 1000000 );
-    numparticles->setTrigger( Trigger::END );
-    numparticles->setCallback( [this]( int value ) {
-//        if( mParticleTotal != value ) {
-            mParticleTotal = value;
-            mUpdateParticleTotal = true;
-//        }
-    } );
+    setupSystemUI(ui, mParticleSystemRef);
+    auto numparticles = ui->addDialeri("PARTICLES", mParticleSystemRef->getTotal(), 1, 1000000);
+    numparticles->setTrigger(Trigger::END);
+    numparticles->setCallback([this](int value) {
+        //        if( mParticleTotal != value ) {
+        mParticleTotal = value;
+        mUpdateParticleTotal = true;
+        //        }
+    });
     ui->addSpacer();
     return ui;
 }
 
-UIPanelRef Transform::setupTrailUI( UIPanelRef ui )
+UIPanelRef Transform::setupTrailUI(UIPanelRef ui)
 {
-    setupSystemUI( ui, mTrailSystemRef );
-    auto trailLength = ui->addDialeri( "TOTAL", mTrailSystemRef->getTotal(), 0, 1000 );
-    trailLength->setTrigger( Trigger::END );
-    trailLength->setCallback( [this]( int value ) {
+    setupSystemUI(ui, mTrailSystemRef);
+    auto trailLength = ui->addDialeri("TOTAL", mTrailSystemRef->getTotal(), 0, 1000);
+    trailLength->setTrigger(Trigger::END);
+    trailLength->setCallback([this](int value) {
         mUpdateTrailTotal = true;
         mTrailTotal = value;
-    } );
+    });
     ui->addSpacer();
     return ui;
 }
 
-UIPanelRef Transform::setupPlexusUI( UIPanelRef ui )
+UIPanelRef Transform::setupPlexusUI(UIPanelRef ui)
 {
-    setupSystemUI( ui, mPlexusSystemRef );
+    setupSystemUI(ui, mPlexusSystemRef);
     ui->addSpacer();
     return ui;
 }
@@ -1333,17 +1329,17 @@ UIPanelRef Transform::setupPlexusUI( UIPanelRef ui )
 void Transform::setupBoxBatch()
 {
     mOutputWindowRef->getRenderer()->makeCurrentContext();
-    mBoxBatchRef = gl::Batch::create( geom::WireCube().size( mBoxSize * 2.0f ),
-        gl::getStockShader( gl::ShaderDef().color() ) );
+    mBoxBatchRef = gl::Batch::create(geom::WireCube().size(mBoxSize * 2.0f),
+                                     gl::getStockShader(gl::ShaderDef().color()));
 }
 
 void Transform::drawBoxBatch()
 {
-    if( mDrawBox ) {
+    if (mDrawBox) {
         gl::ScopedBlendAdditive scpAdd;
-        gl::ScopedColor scpClr( mBoxColor );
-        gl::ScopedDepthTest scpDrd( true );
-        gl::ScopedDepthWrite scpDwt( true );
+        gl::ScopedColor scpClr(mBoxColor);
+        gl::ScopedDepthTest scpDrd(true);
+        gl::ScopedDepthWrite scpDwt(true);
         mBoxBatchRef->draw();
     }
 }
@@ -1351,74 +1347,74 @@ void Transform::drawBoxBatch()
 void Transform::setupGrid()
 {
     mOutputWindowRef->getRenderer()->makeCurrentContext();
-    if( mBoxSize.x > 0 && mBoxSize.y > 0 && mBoxSize.z > 0 ) {
+    if (mBoxSize.x > 0 && mBoxSize.y > 0 && mBoxSize.z > 0) {
         auto geo = geom::WirePlane()
-                       .normal( vec3( 0.0f, 0.0f, 1.0f ) )
-                       .size( 2.0f * vec2( mBoxSize.x, mBoxSize.y ) )
-                       .subdivisions( ivec2( mGridSubdivisons ) );
-        auto glsl = gl::getStockShader( gl::ShaderDef().color() );
-        mGridLinesBatchRef = gl::Batch::create( geo, glsl );
+                       .normal(vec3(0.0f, 0.0f, 1.0f))
+                       .size(2.0f * vec2(mBoxSize.x, mBoxSize.y))
+                       .subdivisions(ivec2(mGridSubdivisons));
+        auto glsl = gl::getStockShader(gl::ShaderDef().color());
+        mGridLinesBatchRef = gl::Batch::create(geo, glsl);
 
-        float incX = mBoxSize.x * 2.0f / float( mGridSubdivisons );
-        float incY = mBoxSize.y * 2.0f / float( mGridSubdivisons );
+        float incX = mBoxSize.x * 2.0f / float(mGridSubdivisons);
+        float incY = mBoxSize.y * 2.0f / float(mGridSubdivisons);
         gl::VertBatch verts;
-        for( float y = -mBoxSize.y; y <= mBoxSize.y; y += incY ) {
-            for( float x = -mBoxSize.x; x <= mBoxSize.x; x += incX ) {
-                verts.vertex( vec3( x, y, 0 ) );
+        for (float y = -mBoxSize.y; y <= mBoxSize.y; y += incY) {
+            for (float x = -mBoxSize.x; x <= mBoxSize.x; x += incX) {
+                verts.vertex(vec3(x, y, 0));
             }
         }
-        mGridPointsBatchRef = gl::Batch::create( verts, glsl );
+        mGridPointsBatchRef = gl::Batch::create(verts, glsl);
     }
 }
 
 void Transform::drawGridLines()
 {
-    if( mDrawGridLines ) {
+    if (mDrawGridLines) {
         gl::ScopedMatrices scpMtx;
-        gl::rotate( 0.5f * static_cast<float>( M_PI ), vec3( 1.0f, 0.0f, 0.0f ) );
-        gl::translate( vec3( 0.0f, 0.0f, mBoxSize.y ) );
-        gl::ScopedColor scpClr( mGridLinesColor );
+        gl::rotate(0.5f * static_cast<float>(M_PI), vec3(1.0f, 0.0f, 0.0f));
+        gl::translate(vec3(0.0f, 0.0f, mBoxSize.y));
+        gl::ScopedColor scpClr(mGridLinesColor);
         gl::ScopedBlendAdditive scpAdd;
-        gl::ScopedDepthTest scpDth( true );
-        gl::ScopedDepthWrite scpDrt( true );
+        gl::ScopedDepthTest scpDth(true);
+        gl::ScopedDepthWrite scpDrt(true);
         mGridLinesBatchRef->draw();
     }
 }
 
 void Transform::drawGridPoints()
 {
-    if( mDrawGridPoints ) {
+    if (mDrawGridPoints) {
         gl::ScopedMatrices scpMtx;
-        gl::rotate( 0.5f * static_cast<float>( M_PI ), vec3( 1.0f, 0.0f, 0.0f ) );
-        gl::translate( vec3( 0.0f, 0.0f, mBoxSize.y ) );
-        gl::pointSize( static_cast<float>( mGridPointSize ) );
-        gl::ScopedColor scpClr( mGridPointsColor );
+        gl::rotate(0.5f * static_cast<float>(M_PI), vec3(1.0f, 0.0f, 0.0f));
+        gl::translate(vec3(0.0f, 0.0f, mBoxSize.y));
+        gl::pointSize(static_cast<float>(mGridPointSize));
+        gl::ScopedColor scpClr(mGridPointsColor);
         gl::ScopedBlendAdditive scpAdd;
-        gl::ScopedDepthTest scpDth( true );
-        gl::ScopedDepthWrite scpDrt( true );
+        gl::ScopedDepthTest scpDth(true);
+        gl::ScopedDepthWrite scpDrt(true);
         mGridPointsBatchRef->draw();
     }
 }
 
 void Transform::updateSystems()
 {
-    for( auto &it : mSystems ) {
-        setDefaultUniforms( it->getGlslProgRef() );
+    for (auto &it : mSystems) {
+        setDefaultUniforms(it->getGlslProgRef());
         it->update();
     }
 }
 
 void Transform::updateRenderers()
 {
-    for( auto &it : mRenderers ) {
+    for (auto &it : mRenderers) {
         it->update();
     }
 }
 
 void Transform::drawRenderers()
 {
-    for( auto &it : mRenderers ) {
-        setDefaultUniforms( it->getGlslProgRef() );
+    for (auto &it : mRenderers) {
+        setDefaultUniforms(it->getGlslProgRef());
         it->draw();
     }
 }
@@ -1426,36 +1422,36 @@ void Transform::drawRenderers()
 void Transform::setupPoints()
 {
     mPointRendererRef = PointRenderer::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "Points/points.vert" ), getAppSupportWorkingSessionShadersPath( "Points/points.frag" ), mParticleSystemRef, [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("Points/points.vert"), getAppSupportWorkingSessionShadersPath("Points/points.frag"), mParticleSystemRef, [this]() {
         auto ui = mUIRef->getUI(POINTS_UI);
         if (ui != nullptr) {
           if (mPointRendererRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(POINTS_UI);
         if (ui != nullptr) {
           ui->clear();
           setupRendererUI(ui, mPointRendererRef);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( POINTS_UI ) + " ERROR: " + string( exc.what() ) ); } );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(POINTS_UI) + " ERROR: " + string(exc.what())); });
 
     mPointRendererRef->setup();
-    mRenderers.push_back( mPointRendererRef );
+    mRenderers.push_back(mPointRendererRef);
 }
 
 void Transform::setupSprites()
 {
     ci::geom::Plane *geom = new ci::geom::Plane();
-    geom->size( vec2( 0 ) );
+    geom->size(vec2(0));
     PrimitiveRenderer::Format fmt;
-    fmt.geometry( geom );
+    fmt.geometry(geom);
 
     mSpriteRendererRef = PrimitiveRenderer::create(
         mOutputWindowRef,
-        getAppSupportWorkingSessionShadersPath( "Sprites/sprites.vert" ),
-        getAppSupportWorkingSessionShadersPath( "Sprites/sprites.frag" ),
+        getAppSupportWorkingSessionShadersPath("Sprites/sprites.vert"),
+        getAppSupportWorkingSessionShadersPath("Sprites/sprites.frag"),
         mParticleSystemRef,
         fmt,
         [this]() {
@@ -1465,7 +1461,7 @@ void Transform::setupSprites()
                 mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
             }
         } },
-        [this]( GlslParamsRef glslParams ) {
+        [this](GlslParamsRef glslParams) {
             auto ui = mUIRef->getUI(SPRITES_UI);
             if (ui != nullptr) {
                 ui->clear();
@@ -1473,106 +1469,106 @@ void Transform::setupSprites()
                 mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
                 mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
             } },
-        [this]( ci::Exception exc ) { CI_LOG_E( string( SPRITES_UI ) + " ERROR: " + string( exc.what() ) ); } );
+        [this](ci::Exception exc) { CI_LOG_E(string(SPRITES_UI) + " ERROR: " + string(exc.what())); });
     mSpriteRendererRef->setup();
-    mRenderers.push_back( mSpriteRendererRef );
+    mRenderers.push_back(mSpriteRendererRef);
 }
 
 void Transform::setupLines()
 {
     mPlexusRendererRef = PlexusRenderer::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "Lines/lines.vert" ), getAppSupportWorkingSessionShadersPath( "Lines/lines.frag" ), mParticleSystemRef, mPlexusSystemRef, [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("Lines/lines.vert"), getAppSupportWorkingSessionShadersPath("Lines/lines.frag"), mParticleSystemRef, mPlexusSystemRef, [this]() {
         auto ui = mUIRef->getUI(LINES_UI);
         if (ui != nullptr) {
           if (mPlexusRendererRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(LINES_UI);
         if (ui != nullptr) {
           ui->clear();
           setupRendererUI(ui, mPlexusRendererRef);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( LINES_UI ) + " ERROR: " + string( exc.what() ) ); } );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(LINES_UI) + " ERROR: " + string(exc.what())); });
     mPlexusRendererRef->setup();
-    mRenderers.push_back( mPlexusRendererRef );
+    mRenderers.push_back(mPlexusRendererRef);
 }
 
 void Transform::setupTrailPoint()
 {
     mTrailPointRendererRef = TrailPointRenderer::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "trail/points.vert" ), getAppSupportWorkingSessionShadersPath( "trail/points.frag" ), mParticleSystemRef, mTrailSystemRef, [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("trail/points.vert"), getAppSupportWorkingSessionShadersPath("trail/points.frag"), mParticleSystemRef, mTrailSystemRef, [this]() {
         auto ui = mUIRef->getUI(TRAIL_POINTS_UI);
         if (ui != nullptr) {
           if (mTrailPointRendererRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(TRAIL_POINTS_UI);
         if (ui != nullptr) {
           ui->clear();
           setupRendererUI(ui, mTrailPointRendererRef);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( TRAIL_POINTS_UI ) + " ERROR: " + string( exc.what() ) ); } );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(TRAIL_POINTS_UI) + " ERROR: " + string(exc.what())); });
     mTrailPointRendererRef->setup();
-    mRenderers.push_back( mTrailPointRendererRef );
+    mRenderers.push_back(mTrailPointRendererRef);
 }
 
 void Transform::setupRibbon()
 {
     mRibbonRendererRef = RibbonRenderer::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "Ribbon/ribbon.vert" ), getAppSupportWorkingSessionShadersPath( "Ribbon/ribbon.frag" ), getAppSupportWorkingSessionShadersPath( "Ribbon/ribbon.glsl" ), mParticleSystemRef, mTrailSystemRef, [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("Ribbon/ribbon.vert"), getAppSupportWorkingSessionShadersPath("Ribbon/ribbon.frag"), getAppSupportWorkingSessionShadersPath("Ribbon/ribbon.glsl"), mParticleSystemRef, mTrailSystemRef, [this]() {
         auto ui = mUIRef->getUI(RIBBON_UI);
         if (ui != nullptr) {
           if (mRibbonRendererRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(RIBBON_UI);
         if (ui != nullptr) {
           ui->clear();
           setupRendererUI(ui, mRibbonRendererRef);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( RIBBON_UI ) + " ERROR: " + string( exc.what() ) ); } );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(RIBBON_UI) + " ERROR: " + string(exc.what())); });
     mRibbonRendererRef->setup();
-    mRenderers.push_back( mRibbonRendererRef );
+    mRenderers.push_back(mRibbonRendererRef);
 }
 
 void Transform::setupPrimitive()
 {
     ci::geom::Plane *geom = new ci::geom::Plane();
-    geom->size( vec2( 0 ) );
+    geom->size(vec2(0));
     PrimitiveRenderer::Format fmt;
-    fmt.geometry( geom );
+    fmt.geometry(geom);
 
     mPrimitiveRendererRef = PrimitiveRenderer::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "Primitive/primitive.vert" ), getAppSupportWorkingSessionShadersPath( "Primitive/primitive.frag" ), mParticleSystemRef, PrimitiveRenderer::Format(), [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("Primitive/primitive.vert"), getAppSupportWorkingSessionShadersPath("Primitive/primitive.frag"), mParticleSystemRef, PrimitiveRenderer::Format(), [this]() {
         auto ui = mUIRef->getUI(PRIMITIVE_UI);
         if (ui != nullptr) {
           if (mPrimitiveRendererRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(PRIMITIVE_UI);
         if (ui != nullptr) {
           ui->clear();
           setupPrimitiveUI(ui, mPrimitiveRendererRef);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( PRIMITIVE_UI ) + " ERROR: " + string( exc.what() ) ); } );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(PRIMITIVE_UI) + " ERROR: " + string(exc.what())); });
     mPrimitiveRendererRef->setup();
-    mRenderers.push_back( mPrimitiveRendererRef );
+    mRenderers.push_back(mPrimitiveRendererRef);
 }
 
 void Transform::updatePrimitive()
 {
-    if( mUpdatePrimitiveGeometry && mPrimitiveRendererRef ) {
+    if (mUpdatePrimitiveGeometry && mPrimitiveRendererRef) {
         updatePrimitiveGeometry();
-        if( mPrimitiveGeometry ) {
-            mPrimitiveRendererRef->setGeometry( mPrimitiveGeometry );
+        if (mPrimitiveGeometry) {
+            mPrimitiveRendererRef->setGeometry(mPrimitiveGeometry);
             mUpdatePrimitiveGeometry = false;
         }
     }
@@ -1580,339 +1576,337 @@ void Transform::updatePrimitive()
 
 void Transform::updatePrimitiveGeometry()
 {
-    switch( mPrimitiveType ) {
-    case RECT: {
-        ci::geom::Rect *geom = new ci::geom::Rect();
-        mPrimitiveGeometry = geom;
-    } break;
-    case ROUNDEDRECT: {
-        ci::geom::RoundedRect *geom = new ci::geom::RoundedRect();
-        geom->cornerRadius( mRoundedRectCornerRadius );
-        geom->cornerSubdivisions( mRoundedRectCornerSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case CUBE: {
-        ci::geom::Cube *geom = new ci::geom::Cube();
-        geom->subdivisions( mCubeSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case ICOSAHEDRON: {
-        ci::geom::Icosahedron *geom = new ci::geom::Icosahedron();
-        mPrimitiveGeometry = geom;
-    } break;
-    case ICOSPHERE: {
-        ci::geom::Icosphere *geom = new ci::geom::Icosphere();
-        geom->subdivisions( mIcoSphereSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case TEAPOT: {
-        ci::geom::Teapot *geom = new ci::geom::Teapot();
-        geom->subdivisions( mTeapotSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case CIRCLE: {
-        ci::geom::Circle *geom = new ci::geom::Circle();
-        geom->subdivisions( mCircleSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case RING: {
-        ci::geom::Ring *geom = new ci::geom::Ring();
-        geom->radius( mRingRadius );
-        geom->width( mRingWidth );
-        geom->subdivisions( mRingSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case SPHERE: {
-        ci::geom::Sphere *geom = new ci::geom::Sphere();
-        geom->subdivisions( mSphereSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case CAPSULE: {
-        ci::geom::Capsule *geom = new ci::geom::Capsule();
-        geom->length( mCapsuleLength );
-        geom->radius( mCapsuleRadius );
-        geom->subdivisionsAxis( mCapsuleAxisSubdivisions );
-        geom->subdivisionsHeight( mCapsuleHeightSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case TORUS: {
-        ci::geom::Torus *geom = new ci::geom::Torus();
-        geom->radius( mTorusMajorRadius, mTorusMinorRadius );
-        geom->subdivisionsAxis( mTorusAxisSubdivisions );
-        geom->subdivisionsHeight( mTorusHeightSubdivisions );
-        geom->twist( mTorusTwist, mTorusTwistOffset );
-        mPrimitiveGeometry = geom;
-    } break;
-    case TORUSKNOT: {
-        ci::geom::TorusKnot *geom = new ci::geom::TorusKnot();
-        geom->parameters( mTorusKnotP, mTorusKnotQ );
-        geom->radius( mTorusKnotRadius );
-        geom->subdivisionsAxis( mTorusKnotAxisSubdivisions );
-        geom->subdivisionsHeight( mTorusKnotHeightSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case HELIX: {
-        ci::geom::Helix *geom = new ci::geom::Helix();
-        geom->coils( mHelixCoils );
-        geom->height( mHelixHeight );
-        geom->radius( mHelixMajorRadius, mHelixMinorRadius );
-        geom->subdivisionsAxis( mHelixAxisSubdivisions );
-        geom->subdivisionsHeight( mHelixHeightSubdivisions );
-        geom->twist( mHelixTwist, mHelixTwistOffset );
-        mPrimitiveGeometry = geom;
-    } break;
-    case CYLINDER: {
-        ci::geom::Cylinder *geom = new ci::geom::Cylinder();
-        geom->height( mCylinderHeight );
-        geom->radius( mCylinderRadius );
-        geom->subdivisionsAxis( mCylinderAxisSubdivisions );
-        geom->subdivisionsHeight( mCylinderHeightSubdivisions );
-        geom->subdivisionsCap( mCylinderCapSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case CONE: {
-        ci::geom::Cone *geom = new ci::geom::Cone();
-        geom->height( mConeHeight );
-        geom->radius( mConeBaseRadius, mConeApexRadius );
-        geom->subdivisionsAxis( mConeAxisSubdivisions );
-        geom->subdivisionsHeight( mConeHeightSubdivisions );
-        mPrimitiveGeometry = geom;
-    } break;
-    case PLANE: {
-        ci::geom::Plane *geom = new ci::geom::Plane();
-        geom->subdivisions( ivec2( mPlaneSubdivisions ) );
-        mPrimitiveGeometry = geom;
-    } break;
-    default:
-        break;
+    switch (mPrimitiveType) {
+        case RECT: {
+            ci::geom::Rect *geom = new ci::geom::Rect();
+            mPrimitiveGeometry = geom;
+        } break;
+        case ROUNDEDRECT: {
+            ci::geom::RoundedRect *geom = new ci::geom::RoundedRect();
+            geom->cornerRadius(mRoundedRectCornerRadius);
+            geom->cornerSubdivisions(mRoundedRectCornerSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case CUBE: {
+            ci::geom::Cube *geom = new ci::geom::Cube();
+            geom->subdivisions(mCubeSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case ICOSAHEDRON: {
+            ci::geom::Icosahedron *geom = new ci::geom::Icosahedron();
+            mPrimitiveGeometry = geom;
+        } break;
+        case ICOSPHERE: {
+            ci::geom::Icosphere *geom = new ci::geom::Icosphere();
+            geom->subdivisions(mIcoSphereSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case TEAPOT: {
+            ci::geom::Teapot *geom = new ci::geom::Teapot();
+            geom->subdivisions(mTeapotSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case CIRCLE: {
+            ci::geom::Circle *geom = new ci::geom::Circle();
+            geom->subdivisions(mCircleSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case RING: {
+            ci::geom::Ring *geom = new ci::geom::Ring();
+            geom->radius(mRingRadius);
+            geom->width(mRingWidth);
+            geom->subdivisions(mRingSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case SPHERE: {
+            ci::geom::Sphere *geom = new ci::geom::Sphere();
+            geom->subdivisions(mSphereSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case CAPSULE: {
+            ci::geom::Capsule *geom = new ci::geom::Capsule();
+            geom->length(mCapsuleLength);
+            geom->radius(mCapsuleRadius);
+            geom->subdivisionsAxis(mCapsuleAxisSubdivisions);
+            geom->subdivisionsHeight(mCapsuleHeightSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case TORUS: {
+            ci::geom::Torus *geom = new ci::geom::Torus();
+            geom->radius(mTorusMajorRadius, mTorusMinorRadius);
+            geom->subdivisionsAxis(mTorusAxisSubdivisions);
+            geom->subdivisionsHeight(mTorusHeightSubdivisions);
+            geom->twist(mTorusTwist, mTorusTwistOffset);
+            mPrimitiveGeometry = geom;
+        } break;
+        case TORUSKNOT: {
+            ci::geom::TorusKnot *geom = new ci::geom::TorusKnot();
+            geom->parameters(mTorusKnotP, mTorusKnotQ);
+            geom->radius(mTorusKnotRadius);
+            geom->subdivisionsAxis(mTorusKnotAxisSubdivisions);
+            geom->subdivisionsHeight(mTorusKnotHeightSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case HELIX: {
+            ci::geom::Helix *geom = new ci::geom::Helix();
+            geom->coils(mHelixCoils);
+            geom->height(mHelixHeight);
+            geom->radius(mHelixMajorRadius, mHelixMinorRadius);
+            geom->subdivisionsAxis(mHelixAxisSubdivisions);
+            geom->subdivisionsHeight(mHelixHeightSubdivisions);
+            geom->twist(mHelixTwist, mHelixTwistOffset);
+            mPrimitiveGeometry = geom;
+        } break;
+        case CYLINDER: {
+            ci::geom::Cylinder *geom = new ci::geom::Cylinder();
+            geom->height(mCylinderHeight);
+            geom->radius(mCylinderRadius);
+            geom->subdivisionsAxis(mCylinderAxisSubdivisions);
+            geom->subdivisionsHeight(mCylinderHeightSubdivisions);
+            geom->subdivisionsCap(mCylinderCapSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case CONE: {
+            ci::geom::Cone *geom = new ci::geom::Cone();
+            geom->height(mConeHeight);
+            geom->radius(mConeBaseRadius, mConeApexRadius);
+            geom->subdivisionsAxis(mConeAxisSubdivisions);
+            geom->subdivisionsHeight(mConeHeightSubdivisions);
+            mPrimitiveGeometry = geom;
+        } break;
+        case PLANE: {
+            ci::geom::Plane *geom = new ci::geom::Plane();
+            geom->subdivisions(ivec2(mPlaneSubdivisions));
+            mPrimitiveGeometry = geom;
+        } break;
+        default:
+            break;
     }
 }
 
 void Transform::setupParticles()
 {
-    vector<string> varyings( 3 );
+    vector<string> varyings(4);
     varyings[PARTICLES_POS_INDEX] = "tf_position_id";
     varyings[PARTICLES_VEL_INDEX] = "tf_velocity_mass";
     varyings[PARTICLES_CLR_INDEX] = "tf_color";
     varyings[PARTICLES_ORI_INDEX] = "tf_orientation";
 
     gl::GlslProg::Format format;
-    format.feedbackFormat( GL_SEPARATE_ATTRIBS )
-        .feedbackVaryings( varyings )
-        .attribLocation( "position_id", PARTICLES_POS_INDEX )
-        .attribLocation( "velocity_mass", PARTICLES_VEL_INDEX )
-        .attribLocation( "color", PARTICLES_CLR_INDEX )
-        .attribLocation( "orientation", PARTICLES_ORI_INDEX );
+    format.feedbackFormat(GL_SEPARATE_ATTRIBS)
+        .feedbackVaryings(varyings)
+        .attribLocation("position_id", PARTICLES_POS_INDEX)
+        .attribLocation("velocity_mass", PARTICLES_VEL_INDEX)
+        .attribLocation("color", PARTICLES_CLR_INDEX)
+        .attribLocation("orientation", PARTICLES_ORI_INDEX);
 
     mParticleSystemRef = ParticleSystem::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "Physics/physics.vert" ), format, [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("Physics/physics.vert"), format, [this]() {
         auto ui = mUIRef->getUI(PHYSICS_UI);
         if (ui != nullptr) {
           if (mParticleSystemRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(PHYSICS_UI);
         if (ui != nullptr) {
           ui->clear();
           setupPhysicsUI(ui);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( PHYSICS_UI ) + " ERROR: " + string( exc.what() ) ); } );
-    mSystems.push_back( mParticleSystemRef );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(PHYSICS_UI) + " ERROR: " + string(exc.what())); });
+    mSystems.push_back(mParticleSystemRef);
 }
 
 void Transform::updateParticles()
 {
-    if( mUpdateParticleTotal && mParticleSystemRef && mPlexusSystemRef && mTrailSystemRef ) {
-        mParticleSystemRef->setTotal( mParticleTotal );
-        mPlexusSystemRef->setTotal( mParticleTotal );
-        mTrailSystemRef->setUpdateBuffers( true );
+    if (mUpdateParticleTotal && mParticleSystemRef && mPlexusSystemRef && mTrailSystemRef) {
+        mParticleSystemRef->setTotal(mParticleTotal);
+        mPlexusSystemRef->setTotal(mParticleTotal);
+        mTrailSystemRef->setUpdateBuffers(true);
         mUpdateParticleTotal = false;
     }
 }
 
 void Transform::setupPlexus()
 {
-    vector<string> varyings( 1 );
+    vector<string> varyings(1);
     varyings[PLEXUS_DISTANCE_INDEX] = "tf_plexus";
 
     gl::GlslProg::Format format;
-    format.feedbackFormat( GL_SEPARATE_ATTRIBS )
-        .feedbackVaryings( varyings )
-        .attribLocation( "plexus", PLEXUS_DISTANCE_INDEX );
+    format.feedbackFormat(GL_SEPARATE_ATTRIBS)
+        .feedbackVaryings(varyings)
+        .attribLocation("plexus", PLEXUS_DISTANCE_INDEX);
 
     mPlexusSystemRef = PlexusSystem::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "Plexus/plexus.vert" ), format, mParticleSystemRef, [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("Plexus/plexus.vert"), format, mParticleSystemRef, [this]() {
         auto ui = mUIRef->getUI(PLEXUS_UI);
         if (ui != nullptr) {
           if (mPlexusSystemRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(PLEXUS_UI);
         if (ui != nullptr) {
           ui->clear();
           setupPlexusUI(ui);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( PLEXUS_UI ) + " ERROR: " + string( exc.what() ) ); } );
-    mSystems.push_back( mPlexusSystemRef );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(PLEXUS_UI) + " ERROR: " + string(exc.what())); });
+    mSystems.push_back(mPlexusSystemRef);
 }
 
 void Transform::setupTrail()
 {
-    vector<string> varyings( 1 );
+    vector<string> varyings(1);
     varyings[TRAILS_POS_INDEX] = "tf_position_mass";
 
     gl::GlslProg::Format format;
-    format.feedbackFormat( GL_SEPARATE_ATTRIBS )
-        .feedbackVaryings( varyings )
-        .attribLocation( "position_mass", TRAILS_POS_INDEX )
-        .attribLocation( "info", TRAILS_INFO_INDEX );
+    format.feedbackFormat(GL_SEPARATE_ATTRIBS)
+        .feedbackVaryings(varyings)
+        .attribLocation("position_mass", TRAILS_POS_INDEX)
+        .attribLocation("info", TRAILS_INFO_INDEX);
 
     mTrailSystemRef = TrailSystem::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "Trail/trail.vert" ), format, mParticleSystemRef, [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("Trail/trail.vert"), format, mParticleSystemRef, [this]() {
         auto ui = mUIRef->getUI(TRAIL_UI);
         if (ui != nullptr) {
           if (mTrailSystemRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(TRAIL_UI);
         if (ui != nullptr) {
           ui->clear();
           setupTrailUI(ui);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( TRAIL_UI ) + " ERROR: " + string( exc.what() ) ); } );
-    mSystems.push_back( mTrailSystemRef );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(TRAIL_UI) + " ERROR: " + string(exc.what())); });
+    mSystems.push_back(mTrailSystemRef);
 }
 
 void Transform::updateTrail()
 {
-    if( mUpdateTrailTotal && mTrailSystemRef ) {
-        mTrailSystemRef->setTotal( mTrailTotal );
-        if( mRibbonRendererRef && mRibbonRendererRef->isInitialized() ) {
+    if (mUpdateTrailTotal && mTrailSystemRef) {
+        mTrailSystemRef->setTotal(mTrailTotal);
+        if (mRibbonRendererRef && mRibbonRendererRef->isInitialized()) {
             mRibbonRendererRef->_setupBatch();
         }
         mUpdateTrailTotal = false;
     }
 }
 
-void Transform::setDefaultUniforms( gl::GlslProgRef glslProgRef )
+void Transform::setDefaultUniforms(gl::GlslProgRef glslProgRef)
 {
-    if( glslProgRef ) {
+    if (glslProgRef) {
         vec2 size = mOutputWindowRef->getSize();
         chrono::system_clock::time_point now = chrono::system_clock::now();
-        time_t tt = chrono::system_clock::to_time_t( now );
-        tm local_tm = *localtime( &tt );
+        time_t tt = chrono::system_clock::to_time_t(now);
+        tm local_tm = *localtime(&tt);
 
         float hours = local_tm.tm_hour + 1.0f;
-        float minutes = hours * 60 + ( local_tm.tm_min + 1 );
-        float seconds = minutes * 60 + ( local_tm.tm_sec );
+        float minutes = hours * 60 + (local_tm.tm_min + 1);
+        float seconds = minutes * 60 + (local_tm.tm_sec);
 
         float renderScale = 1.0f;
-        if( mSequenceSaverRef->isRecording() || mImageSaverRef->isRecording() ) {
-            renderScale = static_cast<float>( mImageSaverRef->getSizeMultiplier() );
+        if (mSequenceSaverRef->isRecording() || mImageSaverRef->isRecording()) {
+            renderScale = static_cast<float>(mImageSaverRef->getSizeMultiplier());
         }
-        glslProgRef->uniform( "iBackgroundColor", mBgColor );
-        glslProgRef->uniform( "iResolution", vec3( toPixels( size.x ), toPixels( size.y ), 0.0 ) );
-        glslProgRef->uniform( "iAspect", mOutputWindowRef->getAspectRatio() );
-        glslProgRef->uniform( "iGlobalTime", mSeconds );
-        glslProgRef->uniform( "iNumParticles",
-            float( mParticleSystemRef->getTotal() ) );
-        glslProgRef->uniform( "iAnimationTime", mCurrentTime );
-        glslProgRef->uniform( "iMouse", vec4( toPixels( mMouse.x ), toPixels( size.y - mMouse.y ), toPixels( mMouseClick.x ), toPixels( size.y - mMouseClick.y ) ) );
-        glslProgRef->uniform( "iDate",
-            vec4( local_tm.tm_year + 1900, local_tm.tm_mon + 1, local_tm.tm_mday, seconds ) );
-        glslProgRef->uniform( "iRenderScale", renderScale );
-        glslProgRef->uniform( "iCamEyePos",
-            mCameraRef->getCameraPersp().getEyePoint() );
-        glslProgRef->uniform( "iCamViewDir",
-            mCameraRef->getCameraPersp().getViewDirection() );
+        glslProgRef->uniform("iBackgroundColor", mBgColor);
+        glslProgRef->uniform("iResolution", vec3(toPixels(size.x), toPixels(size.y), 0.0));
+        glslProgRef->uniform("iAspect", mOutputWindowRef->getAspectRatio());
+        glslProgRef->uniform("iGlobalTime", mSeconds);
+        glslProgRef->uniform("iNumParticles",
+                             float(mParticleSystemRef->getTotal()));
+        glslProgRef->uniform("iAnimationTime", mCurrentTime);
+        glslProgRef->uniform("iMouse", vec4(toPixels(mMouse.x), toPixels(size.y - mMouse.y), toPixels(mMouseClick.x), toPixels(size.y - mMouseClick.y)));
+        glslProgRef->uniform("iDate",
+                             vec4(local_tm.tm_year + 1900, local_tm.tm_mon + 1, local_tm.tm_mday, seconds));
+        glslProgRef->uniform("iRenderScale", renderScale);
+        glslProgRef->uniform("iCamEyePos",
+                             mCameraRef->getCameraPersp().getEyePoint());
+        glslProgRef->uniform("iCamViewDir",
+                             mCameraRef->getCameraPersp().getViewDirection());
 
-        glslProgRef->uniform( "iSpectrum", 2 );
-        glslProgRef->uniform( "iAmplitude", 3 );
-        glslProgRef->uniform( "iPalettes", 4 );
-        if( mSpectrumTextureRef ) {
-            mSpectrumTextureRef->bind( 2 );
+        glslProgRef->uniform("iSpectrum", 2);
+        glslProgRef->uniform("iAmplitude", 3);
+        glslProgRef->uniform("iPalettes", 4);
+        if (mSpectrumTextureRef) {
+            mSpectrumTextureRef->bind(2);
         }
-        if( mAmplitudeTextureRef ) {
-            mAmplitudeTextureRef->bind( 3 );
+        if (mAmplitudeTextureRef) {
+            mAmplitudeTextureRef->bind(3);
         }
-        if( mPaletteTextureRef ) {
-            mPaletteTextureRef->bind( 4 );
+        if (mPaletteTextureRef) {
+            mPaletteTextureRef->bind(4);
         }
     }
 }
 
 void Transform::loadPalettes()
 {
-    ci::Surface32fRef surfaceRef = ci::Surface32f::create( 5, 992, false );
-    auto path = getAppSupportJsonAssetsPath( "colors.json" );
-    if( fs::exists( path ) ) {
+    ci::Surface32fRef surfaceRef = ci::Surface32f::create(5, 992, false);
+    auto path = getAppSupportJsonAssetsPath("colors.json");
+    if (fs::exists(path)) {
         try {
-            JsonTree tree( loadFile( path ) );
+            JsonTree tree(loadFile(path));
             int total = tree.getNumChildren();
-            for( int i = 0; i < total; i++ ) {
-                auto palette = tree.getChild( i );
+            for (int i = 0; i < total; i++) {
+                auto palette = tree.getChild(i);
                 int colors = palette.getNumChildren();
-                for( int j = 0; j < colors; j++ ) {
-                    auto color = palette.getChild( j );
+                for (int j = 0; j < colors; j++) {
+                    auto color = palette.getChild(j);
                     string hexString = color.getValue();
-                    Color clr = Color::hex( strtoul( hexString.c_str(), NULL, 16 ) );
-                    surfaceRef->setPixel( ivec2( j, i ), clr );
+                    Color clr = Color::hex(strtoul(hexString.c_str(), NULL, 16));
+                    surfaceRef->setPixel(ivec2(j, i), clr);
                 }
             }
-        }
-        catch( ci::Exception exc ) {
+        } catch (ci::Exception exc) {
             std::cout << "ERROR LOADING COLORS: " << exc.what() << std::endl;
         }
     }
-    writeImage( getAppSupportImageAssetsPath( "colors.png" ), *surfaceRef.get(), ImageTarget::Options().quality( 1.0 ) );
+    writeImage(getAppSupportImageAssetsPath("colors.png"), *surfaceRef.get(), ImageTarget::Options().quality(1.0));
 }
 
 void Transform::setupPalettes()
 {
     ci::gl::Texture2d::Format fmt;
-    fmt.magFilter( GL_NEAREST );
-    fmt.minFilter( GL_NEAREST );    
-    mPaletteTextureRef
-        = ci::gl::Texture2d::create( loadImage( getAppSupportImageAssetsPath( "colors.png" ) ), fmt );
+    fmt.magFilter(GL_NEAREST);
+    fmt.minFilter(GL_NEAREST);
+    mPaletteTextureRef = ci::gl::Texture2d::create(loadImage(getAppSupportImageAssetsPath("colors.png")), fmt);
 }
 
 void Transform::setupImageSaver()
 {
     mImageSaverRef = ImageSaver::create(
-        mOutputWindowRef, [this] { _drawOutput(); }, [this]( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll ) {
+        mOutputWindowRef, [this] { _drawOutput(); }, [this](const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll) {
         gl::clear(mBgColor);
-        drawBg(ul, ur, lr, ll); }, [this]( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll ) {
+        drawBg(ul, ur, lr, ll); }, [this](const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll) {
         gl::clear(mBgColor);
-        drawPost(ul, ur, lr, ll); } );
+        drawPost(ul, ur, lr, ll); });
 }
 
 void Transform::setupMovieSaver()
 {
-    mMovieSaverRef = MovieSaver::create( mOutputWindowRef );
+    mMovieSaverRef = MovieSaver::create(mOutputWindowRef);
 }
 
 void Transform::setupSequenceSaver()
 {
     mSequenceSaverRef = SequenceSaver::create(
-        mOutputWindowRef, [this] { _drawOutput(); }, [this]( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll ) {
+        mOutputWindowRef, [this] { _drawOutput(); }, [this](const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll) {
         gl::clear(mBgColor);
-        drawBg(ul, ur, lr, ll); }, [this]( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll ) {
+        drawBg(ul, ur, lr, ll); }, [this](const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll) {
         gl::clear(mBgColor);
-        drawPost(ul, ur, lr, ll); } );
+        drawPost(ul, ur, lr, ll); });
 }
 
-void Transform::exportPoints( const ci::fs::path &path, const std::string &filename )
+void Transform::exportPoints(const ci::fs::path &path, const std::string &filename)
 {
     fs::path final = path;
-    final += fs::path( filename );
-    final += fs::path( ".ply" );
-    ofstream stream( final.string(), ios_base::out );
+    final += fs::path(filename);
+    final += fs::path(".ply");
+    ofstream stream(final.string(), ios_base::out);
     stream << "ply" << endl;
     stream << "format ascii 1.0" << endl;
     stream << "element vertex " << mParticleSystemRef->getTotal() << endl;
@@ -1922,11 +1916,11 @@ void Transform::exportPoints( const ci::fs::path &path, const std::string &filen
     stream << "property float32 w" << endl;
     stream << "end_header" << endl;
 
-    ci::gl::BufferTextureRef buffer = mParticleSystemRef->getPositionBufferTextureRef( 0 );
+    ci::gl::BufferTextureRef buffer = mParticleSystemRef->getPositionBufferTextureRef(0);
     ci::gl::BufferObjRef &bufObj = buffer->getBufferObj();
-    float *data = (float *)bufObj->map( GL_READ_ONLY );
+    float *data = (float *)bufObj->map(GL_READ_ONLY);
     int total = mParticleSystemRef->getTotal() * 4;
-    for( int i = 0; i < total; i += 4 ) {
+    for (int i = 0; i < total; i += 4) {
         stream << data[i] << " " << data[i + 1] << " " << data[i + 2] << " " << data[i + 3] << endl;
     }
     bufObj->unmap();
@@ -1942,38 +1936,40 @@ void Transform::setupAudio()
 
 void Transform::setupAudioSpectrumTexture()
 {
-    int length = 1024;
-    for( int i = 0; i < length; i++ ) {
-        mSpectrumBuffer.push_back( randFloat() );
+    int length = mSampleSize;
+    for (int i = 0; i < length; i++) {
+        mSpectrumBuffer.push_back(0);
     }
 
     auto fmt = gl::Texture2d::Format();
-    fmt.dataType( GL_FLOAT );
-    fmt.internalFormat( GL_R32F );
-    mSpectrumTextureRef = gl::Texture2d::create( int( mSpectrumBuffer.size() ), 1.0, fmt );
+    fmt.dataType(GL_FLOAT);
+    fmt.internalFormat(GL_R32F);
+    mSpectrumTextureRef = gl::Texture2d::create(int(mSpectrumBuffer.size()), 1.0, fmt);
 }
 
 void Transform::setupAudioAmplitudeTexture()
 {
-    int length = 1024;
-    for( int i = 0; i < length; i++ ) {
-        mAmplitudeBuffer.push_back( randFloat() );
+    int length = mSampleSize;
+    for (int i = 0; i < length; i++) {
+        mAmplitudeBuffer.push_back(0);
     }
 
     auto fmt = gl::Texture2d::Format();
-    fmt.dataType( GL_FLOAT );
-    fmt.internalFormat( GL_R32F );
-    mAmplitudeTextureRef = gl::Texture2d::create( int( mAmplitudeBuffer.size() ), 1.0, fmt );
+    fmt.dataType(GL_FLOAT);
+    fmt.internalFormat(GL_R32F);
+    mAmplitudeTextureRef = gl::Texture2d::create(int(mAmplitudeBuffer.size()), 1.0, fmt);
 }
 
 void Transform::setupAudioInput()
 {
+    mSampleSize = 512;
+    
     auto ctx = audio::Context::master();
     mInputDeviceNode = ctx->createInputDeviceNode();
-
-    auto monitorFormat = audio::MonitorSpectralNode::Format().fftSize( 2048 ).windowSize( 1024 );
+    
+    auto monitorFormat = audio::MonitorSpectralNode::Format().fftSize( 1024 ).windowSize( mSampleSize );
     mMonitorSpectralNode = ctx->makeNode( new audio::MonitorSpectralNode( monitorFormat ) );
-
+    
     mInputDeviceNode >> mMonitorSpectralNode;
     mInputDeviceNode->enable();
     ctx->enable();
@@ -1987,27 +1983,27 @@ void Transform::updateAudio()
         mSpectrumBuffer[i] = audio::linearToDecibel( mSpectrumBuffer[i] ) / 100.0;
     }
     mSpectrumTextureRef->update( (void *)mSpectrumBuffer.data(), GL_RED, GL_FLOAT, 0, int( mSpectrumBuffer.size() ), 1.0 );
-
+    
     auto buffer = mMonitorSpectralNode->getBuffer();
-    int channels = buffer.getNumChannels();
-    int ampLength = buffer.getSize() / channels;
+    int channels = (int)buffer.getNumChannels();
+    int ampLength = (int)buffer.getSize() / (int)channels;
     float *amplitudeData = buffer.getChannel( 0 );
     for( int i = 0; i < ampLength; i++ ) {
         mAmplitudeBuffer[i] = amplitudeData[i] * 2.0;
     }
-    mAmplitudeTextureRef->update( (void *)mAmplitudeBuffer.data(), GL_RED, GL_FLOAT, 0, int( buffer.getNumFrames() ), 1.0 );
+    mAmplitudeTextureRef->update( (void *)mAmplitudeBuffer.data(), GL_RED, GL_FLOAT, 0, int( mAmplitudeBuffer.size() ), 1.0 );
 }
 
 void Transform::setupPost()
 {
     mRectRendererRef = RectRenderer::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "Post/post.vert" ), getAppSupportWorkingSessionShadersPath( "Post/post.frag" ), mParticleSystemRef, [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("Post/post.vert"), getAppSupportWorkingSessionShadersPath("Post/post.frag"), mParticleSystemRef, [this]() {
         auto ui = mUIRef->getUI(POST_UI);
         if (ui != nullptr) {
           if (mRectRendererRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(POST_UI);
         if (ui != nullptr) {
           ui->clear();
@@ -2015,7 +2011,7 @@ void Transform::setupPost()
           setupRendererUI(ui, mRectRendererRef);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( POST_UI ) + " ERROR: " + string( exc.what() ) ); } );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(POST_UI) + " ERROR: " + string(exc.what())); });
     mRectRendererRef->setup();
 }
 
@@ -2026,27 +2022,27 @@ void Transform::updatePost()
 
 void Transform::drawPost()
 {
-    gl::setMatricesWindow( mOutputWindowRef->getSize() );
+    gl::setMatricesWindow(mOutputWindowRef->getSize());
     auto glslProgRef = mRectRendererRef->getGlslProgRef();
-    if( glslProgRef ) {
-        setDefaultUniforms( glslProgRef );
-        mOutputFboRef->getColorTexture()->bind( 0 );
-        glslProgRef->uniform( "iScreenTexture", 0 );
+    if (glslProgRef) {
+        setDefaultUniforms(glslProgRef);
+        mOutputFboRef->getColorTexture()->bind(0);
+        glslProgRef->uniform("iScreenTexture", 0);
         mRectRendererRef->draw();
     }
 }
 
-void Transform::drawPost( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll )
+void Transform::drawPost(const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll)
 {
     vec2 size = mOutputWindowRef->getSize();
-    gl::setMatricesWindow( size );
+    gl::setMatricesWindow(size);
     auto glslProgRef = mRectRendererRef->getGlslProgRef();
-    if( glslProgRef ) {
-        setDefaultUniforms( glslProgRef );
-        glslProgRef->uniform( "iScreenTexture", 0 );
+    if (glslProgRef) {
+        setDefaultUniforms(glslProgRef);
+        glslProgRef->uniform("iScreenTexture", 0);
         auto batch = gl::Batch::create(
-            geom::Rect( Rectf( 0.0f, 0.0f, size.x, size.y ) ).texCoords( ul, ur, lr, ll ),
-            glslProgRef );
+            geom::Rect(Rectf(0.0f, 0.0f, size.x, size.y)).texCoords(ul, ur, lr, ll),
+            glslProgRef);
         batch->draw();
     }
 }
@@ -2054,13 +2050,13 @@ void Transform::drawPost( const vec2 &ul, const vec2 &ur, const vec2 &lr, const 
 void Transform::setupBg()
 {
     mBgRendererRef = RectRenderer::create(
-        mOutputWindowRef, getAppSupportWorkingSessionShadersPath( "Background/background.vert" ), getAppSupportWorkingSessionShadersPath( "Background/background.frag" ), mParticleSystemRef, [this]() {
+        mOutputWindowRef, getAppSupportWorkingSessionShadersPath("Background/background.vert"), getAppSupportWorkingSessionShadersPath("Background/background.frag"), mParticleSystemRef, [this]() {
         auto ui = mUIRef->getUI(BACKGROUND_UI);
         if (ui != nullptr) {
           if (mBgRendererRef->isInitialized()) {
             mUIRef->saveUI(ui, getAppSupportWorkingSessionSettingsPath());
           }
-        } }, [this]( GlslParamsRef glslParams ) {
+        } }, [this](GlslParamsRef glslParams) {
         auto ui = mUIRef->getUI(BACKGROUND_UI);
         if (ui != nullptr) {
           ui->clear();
@@ -2068,7 +2064,7 @@ void Transform::setupBg()
           setupRendererUI(ui, mBgRendererRef);
           mUIRef->addShaderParamsUI(ui, *(glslParams.get()));
           mUIRef->loadUI(ui, getAppSupportWorkingSessionSettingsPath());
-        } }, [this]( ci::Exception exc ) { CI_LOG_E( string( BACKGROUND_UI ) + " ERROR: " + string( exc.what() ) ); } );
+        } }, [this](ci::Exception exc) { CI_LOG_E(string(BACKGROUND_UI) + " ERROR: " + string(exc.what())); });
     mBgRendererRef->setup();
 }
 
@@ -2079,29 +2075,29 @@ void Transform::updateBg()
 
 void Transform::drawBg()
 {
-    gl::setMatricesWindow( mOutputWindowRef->getSize() );
-    gl::clear( mBgColor );
+    gl::setMatricesWindow(mOutputWindowRef->getSize());
+    gl::clear(mBgColor);
     auto glslProgRef = mBgRendererRef->getGlslProgRef();
-    if( glslProgRef && mBgRendererRef->mDraw ) {
-        setDefaultUniforms( glslProgRef );
-        mOutputFboRef->getColorTexture()->bind( 0 );
-        glslProgRef->uniform( "iScreenTexture", 0 );
+    if (glslProgRef && mBgRendererRef->mDraw) {
+        setDefaultUniforms(glslProgRef);
+        mOutputFboRef->getColorTexture()->bind(0);
+        glslProgRef->uniform("iScreenTexture", 0);
         mBgRendererRef->draw();
     }
 }
 
-void Transform::drawBg( const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll )
+void Transform::drawBg(const vec2 &ul, const vec2 &ur, const vec2 &lr, const vec2 &ll)
 {
     vec2 size = mOutputWindowRef->getSize();
-    gl::setMatricesWindow( size );
+    gl::setMatricesWindow(size);
     auto glslProgRef = mBgRendererRef->getGlslProgRef();
-    if( glslProgRef ) {
-        setDefaultUniforms( glslProgRef );
-        mOutputFboRef->getColorTexture()->bind( 0 );
-        glslProgRef->uniform( "iScreenTexture", 0 );
+    if (glslProgRef) {
+        setDefaultUniforms(glslProgRef);
+        mOutputFboRef->getColorTexture()->bind(0);
+        glslProgRef->uniform("iScreenTexture", 0);
         auto batch = gl::Batch::create(
-            geom::Rect( Rectf( 0.0f, 0.0f, size.x, size.y ) ).texCoords( ul, ur, lr, ll ),
-            glslProgRef );
+            geom::Rect(Rectf(0.0f, 0.0f, size.x, size.y)).texCoords(ul, ur, lr, ll),
+            glslProgRef);
         batch->draw();
     }
 }
@@ -2109,123 +2105,110 @@ void Transform::drawBg( const vec2 &ul, const vec2 &ur, const vec2 &lr, const ve
 void Transform::setupOsc()
 {
     mReceiverRef = nullptr;
-    mReceiverRef = ReceiverRef( new Receiver( mOscPort ) );
-    mReceiverRef->setListener( "/*",
-        [this]( const osc::Message &msg ) {
-            string address = msg.getAddress().substr( 1 );
-            string typeTag = msg.getTypeTagString();
-            vector<string> keys = split( address, "/" );
-            int numKeys = int( keys.size() );
-            if( numKeys > 1 ) {
-                auto ui = mUIRef->getUI( keys[0] );
-                if( ui ) {
-                    string subkey = keys[1];
-                    auto view = ui->getSubView( subkey );
-                    if( view == nullptr ) {
-                        std::transform( subkey.begin(), subkey.end(), subkey.begin(), ::toupper );
-                        view = ui->getSubView( subkey );
-                    }
-                    if( view ) {
-                        string type = view->getType();
-                        if( type == "Slideri" && typeTag == "f" ) {
-                            Slideri *widget = static_cast<Slideri *>( view.get() );
-                            widget->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
-                        }
-                        else if( type == "Sliderf" && typeTag == "f" ) {
-                            Sliderf *widget = static_cast<Sliderf *>( view.get() );
-                            widget->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
-                        }
-                        else if( type == "Toggle" ) {
-                            Toggle *toggle = static_cast<Toggle *>( view.get() );
-                            if( typeTag == "f" ) {
-                                toggle->setValue( msg.getArgFloat( 0 ) );
-                            }
-                            else if( typeTag == "b" ) {
-                                toggle->setValue( msg.getArgBool( 0 ) );
-                            }
-                        }
-                        else if( type == "Button" ) {
-                            Button *button = static_cast<Button *>( view.get() );
-                            if( typeTag == "f" ) {
-                                button->setValue( msg.getArgFloat( 0 ) );
-                            }
-                            else if( typeTag == "b" ) {
-                                button->setValue( msg.getArgBool( 0 ) );
-                            }
-                        }
-                        else if( type == "XYPad" ) {
-                            XYPad *widget = static_cast<XYPad *>( view.get() );
-                            if( typeTag == "ff" ) {
-                                vec2 min = widget->getMin();
-                                vec2 max = widget->getMax();
-                                float x = lmap<float>( msg.getArgFloat( 0 ), 0, 1, min.x, max.x );
-                                float y = lmap<float>( msg.getArgFloat( 1 ), 0, 1, min.y, max.y );
-                                widget->setValue( vec2( x, y ) );
-                            }
-                        }
-                        else if( type == "Sliderd" && typeTag == "f" ) {
-                            Sliderd *widget = static_cast<Sliderd *>( view.get() );
-                            widget->setValue( lmap<double>( msg.getArgDouble( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
-                        }
-                        else if( type == "MultiSlider" && typeTag == "f" && numKeys > 2 ) {
-                            MultiSlider *widget = static_cast<MultiSlider *>( view.get() );
-                            int index = stoi( keys[2] );
-                            if( ( index - 1 ) < int( widget->getSubViews().size() ) ) {
-                                string key = subkey;
-                                switch( index ) {
-                                case 1:
-                                    key += "-X";
-                                    break;
-                                case 2:
-                                    key += "-Y";
-                                    break;
-                                case 3:
-                                    key += "-Z";
-                                    break;
-                                case 4:
-                                    key += "-W";
-                                    break;
-                                default:
-                                    break;
-                                }
-                                widget->setValue( key, lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, widget->getMin( key ), widget->getMax( key ) ) );
-                            }
-                        }
-                        else if( type == "Dialeri" && typeTag == "f" ) {
-                            Dialeri *widget = static_cast<Dialeri *>( view.get() );
-                            widget->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
-                        }
-                        else if( type == "Dialerf" && typeTag == "f" ) {
-                            Dialerf *widget = static_cast<Dialerf *>( view.get() );
-                            widget->setValue( lmap<float>( msg.getArgFloat( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
-                        }
-                        else if( type == "Dialerd" && typeTag == "f" ) {
-                            Dialerd *widget = static_cast<Dialerd *>( view.get() );
-                            widget->setValue( lmap<double>( msg.getArgDouble( 0 ), 0.0, 1.0, widget->getMin(), widget->getMax() ) );
-                        }
-                        view->trigger();
-                    }
-                }
-            }
-        } );
+    mReceiverRef = ReceiverRef(new Receiver(mOscPort));
+    mReceiverRef->setListener("/*",
+                              [this](const osc::Message &msg) {
+                                  string address = msg.getAddress().substr(1);
+                                  string typeTag = msg.getTypeTagString();
+                                  vector<string> keys = split(address, "/");
+                                  int numKeys = int(keys.size());
+                                  if (numKeys > 1) {
+                                      auto ui = mUIRef->getUI(keys[0]);
+                                      if (ui) {
+                                          string subkey = keys[1];
+                                          auto view = ui->getSubView(subkey);
+                                          if (view == nullptr) {
+                                              std::transform(subkey.begin(), subkey.end(), subkey.begin(), ::toupper);
+                                              view = ui->getSubView(subkey);
+                                          }
+                                          if (view) {
+                                              string type = view->getType();
+                                              if (type == "Slideri" && typeTag == "f") {
+                                                  Slideri *widget = static_cast<Slideri *>(view.get());
+                                                  widget->setValue(lmap<float>(msg.getArgFloat(0), 0.0, 1.0, widget->getMin(), widget->getMax()));
+                                              } else if (type == "Sliderf" && typeTag == "f") {
+                                                  Sliderf *widget = static_cast<Sliderf *>(view.get());
+                                                  widget->setValue(lmap<float>(msg.getArgFloat(0), 0.0, 1.0, widget->getMin(), widget->getMax()));
+                                              } else if (type == "Toggle") {
+                                                  Toggle *toggle = static_cast<Toggle *>(view.get());
+                                                  if (typeTag == "f") {
+                                                      toggle->setValue(msg.getArgFloat(0));
+                                                  } else if (typeTag == "b") {
+                                                      toggle->setValue(msg.getArgBool(0));
+                                                  }
+                                              } else if (type == "Button") {
+                                                  Button *button = static_cast<Button *>(view.get());
+                                                  if (typeTag == "f") {
+                                                      button->setValue(msg.getArgFloat(0));
+                                                  } else if (typeTag == "b") {
+                                                      button->setValue(msg.getArgBool(0));
+                                                  }
+                                              } else if (type == "XYPad") {
+                                                  XYPad *widget = static_cast<XYPad *>(view.get());
+                                                  if (typeTag == "ff") {
+                                                      vec2 min = widget->getMin();
+                                                      vec2 max = widget->getMax();
+                                                      float x = lmap<float>(msg.getArgFloat(0), 0, 1, min.x, max.x);
+                                                      float y = lmap<float>(msg.getArgFloat(1), 0, 1, min.y, max.y);
+                                                      widget->setValue(vec2(x, y));
+                                                  }
+                                              } else if (type == "Sliderd" && typeTag == "f") {
+                                                  Sliderd *widget = static_cast<Sliderd *>(view.get());
+                                                  widget->setValue(lmap<double>(msg.getArgDouble(0), 0.0, 1.0, widget->getMin(), widget->getMax()));
+                                              } else if (type == "MultiSlider" && typeTag == "f" && numKeys > 2) {
+                                                  MultiSlider *widget = static_cast<MultiSlider *>(view.get());
+                                                  int index = stoi(keys[2]);
+                                                  if ((index - 1) < int(widget->getSubViews().size())) {
+                                                      string key = subkey;
+                                                      switch (index) {
+                                                          case 1:
+                                                              key += "-X";
+                                                              break;
+                                                          case 2:
+                                                              key += "-Y";
+                                                              break;
+                                                          case 3:
+                                                              key += "-Z";
+                                                              break;
+                                                          case 4:
+                                                              key += "-W";
+                                                              break;
+                                                          default:
+                                                              break;
+                                                      }
+                                                      widget->setValue(key, lmap<float>(msg.getArgFloat(0), 0.0, 1.0, widget->getMin(key), widget->getMax(key)));
+                                                  }
+                                              } else if (type == "Dialeri" && typeTag == "f") {
+                                                  Dialeri *widget = static_cast<Dialeri *>(view.get());
+                                                  widget->setValue(lmap<float>(msg.getArgFloat(0), 0.0, 1.0, widget->getMin(), widget->getMax()));
+                                              } else if (type == "Dialerf" && typeTag == "f") {
+                                                  Dialerf *widget = static_cast<Dialerf *>(view.get());
+                                                  widget->setValue(lmap<float>(msg.getArgFloat(0), 0.0, 1.0, widget->getMin(), widget->getMax()));
+                                              } else if (type == "Dialerd" && typeTag == "f") {
+                                                  Dialerd *widget = static_cast<Dialerd *>(view.get());
+                                                  widget->setValue(lmap<double>(msg.getArgDouble(0), 0.0, 1.0, widget->getMin(), widget->getMax()));
+                                              }
+                                              view->trigger();
+                                          }
+                                      }
+                                  }
+                              });
 
     try {
         mReceiverRef->bind();
-    }
-    catch( const osc::Exception &ex ) {
-        CI_LOG_E( "Error binding: " << ex.what() << " val: " << ex.value() );
+    } catch (const osc::Exception &ex) {
+        CI_LOG_E("Error binding: " << ex.what() << " val: " << ex.value());
     }
 #if USE_UDP
     mReceiverRef->listen(
-        []( asio::error_code error, protocol::endpoint endpoint ) -> bool {
-            if( error ) {
-                CI_LOG_E( "Error Listening: " << error.message() << " val: " << error.value() << " endpoint: " << endpoint );
+        [](asio::error_code error, protocol::endpoint endpoint) -> bool {
+            if (error) {
+                CI_LOG_E("Error Listening: " << error.message() << " val: " << error.value() << " endpoint: " << endpoint);
                 return false;
-            }
-            else
+            } else
                 return true;
-        } );
+        });
 #endif
 }
 
-CINDER_APP( Transform, RendererGl( RendererGl::Options().msaa( 0 ) ), Transform::prepareSettings );
+CINDER_APP(Transform, RendererGl(RendererGl::Options().msaa(16)), Transform::prepareSettings);

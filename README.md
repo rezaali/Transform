@@ -33,7 +33,6 @@ git clone git@github.com:rezaali/Cinder-SaveLoadWindow.git SaveLoadWindow
 git clone git@github.com:rezaali/Cinder-SaveLoadCamera.git SaveLoadCamera
 git clone git@github.com:rezaali/Cinder-UI.git UI
 git clone git@github.com:rezaali/Watchdog.git Watchdog
-git clone git@github.com:rezaali/Cinder-UI.git UI
 ```
 
 #### 4. Build Cinder
