@@ -4,13 +4,13 @@
    "NAME" : "primitive geometry",
    "SUBVIEWS" : [
       {
-         "ID" : 6,
+         "ID" : 18,
          "NAME" : "DIVISIONS",
          "TYPE" : "Slideri",
          "VALUE" : 60
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 380
+   "XPOS" : 2,
+   "YPOS" : 244
 }

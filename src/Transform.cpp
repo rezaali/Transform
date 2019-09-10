@@ -403,6 +403,8 @@ class Transform : public App
 
     // POINT EXPORTER
     void exportPoints(const ci::fs::path &path, const std::string &filename);
+    void exportSVGPoints(const ci::fs::path &path, const std::string &filename);
+    void exportSVGTrails(const ci::fs::path &path, const std::string &filename);
 
     // SAVING & LOADING
     ci::fs::path mDefaultRenderPath;
@@ -1035,6 +1037,7 @@ UIPanelRef Transform::setupExporterUI(UIPanelRef ui)
                 if (it != string::npos) {
                     filename = filename.substr(0, it);
                 }
+                opath += opath.preferred_separator;
                 vector<string> extensions = {"png", "jpg", "tif"};
                 bool valid = false;
                 for (auto it : extensions) {
@@ -1048,6 +1051,7 @@ UIPanelRef Transform::setupExporterUI(UIPanelRef ui)
                 }
                 dispatchSync([this, opath, filename, ext]() {
                     //                    saveAs( addPath( opath, filename ) );
+                    cout << opath << endl; 
                     mImageSaverRef->save(mCameraRef->getCameraPersp(), opath, filename, ext);
                 });
             }
@@ -1118,6 +1122,38 @@ UIPanelRef Transform::setupExporterUI(UIPanelRef ui)
                     filename = filename.substr(0, it);
                 }
                 exportPoints(opath, filename);
+            }
+        }
+    });
+    ui->addButton("EXPORT POINT SVG", false)->setCallback([this](bool value) {
+        if (value) {
+            fs::path path = getSaveFilePath(mDefaultExportPath);
+            if (!path.empty()) {
+                mDefaultExportPath = path.parent_path();
+                string filename = path.filename().string();
+                string dir = path.parent_path().string() + fs::path::preferred_separator;
+                fs::path opath = fs::path(dir);
+                auto it = filename.rfind(".");
+                if (it != string::npos) {
+                    filename = filename.substr(0, it);
+                }
+                exportSVGPoints(opath, filename);
+            }
+        }
+    });
+    ui->addButton("EXPORT TRAILS SVG", false)->setCallback([this](bool value) {
+        if (value) {
+            fs::path path = getSaveFilePath(mDefaultExportPath);
+            if (!path.empty()) {
+                mDefaultExportPath = path.parent_path();
+                string filename = path.filename().string();
+                string dir = path.parent_path().string() + fs::path::preferred_separator;
+                fs::path opath = fs::path(dir);
+                auto it = filename.rfind(".");
+                if (it != string::npos) {
+                    filename = filename.substr(0, it);
+                }
+                exportSVGTrails(opath, filename);
             }
         }
     });
@@ -1285,9 +1321,10 @@ UIPanelRef Transform::setupSystemUI(UIPanelRef ui, SystemRef systemRef)
         }
     });
 
-    ui->addToggle("UPDATE", systemRef->getUpdate())
-        ->setCallback(
-            [this, systemRef](bool value) { systemRef->setUpdate(value); });
+    auto toggle = ui->addToggle("UPDATE", systemRef->getUpdate());
+    toggle->setCallback([this, systemRef](bool value) { systemRef->setUpdate(value); });
+    toggle->bindToKey(KeyEvent::KEY_u);
+    
     return ui;
 }
 
@@ -1924,6 +1961,73 @@ void Transform::exportPoints(const ci::fs::path &path, const std::string &filena
         stream << data[i] << " " << data[i + 1] << " " << data[i + 2] << " " << data[i + 3] << endl;
     }
     bufObj->unmap();
+    stream.close();
+}
+
+void Transform::exportSVGPoints(const ci::fs::path &path, const std::string &filename)
+{
+    fs::path final = path;
+    final += fs::path(filename);
+    final += fs::path(".svg");
+    ofstream stream(final.string(), ios_base::out);
+    stream << "<svg>" << endl;
+
+    
+    ci::gl::BufferTextureRef posBuffer = mParticleSystemRef->getPositionBufferTextureRef(0);
+    ci::gl::BufferTextureRef velBuffer = mParticleSystemRef->getVelocityBufferTextureRef(0);
+    ci::gl::BufferObjRef &posBufObj = posBuffer->getBufferObj();
+    ci::gl::BufferObjRef &velBufObj = velBuffer->getBufferObj();
+    float *posData = (float *)posBufObj->map(GL_READ_ONLY);
+    float *velData = (float *)velBufObj->map(GL_READ_ONLY);
+    int total = mParticleSystemRef->getTotal() * 4;
+    for (int i = 0; i < total; i += 4) {
+        float radius = velData[i+3];
+        vec3 pt = vec3(posData[i], posData[i+1], posData[i+2]);
+        vec2 size = mOutputWindowRef->getSize();
+        vec2 spt = mCameraRef->getCameraPersp().worldToScreen(pt, size.x, size.y);
+        stream << "<circle ";
+        stream << "cx=\"" << spt.x << "\" ";
+        stream << "cy=\"" << spt.y << "\" ";
+        stream << "r=\"" << radius << "\" ";
+        stream << "fill=\"black\" ";
+        stream << "stroke=\"black\" ";
+        stream << "stroke-width=\"1\"/>" << endl;
+    }
+    posBufObj->unmap();
+    velBufObj->unmap();
+    stream << "</svg>" << endl;
+    stream.close();
+}
+
+void Transform::exportSVGTrails(const ci::fs::path &path, const std::string &filename)
+{
+    fs::path final = path;
+    final += fs::path(filename);
+    final += fs::path(".svg");
+    ofstream stream(final.string(), ios_base::out);
+    stream << "<svg>" << endl;
+    
+    ci::gl::BufferTextureRef posBuffer = mTrailSystemRef->getPositionBufferTextureRef(0);
+    ci::gl::BufferObjRef &posBufObj = posBuffer->getBufferObj();
+    float *posData = (float *)posBufObj->map(GL_READ_ONLY);
+    int trailTotal = mTrailTotal * 4;
+    for (int i = 0; i < mParticleTotal; i++) {
+        int offset = i * mTrailTotal * 4;
+        stream << "<polyline points=\"";
+        for (int j = 0; j < trailTotal; j+=4) {
+            int index = offset + j;
+            vec3 pt = vec3(posData[index], posData[index+1], posData[index+2]);
+            vec2 size = mOutputWindowRef->getSize();
+            vec2 spt = mCameraRef->getCameraPersp().worldToScreen(pt, size.x, size.y);
+            stream << spt.x << " " << spt.y << " ";
+        }
+        stream << " \" stroke-linecap=\"round\" ";
+        stream << "stroke-linejoin=\"bevel\" ";
+        stream << "stroke-width=\"1\" ";
+        stream << "fill=\"none\" stroke=\"#000000\" stroke-width=\"1\" />" << endl;
+    }
+    posBufObj->unmap();
+    stream << "</svg>" << endl;
     stream.close();
 }
 

@@ -4,46 +4,46 @@
    "NAME" : "points",
    "SUBVIEWS" : [
       {
-         "ID" : 19,
+         "ID" : 59,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
-         "VALUE" : true
+         "VALUE" : false
       },
       {
-         "ID" : 20,
+         "ID" : 60,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 61,
+         "NAME" : "DEPTH WRITE",
+         "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 21,
-         "NAME" : "DEPTH WRITE",
-         "TYPE" : "Toggle",
-         "VALUE" : false
-      },
-      {
-         "ID" : 22,
+         "ID" : 62,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
-         "ID" : 24,
+         "ID" : 64,
          "NAME" : "size",
          "TYPE" : "Sliderf",
-         "VALUE" : 7.7040800000000003
+         "VALUE" : 1.5294099999999999
       },
       {
-         "ALPHA" : 0.48649900000000001,
-         "BLUE" : 1,
-         "GREEN" : 1,
-         "ID" : 25,
+         "ALPHA" : 1,
+         "BLUE" : 0,
+         "GREEN" : 0,
+         "ID" : 65,
          "NAME" : "Color",
-         "RED" : 1,
+         "RED" : 0,
          "TYPE" : "ColorPicker"
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 278
+   "XPOS" : 2,
+   "YPOS" : 178
 }

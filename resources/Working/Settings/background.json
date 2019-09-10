@@ -4,31 +4,31 @@
    "NAME" : "background",
    "SUBVIEWS" : [
       {
-         "ID" : 11,
+         "ID" : 43,
          "NAME" : "DRAW",
          "TYPE" : "Toggle",
-         "VALUE" : true
+         "VALUE" : false
       },
       {
-         "ID" : 12,
+         "ID" : 44,
          "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 13,
+         "ID" : 45,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 14,
+         "ID" : 46,
          "NAME" : "DEPTH READ",
          "TYPE" : "Toggle",
          "VALUE" : false
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 40
+   "XPOS" : 2,
+   "YPOS" : 24
 }

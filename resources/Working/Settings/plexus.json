@@ -4,13 +4,13 @@
    "NAME" : "plexus",
    "SUBVIEWS" : [
       {
-         "ID" : 8,
+         "ID" : 20,
          "NAME" : "UPDATE",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 244
+   "XPOS" : 2,
+   "YPOS" : 156
 }

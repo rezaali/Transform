@@ -4,70 +4,88 @@
    "NAME" : "ribbon",
    "SUBVIEWS" : [
       {
-         "ID" : 37,
+         "ID" : 247,
          "NAME" : "DRAW",
-         "TYPE" : "Toggle",
-         "VALUE" : false
-      },
-      {
-         "ID" : 38,
-         "NAME" : "ADDITIVE BLENDING",
          "TYPE" : "Toggle",
          "VALUE" : true
       },
       {
-         "ID" : 39,
+         "ID" : 248,
+         "NAME" : "ADDITIVE BLENDING",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 249,
          "NAME" : "DEPTH WRITE",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
-         "ID" : 40,
+         "ID" : 250,
          "NAME" : "DEPTH READ",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 252,
+         "NAME" : "fog",
          "TYPE" : "Toggle",
          "VALUE" : false
       },
       {
-         "ID" : 42,
+         "ID" : 253,
+         "NAME" : "fogDistance",
+         "TYPE" : "Sliderf",
+         "VALUE" : 3.2843100000000001
+      },
+      {
+         "ID" : 254,
+         "NAME" : "fogPower",
+         "TYPE" : "Sliderf",
+         "VALUE" : 4.9019599999999999
+      },
+      {
+         "ID" : 255,
          "NAME" : "trailFade",
          "TYPE" : "Sliderf",
-         "VALUE" : 1
+         "VALUE" : 0
       },
       {
          "ALPHA" : 1,
-         "BLUE" : 0.995,
-         "GREEN" : 0.995,
-         "ID" : 43,
+         "BLUE" : 1,
+         "GREEN" : 1,
+         "ID" : 256,
          "NAME" : "Color",
          "RED" : 1,
          "TYPE" : "ColorPicker"
       },
       {
-         "ID" : 44,
+         "ID" : 257,
          "NAME" : "linEffect",
          "TYPE" : "Sliderf",
-         "VALUE" : 1
+         "VALUE" : 0.63235300000000005
       },
       {
-         "ID" : 45,
+         "ID" : 258,
          "NAME" : "cosEffect",
          "TYPE" : "Sliderf",
-         "VALUE" : 1
+         "VALUE" : 0
       },
       {
-         "ID" : 46,
+         "ID" : 259,
          "NAME" : "sinEffect",
          "TYPE" : "Sliderf",
-         "VALUE" : 1
+         "VALUE" : 0
       },
       {
-         "ID" : 47,
+         "ID" : 260,
          "NAME" : "thickness",
          "TYPE" : "Sliderf",
-         "VALUE" : 0.0025510200000000002
+         "VALUE" : 0.0039215700000000001
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 414
+   "XPOS" : 2,
+   "YPOS" : 266
 }

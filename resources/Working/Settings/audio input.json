@@ -4,30 +4,24 @@
    "NAME" : "audio input",
    "SUBVIEWS" : [
       {
-         "ACTIVE" : "Built-in Microphone",
+         "ACTIVE" : "MacBook Pro Microphone",
          "ID" : 3,
          "NAME" : "INPUT",
          "SUBVIEWS" : [
             {
                "ID" : 0,
-               "NAME" : "Bose QuietComfort 35",
-               "TYPE" : "Toggle",
-               "VALUE" : false
-            },
-            {
-               "ID" : 1,
-               "NAME" : "Built-in Microphone",
+               "NAME" : "MacBook Pro Microphone",
                "TYPE" : "Toggle",
                "VALUE" : true
             },
             {
-               "ID" : 2,
+               "ID" : 1,
                "NAME" : "Soundflower (2ch)",
                "TYPE" : "Toggle",
                "VALUE" : false
             },
             {
-               "ID" : 3,
+               "ID" : 2,
                "NAME" : "Soundflower (64ch)",
                "TYPE" : "Toggle",
                "VALUE" : false
@@ -37,6 +31,6 @@
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 6
+   "XPOS" : 2,
+   "YPOS" : 2
 }

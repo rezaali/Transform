@@ -4,19 +4,19 @@
    "NAME" : "trail",
    "SUBVIEWS" : [
       {
-         "ID" : 9,
+         "ID" : 23,
          "NAME" : "UPDATE",
          "TYPE" : "Toggle",
-         "VALUE" : false
+         "VALUE" : true
       },
       {
-         "ID" : 10,
+         "ID" : 24,
          "NAME" : "TOTAL",
          "TYPE" : "Dialeri",
-         "VALUE" : 8
+         "VALUE" : 20
       }
    ],
    "TYPE" : "SuperCanvas",
-   "XPOS" : 6,
-   "YPOS" : 482
+   "XPOS" : 2,
+   "YPOS" : 310
 }
