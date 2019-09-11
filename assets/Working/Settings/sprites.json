@@ -1,0 +1,55 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "sprites",
+   "SUBVIEWS" : [
+      {
+         "ID" : 64,
+         "NAME" : "DRAW",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 65,
+         "NAME" : "ADDITIVE BLENDING",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 66,
+         "NAME" : "DEPTH WRITE",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 67,
+         "NAME" : "DEPTH READ",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ALPHA" : 1,
+         "BLUE" : 0.995,
+         "GREEN" : 0.995,
+         "ID" : 69,
+         "NAME" : "Color",
+         "RED" : 1,
+         "TYPE" : "ColorPicker"
+      },
+      {
+         "ID" : 70,
+         "NAME" : "power",
+         "TYPE" : "Sliderf",
+         "VALUE" : 0.52941199999999999
+      },
+      {
+         "ID" : 71,
+         "NAME" : "sigma",
+         "TYPE" : "Sliderf",
+         "VALUE" : 0.210784
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 2,
+   "YPOS" : 288
+}

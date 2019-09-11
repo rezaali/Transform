@@ -1,0 +1,34 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "background",
+   "SUBVIEWS" : [
+      {
+         "ID" : 43,
+         "NAME" : "DRAW",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 44,
+         "NAME" : "ADDITIVE BLENDING",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 45,
+         "NAME" : "DEPTH WRITE",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 46,
+         "NAME" : "DEPTH READ",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 2,
+   "YPOS" : 24
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include "cinder/CinderResources.h"
 
+#define TRANSFORM_PATH "Transform"
 #define ASSETS_PATH "Assets"
 #define IMAGE_PATH "Images"
 #define MODEL_PATH "Models"

@@ -1,0 +1,64 @@
+{
+   "ID" : -1,
+   "MINIFIED" : false,
+   "NAME" : "transform",
+   "SUBVIEWS" : [
+      {
+         "ALPHA" : 0,
+         "BLUE" : 1,
+         "GREEN" : 1,
+         "ID" : 8,
+         "NAME" : "BACKGROUND COLOR",
+         "RED" : 1,
+         "TYPE" : "ColorPicker"
+      },
+      {
+         "ALPHA" : 0.19298299999999999,
+         "BLUE" : 1,
+         "GREEN" : 1,
+         "ID" : 9,
+         "NAME" : "BOX COLOR",
+         "RED" : 1,
+         "TYPE" : "ColorPicker"
+      },
+      {
+         "ID" : 10,
+         "NAME" : "DRAW BOX",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ALPHA" : 0.28907699999999997,
+         "BLUE" : 0.83027099999999998,
+         "GREEN" : 0.83027099999999998,
+         "ID" : 12,
+         "NAME" : "GRID LINES COLOR",
+         "RED" : 0.83027099999999998,
+         "TYPE" : "ColorPicker"
+      },
+      {
+         "ID" : 13,
+         "NAME" : "DRAW GRID LINES",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ALPHA" : 0.32198500000000002,
+         "BLUE" : 0.98999999999999999,
+         "GREEN" : 0.98999999999999999,
+         "ID" : 14,
+         "NAME" : "GRID POINTS COLOR",
+         "RED" : 1,
+         "TYPE" : "ColorPicker"
+      },
+      {
+         "ID" : 15,
+         "NAME" : "DRAW GRID POINTS",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 2,
+   "YPOS" : 354
+}

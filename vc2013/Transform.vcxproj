@@ -22,19 +22,20 @@
     <ProjectGuid>{9E1755D2-F73B-4C2B-AA3D-908729BB527E}</ProjectGuid>
     <RootNamespace>Transform</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
@@ -47,7 +48,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -87,7 +88,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;..\..\..\..\include;..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include;..\..\..\..\blocks\UI\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\include;..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\AppPaths\include;..\..\..\..\blocks\Watchdog\include;..\..\..\..\blocks\UI\src;..\..\..\..\blocks\AppUI\include;..\..\..\..\blocks\GlslParams\src;..\..\..\..\blocks\EasyCamera\include;..\..\..\..\blocks\ParticleSystem\include;..\..\..\..\blocks\LiveCode\include;..\..\..\..\blocks\ImageSaver\include;..\..\..\..\blocks\Tiler\src;..\..\..\..\blocks\SaveLoadCamera\include;..\..\..\..\blocks\SaveLoadWindow\include;..\..\..\..\blocks\SequenceSaver\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -128,7 +129,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\..\lib\msw\$(PlatformTarget);..\..\..\..\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\lib\msw\$(PlatformTarget);..\..\..\..\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -138,7 +139,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;..\..\..\..\include;..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include;..\..\..\..\blocks\UI\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\include;..\..\..\..\blocks\OSC\src;..\..\..\..\blocks\Watchdog\include;..\..\..\..\blocks\UI\src;..\..\..\..\blocks\Tiler\src;..\..\..\..\blocks\SaveLoadCamera\include;..\..\..\..\blocks\GlslParams\src;..\..\..\..\blocks\SaveLoadWindow\include;..\..\..\..\blocks\LiveCode\include;..\..\..\..\blocks\EasyCamera\include;..\..\..\..\blocks\AppPaths\include;..\..\..\..\blocks\AppUI\include;..\..\..\..\blocks\ImageSaver\include;..\..\..\..\blocks\SequenceSaver\include;..\..\..\..\blocks\MovieSaver\include;..\..\..\..\blocks\ParticleSystem\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -204,7 +205,6 @@
     <ClCompile Include="..\..\..\..\blocks\EasyCamera\src\EasyCamera.cpp" />
     <ClCompile Include="..\..\..\..\blocks\ImageSaver\src\ImageSaver.cpp" />
     <ClCompile Include="..\..\..\..\blocks\LiveCode\src\LiveCode.cpp" />
-    <ClCompile Include="..\..\..\..\blocks\MovieSaver\src\MovieSaver.cpp" />
     <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\ParticleSystem.cpp" />
     <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PlexusRenderer.cpp" />
     <ClCompile Include="..\..\..\..\blocks\ParticleSystem\src\PlexusSystem.cpp" />
@@ -261,7 +261,6 @@
     <ClInclude Include="..\..\..\..\blocks\EasyCamera\include\EasyCamera.h" />
     <ClInclude Include="..\..\..\..\blocks\ImageSaver\include\ImageSaver.h" />
     <ClInclude Include="..\..\..\..\blocks\LiveCode\include\LiveCode.h" />
-    <ClInclude Include="..\..\..\..\blocks\MovieSaver\include\MovieSaver.h" />
     <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\ParticleSystem.h" />
     <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PlexusRenderer.h" />
     <ClInclude Include="..\..\..\..\blocks\ParticleSystem\include\PlexusSystem.h" />

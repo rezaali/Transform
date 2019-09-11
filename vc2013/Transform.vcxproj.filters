@@ -73,9 +73,6 @@
     <Filter Include="Blocks\SequenceSaver">
       <UniqueIdentifier>{6d0b3f88-45de-49bd-8f5d-c95271eb32c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\MovieSaver">
-      <UniqueIdentifier>{6bcf4929-68d0-4968-97a6-30ee400b7c98}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Blocks\ImageSaver">
       <UniqueIdentifier>{5dccc650-07d6-4822-957c-c89007773d78}</UniqueIdentifier>
     </Filter>
@@ -342,9 +339,6 @@
     <ClInclude Include="..\..\..\..\blocks\AppPaths\include\Paths.h">
       <Filter>Blocks\AppPaths</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\blocks\MovieSaver\include\MovieSaver.h">
-      <Filter>Blocks\MovieSaver</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\blocks\SequenceSaver\include\SequenceSaver.h">
       <Filter>Blocks\SequenceSaver</Filter>
     </ClInclude>
@@ -419,9 +413,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\blocks\AppPaths\src\Paths.cpp">
       <Filter>Blocks\AppPaths</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\blocks\MovieSaver\src\MovieSaver.cpp">
-      <Filter>Blocks\MovieSaver</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\blocks\SequenceSaver\src\SequenceSaver.cpp">
       <Filter>Blocks\SequenceSaver</Filter>

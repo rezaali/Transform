@@ -1,0 +1,40 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "exporter",
+   "SUBVIEWS" : [
+      {
+         "ID" : 4,
+         "NAME" : "OUTPUT IMAGE SCALE",
+         "TYPE" : "Dialeri",
+         "VALUE" : 6
+      },
+      {
+         "ID" : 7,
+         "NAME" : "MOV",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 8,
+         "NAME" : "PNG",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 9,
+         "NAME" : "FRAMES",
+         "TYPE" : "Dialeri",
+         "VALUE" : 394
+      },
+      {
+         "ID" : 10,
+         "NAME" : "PROGRESS",
+         "TYPE" : "Sliderf",
+         "VALUE" : 0.16497500000000001
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 108
+}

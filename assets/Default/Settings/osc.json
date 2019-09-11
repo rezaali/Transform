@@ -1,0 +1,16 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "osc",
+   "SUBVIEWS" : [
+      {
+         "ID" : 3,
+         "NAME" : "PORT",
+         "TYPE" : "Dialeri",
+         "VALUE" : 8825
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 176
+}

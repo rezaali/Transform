@@ -1,0 +1,36 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "audio input",
+   "SUBVIEWS" : [
+      {
+         "ACTIVE" : "MacBook Pro Microphone",
+         "ID" : 3,
+         "NAME" : "INPUT",
+         "SUBVIEWS" : [
+            {
+               "ID" : 0,
+               "NAME" : "MacBook Pro Microphone",
+               "TYPE" : "Toggle",
+               "VALUE" : true
+            },
+            {
+               "ID" : 1,
+               "NAME" : "Soundflower (2ch)",
+               "TYPE" : "Toggle",
+               "VALUE" : false
+            },
+            {
+               "ID" : 2,
+               "NAME" : "Soundflower (64ch)",
+               "TYPE" : "Toggle",
+               "VALUE" : false
+            }
+         ],
+         "TYPE" : "Radio"
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 2,
+   "YPOS" : 2
+}

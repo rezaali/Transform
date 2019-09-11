@@ -1,0 +1,40 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "post prcess",
+   "SUBVIEWS" : [
+      {
+         "ID" : 12,
+         "NAME" : "DRAW",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 13,
+         "NAME" : "ADDITIVE BLENDING",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 14,
+         "NAME" : "DEPTH WRITE",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 15,
+         "NAME" : "DEPTH READ",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 17,
+         "NAME" : "invert",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 312
+}

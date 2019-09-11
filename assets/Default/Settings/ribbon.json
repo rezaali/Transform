@@ -1,0 +1,73 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "ribbon",
+   "SUBVIEWS" : [
+      {
+         "ID" : 37,
+         "NAME" : "DRAW",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 38,
+         "NAME" : "ADDITIVE BLENDING",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 39,
+         "NAME" : "DEPTH WRITE",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 40,
+         "NAME" : "DEPTH READ",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 42,
+         "NAME" : "trailFade",
+         "TYPE" : "Sliderf",
+         "VALUE" : 1
+      },
+      {
+         "ALPHA" : 1,
+         "BLUE" : 0.995,
+         "GREEN" : 0.995,
+         "ID" : 43,
+         "NAME" : "Color",
+         "RED" : 1,
+         "TYPE" : "ColorPicker"
+      },
+      {
+         "ID" : 44,
+         "NAME" : "linEffect",
+         "TYPE" : "Sliderf",
+         "VALUE" : 1
+      },
+      {
+         "ID" : 45,
+         "NAME" : "cosEffect",
+         "TYPE" : "Sliderf",
+         "VALUE" : 1
+      },
+      {
+         "ID" : 46,
+         "NAME" : "sinEffect",
+         "TYPE" : "Sliderf",
+         "VALUE" : 1
+      },
+      {
+         "ID" : 47,
+         "NAME" : "thickness",
+         "TYPE" : "Sliderf",
+         "VALUE" : 0.0025510200000000002
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 414
+}

@@ -1,0 +1,34 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "physics",
+   "SUBVIEWS" : [
+      {
+         "ID" : 9,
+         "NAME" : "UPDATE",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 10,
+         "NAME" : "PARTICLES",
+         "TYPE" : "Dialeri",
+         "VALUE" : 373
+      },
+      {
+         "ID" : 12,
+         "NAME" : "amplitude",
+         "TYPE" : "Sliderf",
+         "VALUE" : 0.158163
+      },
+      {
+         "ID" : 13,
+         "NAME" : "radius",
+         "TYPE" : "Sliderf",
+         "VALUE" : 1
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 6,
+   "YPOS" : 210
+}

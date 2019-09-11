@@ -1,0 +1,46 @@
+{
+   "ID" : -1,
+   "MINIFIED" : true,
+   "NAME" : "primitive",
+   "SUBVIEWS" : [
+      {
+         "ID" : 60,
+         "NAME" : "DRAW",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 61,
+         "NAME" : "ADDITIVE BLENDING",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 62,
+         "NAME" : "DEPTH WRITE",
+         "TYPE" : "Toggle",
+         "VALUE" : false
+      },
+      {
+         "ID" : 63,
+         "NAME" : "DEPTH READ",
+         "TYPE" : "Toggle",
+         "VALUE" : true
+      },
+      {
+         "ID" : 65,
+         "NAME" : "TYPE",
+         "TYPE" : "Slideri",
+         "VALUE" : 8
+      },
+      {
+         "ID" : 66,
+         "NAME" : "radius",
+         "TYPE" : "Sliderf",
+         "VALUE" : 0.61274499999999998
+      }
+   ],
+   "TYPE" : "SuperCanvas",
+   "XPOS" : 2,
+   "YPOS" : 222
+}
